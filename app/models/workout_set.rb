@@ -1,0 +1,2 @@
+class WorkoutSet < ApplicationRecord
+end
