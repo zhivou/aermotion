@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_005028) do
+ActiveRecord::Schema.define(version: 2019_08_06_011008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2019_08_06_005028) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_set_connectors", force: :cascade do |t|
+    t.bigint "users_id"
+    t.bigint "workout_sets_id"
+    t.index ["users_id"], name: "index_users_set_connectors_on_users_id"
+    t.index ["workout_sets_id"], name: "index_users_set_connectors_on_workout_sets_id"
+  end
+
   create_table "workout_sets", force: :cascade do |t|
     t.string "title"
     t.decimal "price"
@@ -47,5 +54,7 @@ ActiveRecord::Schema.define(version: 2019_08_06_005028) do
     t.index ["type_id"], name: "index_workout_sets_on_type_id"
   end
 
+  add_foreign_key "users_set_connectors", "users", column: "users_id"
+  add_foreign_key "users_set_connectors", "workout_sets", column: "workout_sets_id"
   add_foreign_key "workout_sets", "types"
 end
