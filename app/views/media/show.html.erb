@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @medium.title %>
-  <%= video_tag rails_blob_path(@medium.video), controls: true %>
-</p>
+<div>
+  <div>
+    <strong>Video Name:</strong>
+    <%= @medium.title %>
+  </div>
+  <%= video_tag rails_blob_path(@medium.video), controls: true, size: "450x320" %>
+</div>
+
 
 <%= link_to 'Edit', edit_medium_path(@medium) %> |
 <%= link_to 'Back', media_path %>
