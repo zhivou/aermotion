@@ -3,6 +3,7 @@
 <p>
   <strong>Title:</strong>
   <%= @medium.title %>
+  <%= video_tag rails_blob_path(@medium.video), controls: true %>
 </p>
 
 <%= link_to 'Edit', edit_medium_path(@medium) %> |
