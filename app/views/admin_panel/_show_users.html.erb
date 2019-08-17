@@ -1,0 +1,25 @@
+<table>
+  <thead>
+  <tr>
+    <th>Email</th>
+    <th>Sign Count</th>
+    <th>Created</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <% users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.sign_in_count %></td>
+      <td><%= user.created_at %></td>
+      <td>
+        <% user.workout_sets.each do |set| %>
+          <ul>
+            <li><a href="/workout_sets/<%= set.id %>"><%= set.title %></a></li>
+          </ul>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

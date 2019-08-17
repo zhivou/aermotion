@@ -1,6 +1,7 @@
 <div id="left">
   <%= render 'aplication/left_menu' %>
   <%= render 'aplication/footer' %>
+  <%= link_to edit_user_registration_path %>
   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 </div>
 <div id="right"></div>
