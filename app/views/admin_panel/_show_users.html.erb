@@ -1,22 +1,22 @@
 <table>
   <thead>
-  <tr>
-    <th>ID</th>
-    <th>Email</th>
-    <th>Sign Count</th>
-    <th>Created</th>
-    <th>Workout Sets</th>
+  <tr class="admin-head">
+    <th class="text-center">ID</th>
+    <th class="text-center">Email</th>
+    <th class="text-center">Sign Count</th>
+    <th class="text-center">Created</th>
+    <th class="text-center">Workout Sets/Videos</th>
     <th colspan="3"></th>
   </tr>
   </thead>
 
   <% users.each do |user| %>
-    <tr>
-      <td><%= user.id %></td>
-      <td><%= user.email %></td>
-      <td><%= user.sign_in_count %></td>
-      <td><%= user.created_at %></td>
-      <td>
+    <tr class="admin-row">
+      <td class="text-center"><%= user.id %></td>
+      <td class="text-center"><%= user.email %></td>
+      <td class="text-center"><%= user.sign_in_count %></td>
+      <td class="text-center"><%= user.created_at %></td>
+      <td class="text-center">
         <% user.workout_sets.each do |set| %>
           <table>
             <tr>
