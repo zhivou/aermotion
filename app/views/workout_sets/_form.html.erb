@@ -1,0 +1,32 @@
+<%= form_with(model: workout_set, local: true) do |form| %>
+  <% if workout_set.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(workout_set.errors.count, "error") %> prohibited this workout_set from being saved:</h2>
+
+      <ul>
+      <% workout_set.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :workout_set_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :workout_set_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Content Type" %>
+    <%= form.collection_select(:type_id, Type.all, :id, :name) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
