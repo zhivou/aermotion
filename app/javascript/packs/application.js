@@ -6,6 +6,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./cocoon";
 
 require("@rails/ujs").start();
 require("turbolinks").start();

@@ -25,11 +25,9 @@
               </td>
               <td>
                 <% set.media.each do |m| %>
-                  <ul>
-                    <li>
-                      <a href="/media/<%= m.id %>"><%= m.title %></a>
-                    </li>
-                  </ul>
+                  <div>
+                    <a href="/media/<%= m.id %>"><%= m.title %></a>
+                  </div>
                 <% end %>
               </td>
             </tr>
