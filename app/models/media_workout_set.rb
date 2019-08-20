@@ -1,4 +1,4 @@
 class MediaWorkoutSet < ApplicationRecord
-  belongs_to :video
-  belongs_to :workout_sets
+  belongs_to :video, optional: true
+  belongs_to :workout_sets, optional: true
 end
