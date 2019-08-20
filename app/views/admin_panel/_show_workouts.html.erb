@@ -20,7 +20,6 @@
         <% workout.media.each do |m| %>
           <div>
             <a href="/media/<%= m.id %>"><%= m.title %></a>
-            <%#= link_to 'Destroy', workout_set, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
         <% end %>
       </td>
@@ -30,26 +29,33 @@
         </button>
       </td>
     </tr>
-  <% end %>
-</table>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Select Video to Add</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Select Video to Add</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <%= form_with do |form| %>
+              <div class="field">
+                <%= form.collection_select(:id, Medium.all, :id, :title,  {}, { :multiple => true }  )%>
+              </div>
+
+              </div>
+              <div class="modal-footer">
+                <%= form.submit class: "btn btn-secondary", type: "button", "data-dismiss": "modal" %>
+                <!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+            <% end %>
+            </div>
+            </div>
       </div>
     </div>
-  </div>
-</div>
+
+  <% end %>
+</table>
