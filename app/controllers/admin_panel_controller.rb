@@ -16,16 +16,27 @@ class AdminPanelController < ApplicationController
         workout_id: params[:workout_link]
     )
 
+    message = "Link was successfully created."
+    message_out = false
+
     param_container.medium_id.each do |m|
       next if m == ""
-      next unless MediaWorkoutSet.where(medium_id: m, workout_set_id: param_container.workout_id) == []
+
+      unless MediaWorkoutSet.where(medium_id: m, workout_set_id: param_container.workout_id) == []
+        message += "\nExcept Video: '#{Medium.find(m).title}' and Workout Set: '#{WorkoutSet.find(param_container.workout_id).title}' already linked."
+        next
+      end
 
       link = MediaWorkoutSet.new(medium_id: m, workout_set_id: param_container.workout_id)
-      unless link.save
-        format.html { render root_path }
-        format.json { render json: link.errors, status: :unprocessable_entity }
+      if link.save
+        message_out = true
+        redirect_to admin_panel_path, notice: message
+      else
+        message_out = true
+        flash[:notice] = "Not saved: #{link.errors}"
       end
     end
+    redirect_to admin_panel_path, notice: message unless message_out
   end
 
   private
