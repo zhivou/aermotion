@@ -11,17 +11,26 @@
       <div class="modal-body">
         <%= form_with scope: "link_sets", url: admin_create_video_path do |form| %>
           <div class="field">
-            Workout_id = <%= workout.id %>
+            Selected videos below will be added to Workout Set:
             <%= form.collection_select(:video_link, Medium.all, :id, :title, {}, multiple: true  )%>
-            <%= form.hidden_field(:workout_link, value: workout.id) %>
+            <%= form.hidden_field(:workout_link, id: "workout-modal") %>
           </div>
 
           </div>
           <div class="modal-footer">
-            <%= form.submit %>
-            <button type="button" class="btn btn-primary">Cancel</button>
+            <%= form.submit "Add", class: "btn btn-success" %>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         <% end %>
-          </div>
-      </div>
+        </div>
+        </div>
   </div>
 </div>
+
+
+<script>
+  function showPopup(id) {
+    var popup = $('#exampleModalCenter');
+    popup.find('#workout-modal').val(id);
+    popup.modal('show');
+  }
+</script>
