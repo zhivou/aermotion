@@ -1,0 +1,16 @@
+<%= form_with url: "/admin_create_video", scope: "post" do |form| %>
+  <div class="field">
+    <%= form.label "Workouts" %>
+    <%= form.collection_select(:id, WorkoutSet.all, :id, :title )%>
+  </div>
+
+  <div class="field">
+    <%= form.label "Videos" %>
+    <br>
+    <%= form.collection_select(:id, Medium.all, :id, :title,  {}, { :multiple => true }  )%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

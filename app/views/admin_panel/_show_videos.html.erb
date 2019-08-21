@@ -1,0 +1,15 @@
+<small>Total: <%= videos.count %> video/s</small>
+<table>
+  <thead>
+  <tr class="admin-head">
+    <th class="text-center">Title</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <% videos.each do |v| %>
+    <tr class="admin-row">
+      <td><a href="/media/<%= v.id %>"><%= v.title %></a></td>
+    </tr>
+  <% end %>
+</table>

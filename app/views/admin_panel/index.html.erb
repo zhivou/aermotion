@@ -1,3 +1,27 @@
-<h1>AdminPanel#index</h1>
-<p>Find me in app/views/admin_panel/index.html.erb</p>
-<%= render 'form', users: @users %>
+<h1 class="p-4">AdminPanel</h1>
+<hr>
+
+<div class="pl-4">
+  <h3>Admin Overwrites:</h3>
+  <div>
+    <%= link_to 'Add videos to Workout Sets', admin_add_user_path %>
+  </div>
+  <div>
+    <%= link_to 'Add users to Workout Sets', admin_add_user_path %>
+  </div>
+</div>
+
+<div class="p-4">
+  <h3> Users Mapping:</h3>
+  <%= render 'show_users', users: @users %>
+</div>
+
+<div class="p-4">
+  <h3> Workout Sets:</h3>
+  <%= render 'show_workouts', workouts: @workouts %>
+</div>
+
+<div class="p-4">
+  <h3> Videos:</h3>
+  <%= render 'show_videos', videos: @videos %>
+</div>
