@@ -42,10 +42,10 @@
           </div>
           <div class="modal-body">
 
-            <%= form_with url: "/admin_create_video" do |form| %>
+            <%= form_with scope: "link_sets", url: admin_create_video_path do |form| %>
               <div class="field">
-                <%= form.collection_select(:video_link, Medium.all, :id, :title,  {}, { :multiple => true }  )%>
-                <%= form.hidden_field :workout_link, value: workout.id %>
+                <%= form.collection_select(:video_link, Medium.all, :id, :title, {}, multiple: true  )%>
+                <%= form.hidden_field(:workout_link, value: workout.id) %>
               </div>
 
               </div>

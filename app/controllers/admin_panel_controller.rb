@@ -12,19 +12,19 @@ class AdminPanelController < ApplicationController
   def create_video
     @link = MediaWorkoutSet.new(medium_params)
 
-    respond_to do |format|
-      if @link.save
-        format.html { redirect_to @link, notice: 'Medium was successfully created.' }
-        format.json { render :show, status: :created, location: @link }
-      else
-        format.html { render :new }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @link.save
+    #     format.html { redirect_to @link, notice: 'Medium was successfully created.' }
+    #     format.json { render :show, status: :created, location: @link }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @link.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   private
   def medium_params
-    params.permit(:title, :video)
+    params.require(:link_sets).permit(:video_link, :workout_link)
   end
 end
