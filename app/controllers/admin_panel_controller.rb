@@ -17,7 +17,6 @@ class AdminPanelController < ApplicationController
     )
 
     message = "Link was successfully created."
-    message_out = false
 
     param_container.medium_id.each do |m|
       next if m == ""
@@ -29,14 +28,11 @@ class AdminPanelController < ApplicationController
 
       link = MediaWorkoutSet.new(medium_id: m, workout_set_id: param_container.workout_id)
       if link.save
-        message_out = true
-        redirect_to admin_panel_path, notice: message
       else
-        message_out = true
         flash[:notice] = "Not saved: #{link.errors}"
       end
     end
-    redirect_to admin_panel_path, notice: message unless message_out
+    redirect_to admin_panel_path, notice: message
   end
 
   private

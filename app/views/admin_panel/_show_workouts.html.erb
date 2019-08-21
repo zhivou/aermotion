@@ -17,23 +17,24 @@
       <td class="text-center"><%= workout.price %></td>
       <td class="text-center"><%= workout.type.name %></td>
       <td class="text-center">
+
         <% workout.media.each do |m| %>
           <div>
             <a href="/media/<%= m.id %>"><%= m.title %></a>
           </div>
         <% end %>
+
       </td>
       <td>
-        <%= render 'modal_video', workout: workout %>
         <button type="button" class="btn btn-success" onclick="showPopup('<%= workout.id %>')" data-toggle="modal" >
           +
         </button>
-
-
       </td>
     </tr>
   <% end %>
+
 </table>
+<%= render 'modal_video' %>
 
 <script>
   function showPopup(id) {
