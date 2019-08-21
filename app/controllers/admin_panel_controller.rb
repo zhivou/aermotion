@@ -9,14 +9,22 @@ class AdminPanelController < ApplicationController
     @workouts = WorkoutSet.all
   end
 
-  def add_user
+  def create_video
+    @link = MediaWorkoutSet.new(medium_params)
+
+    respond_to do |format|
+      if @link.save
+        format.html { redirect_to @link, notice: 'Medium was successfully created.' }
+        format.json { render :show, status: :created, location: @link }
+      else
+        format.html { render :new }
+        format.json { render json: @link.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
-  def destroy_video_connection
-    @medium.destroy
-    respond_to do |format|
-      format.html { redirect_to media_url, notice: 'Video Link was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+  private
+  def medium_params
+    params.permit(:title, :video)
   end
 end

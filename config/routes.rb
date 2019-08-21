@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'admin_panel', to: 'admin_panel#index'
-  get 'admin_new_video', to: "admin_panel#new_video"
+  # get 'admin_new_video', to: "admin_panel#new_video"
   post 'admin_create_video', to: "admin_panel#create_video"
 
   get 'admin_add_user', to: "admin_panel#create_video"
