@@ -10,21 +10,26 @@ class AdminPanelController < ApplicationController
   end
 
   def create_video
-    @link = MediaWorkoutSet.new(medium_params)
+    params = link_set_params
+    param_container = OpenStruct.new(
+        medium_id: params[:video_link],
+        workout_id: params[:workout_link]
+    )
 
-    # respond_to do |format|
-    #   if @link.save
-    #     format.html { redirect_to @link, notice: 'Medium was successfully created.' }
-    #     format.json { render :show, status: :created, location: @link }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @link.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    param_container.medium_id.each do |m|
+      next if m == ""
+      next unless MediaWorkoutSet.where(medium_id: m, workout_set_id: param_container.workout_id) == []
+
+      link = MediaWorkoutSet.new(medium_id: m, workout_set_id: param_container.workout_id)
+      unless link.save
+        format.html { render root_path }
+        format.json { render json: link.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
-  def medium_params
-    params.require(:link_sets).permit(:video_link, :workout_link)
+  def link_set_params
+    params.require(:link_sets).permit(:workout_link, video_link: [])
   end
 end

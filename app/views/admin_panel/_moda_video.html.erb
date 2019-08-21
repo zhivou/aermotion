@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Select Video to Add</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <%= form_with scope: "link_sets", url: admin_create_video_path do |form| %>
+          <div class="field">
+            Workout_id = <%= workout.id %>
+            <%= form.collection_select(:video_link, Medium.all, :id, :title, {}, multiple: true  )%>
+            <%= form.hidden_field(:workout_link, value: workout.id) %>
+          </div>
+
+          </div>
+          <div class="modal-footer">
+            <%= form.submit %>
+            <button type="button" class="btn btn-primary">Cancel</button>
+        <% end %>
+        </div>
+        </div>
+  </div>
+</div>
