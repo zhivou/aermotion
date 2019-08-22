@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="removeWorkoutVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Select Video to Remove</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with scope: "link_sets", url: admin_create_video_path do |form| %>
+          <div class="field">
+            Selected videos below will be removed from Workout Set:
+            <%= form.collection_select(:video_link, Medium.all, :id, :title, {}, multiple: true  )%>
+            <%= form.hidden_field(:workout_link, id: "workout-modal") %>
+          </div>
+
+          </div>
+          <div class="modal-footer">
+            <%= form.submit "Add", class: "btn btn-success" %>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <% end %>
+        </div>
+        </div>
+  </div>
+</div>

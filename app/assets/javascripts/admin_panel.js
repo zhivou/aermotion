@@ -5,3 +5,9 @@ function showPopup(id) {
   popup.find('#workout-modal').val(id);
   popup.modal('show');
 }
+
+function showRemove(id) {
+  var popup = $('#removeWorkoutVideo');
+  popup.find('#workout-modal').val(id);
+  popup.modal('show');
+}

@@ -29,9 +29,13 @@
         <button type="button" class="btn btn-success" onclick="showPopup('<%= workout.id %>')" data-toggle="modal" >
           +
         </button>
+        <button type="button" class="btn btn-danger" onclick="showRemove('<%= workout.id %>')" data-toggle="modal" >
+          -
+        </button>
       </td>
     </tr>
   <% end %>
 
 </table>
 <%= render 'modal_video' %>
+<%= render 'modal_remove_video' %>
