@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # get 'admin_new_video', to: "admin_panel#new_video"
   post 'admin_create_video', to: "admin_panel#create_video"
   post 'admin_remove_video', to: "admin_panel#remove_video"
+  post 'admin_create_user', to: "admin_panel#create_user"
 
   get 'admin_add_user', to: "admin_panel#create_video"
   resources :media

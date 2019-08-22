@@ -42,16 +42,26 @@ class AdminPanelController < ApplicationController
     redirect_to admin_panel_path, notice: message
   end
 
+  def create_user
+    param_container = format_params_user
+  end
+
   private
   def link_set_params
-    params.require(:link_sets).permit(:workout_link, video_link: [])
+    params.require(:link_sets).permit(:workout_link, :user_link, workout_link_list:[], video_link: [])
   end
 
   def format_params
-    params = link_set_params
     OpenStruct.new(
-        medium_id: params[:video_link],
-        workout_id: params[:workout_link]
+        medium_id: link_set_params[:video_link],
+        workout_id: link_set_params[:workout_link]
+    )
+  end
+
+  def format_params_user
+    OpenStruct.new(
+        user_id: link_set_params[:user_link],
+        workout_id: link_set_params[:workout_link_list]
     )
   end
 end

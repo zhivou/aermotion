@@ -11,3 +11,9 @@ function showRemove(id) {
   popup.find('#workout-modal').val(id);
   popup.modal('show');
 }
+
+function showUserPopup(id) {
+  var popup = $('#addUserModal');
+  popup.find('#workout-modal').val(id);
+  popup.modal('show');
+}
