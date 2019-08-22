@@ -55,3 +55,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'pg_search'
 gem "cocoon"
+gem 'sprockets'
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem "font-awesome-rails", '~> 4.7'
