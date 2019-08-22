@@ -29,6 +29,17 @@ class AdminPanelController < ApplicationController
 
   def remove_video
     param_container = format_params
+    message = "Link was successfully removed."
+    param_container.medium_id.each do |m|
+      next if m == ""
+      if MediaWorkoutSet.where(medium_id: m, workout_set_id: param_container.workout_id) == []
+        message += "\nExcept Video: '#{Medium.find(m).title}' and Workout Set: '#{WorkoutSet.find(param_container.workout_id).title}' already removed."
+        next
+      end
+      link = MediaWorkoutSet.where(medium_id: m, workout_set_id: param_container.workout_id)
+      link.delete_all
+    end
+    redirect_to admin_panel_path, notice: message
   end
 
   private

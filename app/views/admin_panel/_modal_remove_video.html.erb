@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with scope: "link_sets", url: admin_create_video_path do |form| %>
+        <%= form_with scope: "link_sets", url: admin_remove_video_path do |form| %>
           <div class="field">
             Selected videos below will be removed from Workout Set:
             <%= form.collection_select(:video_link, Medium.all, :id, :title, {}, multiple: true  )%>
