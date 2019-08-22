@@ -61,6 +61,22 @@ class AdminPanelController < ApplicationController
     redirect_to admin_panel_path, notice: message
   end
 
+  def remove_user
+    param_container = format_params_user
+
+    message = "Link was successfully removed."
+    param_container.workout_id.each do |w|
+      next if w == ""
+      if UsersWorkoutSet.where(user_id: param_container.user_id, workout_set_id: w) == []
+        message += "\nExcept User: '#{User.find(param_container.user_id).email}' and Workout Set: '#{WorkoutSet.find(w).title}' already removed."
+        next
+      end
+      link = UsersWorkoutSet.where(user_id: param_container.user_id, workout_set_id: w)
+      link.delete_all
+    end
+    redirect_to admin_panel_path, notice: message
+  end
+
   private
   def link_set_params
     params.require(:link_sets).permit(:workout_link, :user_link, workout_link_list:[], video_link: [])

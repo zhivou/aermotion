@@ -24,10 +24,13 @@
         <button type="button" class="btn btn-success" onclick="showUserPopup('<%= user.id %>')" data-toggle="modal" >
           +
         </button>
+        <button type="button" class="btn btn-danger" onclick="showRemoveUser('<%= user.id %>')" data-toggle="modal" >
+          -
+        </button>
       </td>
     </tr>
   <% end %>
 
 </table>
 <%= render 'modal_user' %>
-<%#= render 'modal_remove_video' %>
+<%= render 'modal_remove_user' %>
