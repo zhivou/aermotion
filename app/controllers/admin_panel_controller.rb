@@ -44,6 +44,21 @@ class AdminPanelController < ApplicationController
 
   def create_user
     param_container = format_params_user
+
+    message = "Link was successfully created."
+    param_container.workout_id.each do |w|
+      next if w == ""
+      unless UsersWorkoutSet.where(user_id: param_container.user_id, workout_set_id: w) == []
+        message += "\nExcept User: '#{User.find(param_container.user_id).email}' and Workout Set: '#{WorkoutSet.find(w).title}' already linked."
+        next
+      end
+      link = UsersWorkoutSet.new(user_id: param_container.user_id, workout_set_id: w)
+      if link.save
+      else
+        flash[:notice] = "Not saved: #{link.errors}"
+      end
+    end
+    redirect_to admin_panel_path, notice: message
   end
 
   private
