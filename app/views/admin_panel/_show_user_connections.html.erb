@@ -1,0 +1,36 @@
+<table>
+  <thead>
+  <tr class="admin-head">
+    <th class="text-center">ID</th>
+    <th class="text-center">Email</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <% users.each do |user| %>
+    <tr class="admin-row">
+      <td class="text-center"><%= user.id %></td>
+      <td class="text-center"><%= user.email %></td>
+      <td class="text-center">
+
+        <% user.workout_sets.each do |w| %>
+          <div>
+            <a href="/media/<%= w.id %>"><%= w.title %></a>
+          </div>
+        <% end %>
+
+      </td>
+      <td>
+        <button type="button" class="btn btn-success" onclick="showUserPopup('<%= user.id %>')" data-toggle="modal" >
+          +
+        </button>
+        <button type="button" class="btn btn-danger" onclick="showRemoveUser('<%= user.id %>')" data-toggle="modal" >
+          -
+        </button>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
+<%= render 'modal_user' %>
+<%= render 'modal_remove_user' %>
