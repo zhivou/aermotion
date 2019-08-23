@@ -77,9 +77,23 @@ class AdminPanelController < ApplicationController
     redirect_to admin_panel_path, notice: message
   end
 
+  def create_admin_user
+    user = User.new(
+        email: format_params_admin_user.email,
+        password: format_params_admin_user.encrypted_password
+    )
+    user.save
+  end
+
   private
   def link_set_params
-    params.require(:link_sets).permit(:workout_link, :user_link, workout_link_list:[], video_link: [])
+    params.require(:link_sets).permit(
+        :workout_link,
+        :user_link,
+        :admin_email,
+        :admin_password,
+        workout_link_list:[],
+        video_link: [])
   end
 
   def format_params
@@ -93,6 +107,13 @@ class AdminPanelController < ApplicationController
     OpenStruct.new(
         user_id: link_set_params[:user_link],
         workout_id: link_set_params[:workout_link_list]
+    )
+  end
+
+  def format_params_admin_user
+    OpenStruct.new(
+        email: link_set_params[:admin_email],
+        encrypted_password: link_set_params[:admin_password]
     )
   end
 end

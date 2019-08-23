@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post 'admin_create_user', to: "admin_panel#create_user"
   post 'admin_remove_user', to: "admin_panel#remove_user"
 
+  post 'admin_add_admin_user', to: "admin_panel#create_admin_user"
+
   get 'admin_add_user', to: "admin_panel#create_video"
   resources :media
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
