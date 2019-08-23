@@ -12,7 +12,7 @@
         <%= form_with scope: "link_sets", url: admin_remove_user_path do |form| %>
           <div class="field">
             Selected workoutsets below will be added to User:
-            <%= form.collection_select(:workout_link_list, WorkoutSet.all, :id, :title, {}, multiple: true  )%>
+            <%= form.collection_select(:workout_link_list, WorkoutSet.all, :id, :title, {}, multiple: true, class: "form-control")%>
             <%= form.hidden_field(:user_link, id: "workout-modal") %>
           </div>
 

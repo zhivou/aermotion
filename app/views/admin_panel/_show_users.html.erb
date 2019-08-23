@@ -1,4 +1,4 @@
-<table>
+<table class="table">
   <thead>
   <tr class="admin-head">
     <th class="text-center">ID</th>
@@ -18,7 +18,7 @@
       <td class="text-center"><%= user.created_at %></td>
       <td class="text-center">
         <% user.workout_sets.each do |set| %>
-          <table>
+          <table class="table">
             <tr>
               <td>
                 <a href="/workout_sets/<%= set.id %>"><%= set.title %></a>
