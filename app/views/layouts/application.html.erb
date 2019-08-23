@@ -11,8 +11,13 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'aplication/navbar' %>
+    <% unless params[:controller] == 'home' %>
+      <div class="spacer"></div>
+    <% end %>
+    <p class="notice" style="display: <%= "none" unless notice %>;"><%= notice %></p>
+    <p class="alert" style="display: <%= "none" unless notice %>;"><%= alert %></p>
     <%= yield %>
+    <%= render 'aplication/footer' %>
   </body>
 </html>

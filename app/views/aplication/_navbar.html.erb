@@ -1,0 +1,47 @@
+<div class="toolbar transparent text-center">
+  <div class="page-width">
+    <div class="toolbar__content">
+
+      <div class="toolbar__item toolbar-menu">
+        <ul class="inline-list">
+
+          <li>
+            <%= link_to "Home", root_path %>
+          </li>
+
+          <li>
+            <a href="">Skills &amp; Drills</a>
+          </li>
+
+          <li>
+            <%= link_to "Free registration", edit_user_registration_path %>
+          </li>
+
+          <li>
+            <a href="#">Support project</a>
+          </li>
+
+          <li>
+            <a href="http://www.blog.thenx.com">Blog</a>
+          </li>
+
+          <li>
+            <%= link_to "Admin Panel", admin_panel_path %>
+          </li>
+
+          <li>
+            <a href="/pages/customs-import-fees">My Videos</a>
+          </li>
+
+          <li>
+            <a href="/pages/contact-us">Contact Us</a>
+          </li>
+
+          <li>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

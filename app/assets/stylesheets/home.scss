@@ -1,15 +1,19 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.home {
+  min-height: 800px;
+}
 
-#left {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  color: #fff;
-  width: 450px;
-  position: fixed;
-  overflow: hidden;
-  padding: 50px 80px;
-  background: #11191c;
+.sliderWrapper {
+  background-position: center center;
+  transition: background-image 0.3s ease-in-out;
+  height: 100%;
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-size: cover;
+  z-index: -1;
 }

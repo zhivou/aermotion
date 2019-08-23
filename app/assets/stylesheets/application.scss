@@ -1,6 +1,70 @@
 @import "bootstrap";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap');
 
-.body {
-  background-color: black;
+body {
+  min-height: 800px;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.spacer {
+  height: 34px;
+  background: #333333;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
+}
+
+.background-white {
+  background-color: white;
+}
+
+.block {
+  display: block;
+}
+
+.inline-list li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.inline-list {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.toolbar-menu a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.page-width {
+}
+
+.toolbar {
+  position: absolute;
+  left:0;
+  right:0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer {
+  border-top: solid 1px black;
+  min-height: 200px;
+}
+
+.navbar {
+
 }
