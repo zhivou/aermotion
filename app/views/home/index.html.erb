@@ -1,9 +1,9 @@
 <%= stylesheet_link_tag "home" %>
-
-<div id="left">
-  <%= render 'aplication/left_menu' %>
-  <%= render 'aplication/footer' %>
-  <%= link_to edit_user_registration_path %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<div id="firstSlide" class="sliderWrapper" style="background-image: url(<%= asset_path "slide3.jpg" %>);">
+  <div class="home container pt-5">
+    <div class="p-5 white">
+      <h1 class="display-3 text-center">Workouts & Programs</h1>
+      <h1 class="text-center">Workouts, Programs and Technique Guides that just work</h1>
+    </div>
+  </div>
 </div>
-<div id="right"></div>

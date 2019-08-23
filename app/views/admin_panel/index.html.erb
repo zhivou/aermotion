@@ -1,25 +1,27 @@
 <%= stylesheet_link_tag "admin_panel" %>
 <%= javascript_include_tag 'admin_panel' %>
 
-<h1 class="p-4">AdminPanel</h1>
-<hr>
+<div class="container pt-5">
+  <h1 class="p-4">AdminPanel</h1>
+  <hr>
 
-<div class="p-4">
-  <h3> Users Mapping:</h3>
-  <%= render 'show_users', users: @users %>
-</div>
+  <div class="p-4">
+    <h3> Users Mapping:</h3>
+    <%= render 'show_users', users: @users %>
+  </div>
 
-<div class="p-4">
-  <h3> Add user to Workout Sets:</h3>
-  <%= render 'show_user_connections', users: @users %>
-</div>
+  <div class="p-4">
+    <h3> Add user to Workout Sets:</h3>
+    <%= render 'show_user_connections', users: @users %>
+  </div>
 
-<div class="p-4">
-  <h3> Workout Sets:</h3>
-  <%= render 'show_workouts', workouts: @workouts %>
-</div>
+  <div class="p-4">
+    <h3> Workout Sets:</h3>
+    <%= render 'show_workouts', workouts: @workouts %>
+  </div>
 
-<div class="p-4">
-  <h3> Videos:</h3>
-  <%= render 'show_videos', videos: @videos %>
+  <div class="p-4">
+    <h3> Videos:</h3>
+    <%= render 'show_videos', videos: @videos %>
+  </div>
 </div>

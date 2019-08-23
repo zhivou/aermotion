@@ -23,3 +23,8 @@ function showRemoveUser(id) {
   popup.find('#workout-modal').val(id);
   popup.modal('show');
 }
+
+function showAddAdmin() {
+  var popup = $('#addAdminUserModal');
+  popup.modal('show');
+}
