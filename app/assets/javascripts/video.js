@@ -1,6 +1,6 @@
 /**
  * @license
- * Video.js 7.6.3 <http://videojs.com/>
+ * Video.js 7.6.0 <http://videojs.com/>
  * Copyright Brightcove, Inc. <https://www.brightcove.com/>
  * Available under Apache License Version 2.0
  * <https://github.com/videojs/video.js/blob/master/LICENSE>
@@ -18,7 +18,69 @@
   window$1 = window$1 && window$1.hasOwnProperty('default') ? window$1['default'] : window$1;
   document = document && document.hasOwnProperty('default') ? document['default'] : document;
 
-  var version = "7.6.3";
+  var version = "7.6.0";
+
+  function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+  }
+
+  function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+
+    return _setPrototypeOf(o, p);
+  }
+
+  function isNativeReflectConstruct() {
+    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+    if (Reflect.construct.sham) return false;
+    if (typeof Proxy === "function") return true;
+
+    try {
+      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function _construct(Parent, args, Class) {
+    if (isNativeReflectConstruct()) {
+      _construct = Reflect.construct;
+    } else {
+      _construct = function _construct(Parent, args, Class) {
+        var a = [null];
+        a.push.apply(a, args);
+        var Constructor = Function.bind.apply(Parent, a);
+        var instance = new Constructor();
+        if (Class) _setPrototypeOf(instance, Class.prototype);
+        return instance;
+      };
+    }
+
+    return _construct.apply(null, arguments);
+  }
+
+  function _assertThisInitialized(self) {
+    if (self === void 0) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+
+    return self;
+  }
+
+  function _taggedTemplateLiteralLoose(strings, raw) {
+    if (!raw) {
+      raw = strings.slice(0);
+    }
+
+    strings.raw = raw;
+    return strings;
+  }
 
   /**
    * @file create-logger.js
@@ -309,6 +371,21 @@
   var log = createLogger('VIDEOJS');
   var createLogger$1 = log.createLogger;
 
+  function clean(s) {
+    return s.replace(/\n\r?\s*/g, '');
+  }
+
+  var tsml = function tsml(sa) {
+    var s = '',
+        i = 0;
+
+    for (; i < arguments.length; i++) {
+      s += clean(sa[i]) + (arguments[i + 1] || '');
+    }
+
+    return s;
+  };
+
   /**
    * @file obj.js
    * @module obj
@@ -480,17 +557,22 @@
     }
 
     if (typeof window$1.getComputedStyle === 'function') {
-      var computedStyleValue = window$1.getComputedStyle(el);
-      return computedStyleValue ? computedStyleValue.getPropertyValue(prop) || computedStyleValue[prop] : '';
+      var cs = window$1.getComputedStyle(el);
+      return cs ? cs[prop] : '';
     }
 
     return '';
   }
 
-  /**
-   * @file dom.js
-   * @module dom
-   */
+  function _templateObject() {
+    var data = _taggedTemplateLiteralLoose(["Setting attributes in the second argument of createEl()\n                has been deprecated. Use the third argument instead.\n                createEl(type, properties, attributes). Attempting to set ", " to ", "."]);
+
+    _templateObject = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
   /**
    * Detect if a value is a string with any non-whitespace characters.
    *
@@ -647,7 +729,7 @@
       // same object, but that doesn't work so well.
 
       if (propName.indexOf('aria-') !== -1 || propName === 'role' || propName === 'type') {
-        log.warn('Setting attributes in the second argument of createEl()\n' + 'has been deprecated. Use the third argument instead.\n' + ("createEl(type, properties, attributes). Attempting to set " + propName + " to " + val + "."));
+        log.warn(tsml(_templateObject(), propName, val));
         el.setAttribute(propName, val); // Handle textContent since it's not supported everywhere and we have a
         // method for it.
       } else if (propName === 'textContent') {
@@ -1271,7 +1353,7 @@
     // `button` and `buttons` equal to 0
 
 
-    if (event.type === 'mouseup' && event.button === 0 && event.buttons === 0) {
+    if (event.button === 0 && event.buttons === 0) {
       return true;
     }
 
@@ -1356,23 +1438,6 @@
   });
 
   /**
-   * @file dom-data.js
-   * @module dom-data
-   */
-
-  /**
-   * Element Data Store.
-   *
-   * Allows for binding data to an element without putting it directly on the
-   * element. Ex. Event listeners are stored here.
-   * (also from jsninja.com, slightly modified and updated for closure compiler)
-   *
-   * @type {Object}
-   * @private
-   */
-  var DomData = new WeakMap();
-
-  /**
    * @file guid.js
    * @module guid
    */
@@ -1391,6 +1456,103 @@
 
   function newGUID() {
     return _guid++;
+  }
+
+  /**
+   * @file dom-data.js
+   * @module dom-data
+   */
+  /**
+   * Element Data Store.
+   *
+   * Allows for binding data to an element without putting it directly on the
+   * element. Ex. Event listeners are stored here.
+   * (also from jsninja.com, slightly modified and updated for closure compiler)
+   *
+   * @type {Object}
+   * @private
+   */
+
+  var elData = {};
+  /*
+   * Unique attribute name to store an element's guid in
+   *
+   * @type {String}
+   * @constant
+   * @private
+   */
+
+  var elIdAttr = 'vdata' + Math.floor(window$1.performance && window$1.performance.now() || Date.now());
+  /**
+   * Returns the cache object where data for an element is stored
+   *
+   * @param {Element} el
+   *        Element to store data for.
+   *
+   * @return {Object}
+   *         The cache object for that el that was passed in.
+   */
+
+  function getData(el) {
+    var id = el[elIdAttr];
+
+    if (!id) {
+      id = el[elIdAttr] = newGUID();
+    }
+
+    if (!elData[id]) {
+      elData[id] = {};
+    }
+
+    return elData[id];
+  }
+  /**
+   * Returns whether or not an element has cached data
+   *
+   * @param {Element} el
+   *        Check if this element has cached data.
+   *
+   * @return {boolean}
+   *         - True if the DOM element has cached data.
+   *         - False otherwise.
+   */
+
+  function hasData(el) {
+    var id = el[elIdAttr];
+
+    if (!id) {
+      return false;
+    }
+
+    return !!Object.getOwnPropertyNames(elData[id]).length;
+  }
+  /**
+   * Delete data for the element from the cache and the guid attr from getElementById
+   *
+   * @param {Element} el
+   *        Remove cached data for this element.
+   */
+
+  function removeData(el) {
+    var id = el[elIdAttr];
+
+    if (!id) {
+      return;
+    } // Remove all stored data
+
+
+    delete elData[id]; // Remove the elIdAttr property from the DOM node
+
+    try {
+      delete el[elIdAttr];
+    } catch (e) {
+      if (el.removeAttribute) {
+        el.removeAttribute(elIdAttr);
+      } else {
+        // IE doesn't appear to support removeAttribute on the document element
+        el[elIdAttr] = null;
+      }
+    }
   }
 
   /**
@@ -1413,11 +1575,7 @@
    */
 
   function _cleanUpEvents(elem, type) {
-    if (!DomData.has(elem)) {
-      return;
-    }
-
-    var data = DomData.get(elem); // Remove the events of a particular type if there are none left
+    var data = getData(elem); // Remove the events of a particular type if there are none left
 
     if (data.handlers[type].length === 0) {
       delete data.handlers[type]; // data.handlers[type] = null;
@@ -1440,7 +1598,7 @@
 
 
     if (Object.getOwnPropertyNames(data).length === 0) {
-      DomData["delete"](elem);
+      removeData(elem);
     }
   }
   /**
@@ -1627,11 +1785,7 @@
       return _handleMultipleEvents(on, elem, type, fn);
     }
 
-    if (!DomData.has(elem)) {
-      DomData.set(elem, {});
-    }
-
-    var data = DomData.get(elem); // We need a place to store all our handler data
+    var data = getData(elem); // We need a place to store all our handler data
 
     if (!data.handlers) {
       data.handlers = {};
@@ -1709,11 +1863,11 @@
 
   function off(elem, type, fn) {
     // Don't want to add a cache object through getElData if not needed
-    if (!DomData.has(elem)) {
+    if (!hasData(elem)) {
       return;
     }
 
-    var data = DomData.get(elem); // If no events exist, nothing to unbind
+    var data = getData(elem); // If no events exist, nothing to unbind
 
     if (!data.handlers) {
       return;
@@ -1785,7 +1939,7 @@
     // Fetches element data and a reference to the parent (for bubbling).
     // Don't want to add a data object to cache for every parent,
     // so checking hasElData first.
-    var elemData = DomData.has(elem) ? DomData.get(elem) : {};
+    var elemData = hasData(elem) ? getData(elem) : {};
     var parent = elem.parentNode || elem.ownerDocument; // type = event.type || event,
     // handler;
     // If an event name was passed as a string, creates an event out of it
@@ -1811,11 +1965,7 @@
     if (parent && !event.isPropagationStopped() && event.bubbles === true) {
       trigger.call(null, parent, event, hash); // If at the top of the DOM, triggers the default action unless disabled.
     } else if (!parent && !event.defaultPrevented && event.target && event.target[event.type]) {
-      if (!DomData.has(event.target)) {
-        DomData.set(event.target, {});
-      }
-
-      var targetData = DomData.get(event.target); // Checks if the target has a default action for this event.
+      var targetData = getData(event.target); // Checks if the target has a default action for this event.
 
       if (event.target[event.type]) {
         // Temporarily disables event dispatching on the target as we have already executed the handler.
@@ -2018,7 +2168,6 @@
    * @file fn.js
    * @module fn
    */
-  var UPDATE_REFRESH_INTERVAL = 30;
   /**
    * Bind (a.k.a proxy or context). A simple method for changing the context of
    * a function.
@@ -2047,12 +2196,15 @@
     } // Create the new function that changes the context
 
 
-    var bound = fn.bind(context); // Allow for the ability to individualize this function
+    var bound = function bound() {
+      return fn.apply(context, arguments);
+    }; // Allow for the ability to individualize this function
     // Needed in the case where multiple objects might share the same prototype
     // IF both items add an event listener with the same function, then you try to remove just one
     // it will remove both because they both have the same guid.
     // when using this, you need to use the bind method when you remove the listener as well.
     // currently used in text tracks
+
 
     bound.guid = uid ? uid + '_' + fn.guid : fn.guid;
     return bound;
@@ -2978,28 +3130,10 @@
   }
 
   /**
-   * @file string-cases.js
-   * @module to-lower-case
+   * @file to-title-case.js
+   * @module to-title-case
    */
 
-  /**
-   * Lowercase the first letter of a string.
-   *
-   * @param {string} string
-   *        String to be lowercased
-   *
-   * @return {string}
-   *         The string with a lowercased first letter
-   */
-  var toLowerCase = function toLowerCase(string) {
-    if (typeof string !== 'string') {
-      return string;
-    }
-
-    return string.replace(/./, function (w) {
-      return w.toLowerCase();
-    });
-  };
   /**
    * Uppercase the first letter of a string.
    *
@@ -3009,16 +3143,13 @@
    * @return {string}
    *         The string with an uppercased first letter
    */
-
-  var toTitleCase = function toTitleCase(string) {
+  function toTitleCase(string) {
     if (typeof string !== 'string') {
       return string;
     }
 
-    return string.replace(/./, function (w) {
-      return w.toUpperCase();
-    });
-  };
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   /**
    * Compares the TitleCase versions of the two strings for equality.
    *
@@ -3032,9 +3163,9 @@
    *         Whether the TitleCase versions of the strings are equal
    */
 
-  var titleCaseEquals = function titleCaseEquals(str1, str2) {
+  function titleCaseEquals(str1, str2) {
     return toTitleCase(str1) === toTitleCase(str2);
-  };
+  }
 
   /**
    * @file merge-options.js
@@ -3170,11 +3301,7 @@
       stateful(this, this.constructor.defaultState);
       this.children_ = [];
       this.childIndex_ = {};
-      this.childNameIndex_ = {};
-      this.setTimeoutIds_ = new Set();
-      this.setIntervalIds_ = new Set();
-      this.rafIds_ = new Set();
-      this.clearingTimersOnDispose_ = false; // Add any child components in options
+      this.childNameIndex_ = {}; // Add any child components in options
 
       if (options.initChildren !== false) {
         this.initChildren();
@@ -3232,10 +3359,7 @@
           this.el_.parentNode.removeChild(this.el_);
         }
 
-        if (DomData.has(this.el_)) {
-          DomData["delete"](this.el_);
-        }
-
+        removeData(this.el_);
         this.el_ = null;
       } // remove reference to the player after disposing of the element
 
@@ -3454,6 +3578,7 @@
         return;
       }
 
+      name = toTitleCase(name);
       return this.childNameIndex_[name];
     }
     /**
@@ -3531,7 +3656,6 @@
 
       if (componentName) {
         this.childNameIndex_[componentName] = component;
-        this.childNameIndex_[toLowerCase(componentName)] = component;
       } // Add the UI object's element to the container div (box)
       // Having an element is not required
 
@@ -3579,8 +3703,7 @@
 
       component.parentComponent_ = null;
       this.childIndex_[component.id()] = null;
-      this.childNameIndex_[toTitleCase(component.name())] = null;
-      this.childNameIndex_[toLowerCase(component.name())] = null;
+      this.childNameIndex_[component.name()] = null;
       var compEl = component.el();
 
       if (compEl && compEl.parentNode === this.contentEl()) {
@@ -4105,13 +4228,17 @@
         throw new Error('currentDimension only accepts width or height value');
       }
 
-      computedWidthOrHeight = computedStyle(this.el_, widthOrHeight); // remove 'px' from variable and parse as integer
+      if (typeof window$1.getComputedStyle === 'function') {
+        var computedStyle = window$1.getComputedStyle(this.el_);
+        computedWidthOrHeight = computedStyle.getPropertyValue(widthOrHeight) || computedStyle[widthOrHeight];
+      } // remove 'px' from variable and parse as integer
+
 
       computedWidthOrHeight = parseFloat(computedWidthOrHeight); // if the computed value is still 0, it's possible that the browser is lying
       // and we want to check the offset values.
       // This code also runs wherever getComputedStyle doesn't exist.
 
-      if (computedWidthOrHeight === 0 || isNaN(computedWidthOrHeight)) {
+      if (computedWidthOrHeight === 0) {
         var rule = "offset" + toTitleCase(widthOrHeight);
         computedWidthOrHeight = this.el_[rule];
       }
@@ -4405,17 +4532,20 @@
 
       // declare as variables so they are properly available in timeout function
       // eslint-disable-next-line
-      var timeoutId;
+      var timeoutId, disposeFn;
       fn = bind(this, fn);
-      this.clearTimersOnDispose_();
       timeoutId = window$1.setTimeout(function () {
-        if (_this2.setTimeoutIds_.has(timeoutId)) {
-          _this2.setTimeoutIds_["delete"](timeoutId);
-        }
+        _this2.off('dispose', disposeFn);
 
         fn();
       }, timeout);
-      this.setTimeoutIds_.add(timeoutId);
+
+      disposeFn = function disposeFn() {
+        return _this2.clearTimeout(timeoutId);
+      };
+
+      disposeFn.guid = "vjs-timeout-" + timeoutId;
+      this.on('dispose', disposeFn);
       return timeoutId;
     }
     /**
@@ -4436,11 +4566,12 @@
     ;
 
     _proto.clearTimeout = function clearTimeout(timeoutId) {
-      if (this.setTimeoutIds_.has(timeoutId)) {
-        this.setTimeoutIds_["delete"](timeoutId);
-        window$1.clearTimeout(timeoutId);
-      }
+      window$1.clearTimeout(timeoutId);
 
+      var disposeFn = function disposeFn() {};
+
+      disposeFn.guid = "vjs-timeout-" + timeoutId;
+      this.off('dispose', disposeFn);
       return timeoutId;
     }
     /**
@@ -4466,10 +4597,17 @@
     ;
 
     _proto.setInterval = function setInterval(fn, interval) {
+      var _this3 = this;
+
       fn = bind(this, fn);
-      this.clearTimersOnDispose_();
       var intervalId = window$1.setInterval(fn, interval);
-      this.setIntervalIds_.add(intervalId);
+
+      var disposeFn = function disposeFn() {
+        return _this3.clearInterval(intervalId);
+      };
+
+      disposeFn.guid = "vjs-interval-" + intervalId;
+      this.on('dispose', disposeFn);
       return intervalId;
     }
     /**
@@ -4490,11 +4628,12 @@
     ;
 
     _proto.clearInterval = function clearInterval(intervalId) {
-      if (this.setIntervalIds_.has(intervalId)) {
-        this.setIntervalIds_["delete"](intervalId);
-        window$1.clearInterval(intervalId);
-      }
+      window$1.clearInterval(intervalId);
 
+      var disposeFn = function disposeFn() {};
+
+      disposeFn.guid = "vjs-interval-" + intervalId;
+      this.off('dispose', disposeFn);
       return intervalId;
     }
     /**
@@ -4525,27 +4664,31 @@
     ;
 
     _proto.requestAnimationFrame = function requestAnimationFrame(fn) {
-      var _this3 = this;
+      var _this4 = this;
 
-      // Fall back to using a timer.
-      if (!this.supportsRaf_) {
-        return this.setTimeout(fn, 1000 / 60);
-      }
-
-      this.clearTimersOnDispose_(); // declare as variables so they are properly available in rAF function
+      // declare as variables so they are properly available in rAF function
       // eslint-disable-next-line
+      var id, disposeFn;
 
-      var id;
-      fn = bind(this, fn);
-      id = window$1.requestAnimationFrame(function () {
-        if (_this3.rafIds_.has(id)) {
-          _this3.rafIds_["delete"](id);
-        }
+      if (this.supportsRaf_) {
+        fn = bind(this, fn);
+        id = window$1.requestAnimationFrame(function () {
+          _this4.off('dispose', disposeFn);
 
-        fn();
-      });
-      this.rafIds_.add(id);
-      return id;
+          fn();
+        });
+
+        disposeFn = function disposeFn() {
+          return _this4.cancelAnimationFrame(id);
+        };
+
+        disposeFn.guid = "vjs-raf-" + id;
+        this.on('dispose', disposeFn);
+        return id;
+      } // Fall back to using a timer.
+
+
+      return this.setTimeout(fn, 1000 / 60);
     }
     /**
      * Cancels a queued callback passed to {@link Component#requestAnimationFrame}
@@ -4566,47 +4709,18 @@
     ;
 
     _proto.cancelAnimationFrame = function cancelAnimationFrame(id) {
-      // Fall back to using a timer.
-      if (!this.supportsRaf_) {
-        return this.clearTimeout(id);
-      }
-
-      if (this.rafIds_.has(id)) {
-        this.rafIds_["delete"](id);
+      if (this.supportsRaf_) {
         window$1.cancelAnimationFrame(id);
-      }
 
-      return id;
-    }
-    /**
-     * A function to setup `requestAnimationFrame`, `setTimeout`,
-     * and `setInterval`, clearing on dispose.
-     *
-     * > Previously each timer added and removed dispose listeners on it's own.
-     * For better performance it was decided to batch them all, and use `Set`s
-     * to track outstanding timer ids.
-     *
-     * @private
-     */
-    ;
+        var disposeFn = function disposeFn() {};
 
-    _proto.clearTimersOnDispose_ = function clearTimersOnDispose_() {
-      var _this4 = this;
+        disposeFn.guid = "vjs-raf-" + id;
+        this.off('dispose', disposeFn);
+        return id;
+      } // Fall back to using a timer.
 
-      if (this.clearingTimersOnDispose_) {
-        return;
-      }
 
-      this.clearingTimersOnDispose_ = true;
-      this.one('dispose', function () {
-        [['rafIds_', 'cancelAnimationFrame'], ['setTimeoutIds_', 'clearTimeout'], ['setIntervalIds_', 'clearInterval']].forEach(function (_ref) {
-          var idName = _ref[0],
-              cancelName = _ref[1];
-
-          _this4[idName].forEach(_this4[cancelName], _this4);
-        });
-        _this4.clearingTimersOnDispose_ = false;
-      });
+      return this.clearTimeout(id);
     }
     /**
      * Register a `Component` with `videojs` given the name and the component.
@@ -4674,7 +4788,6 @@
       }
 
       Component.components_[name] = ComponentToRegister;
-      Component.components_[toLowerCase(name)] = ComponentToRegister;
       return ComponentToRegister;
     }
     /**
@@ -4694,11 +4807,15 @@
     ;
 
     Component.getComponent = function getComponent(name) {
-      if (!name || !Component.components_) {
+      if (!name) {
         return;
       }
 
-      return Component.components_[name];
+      name = toTitleCase(name);
+
+      if (Component.components_ && Component.components_[name]) {
+        return Component.components_[name];
+      }
     };
 
     return Component;
@@ -4715,59 +4832,6 @@
 
   Component.prototype.supportsRaf_ = typeof window$1.requestAnimationFrame === 'function' && typeof window$1.cancelAnimationFrame === 'function';
   Component.registerComponent('Component', Component);
-
-  function _inheritsLoose(subClass, superClass) {
-    subClass.prototype = Object.create(superClass.prototype);
-    subClass.prototype.constructor = subClass;
-    subClass.__proto__ = superClass;
-  }
-
-  function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-
-    return _setPrototypeOf(o, p);
-  }
-
-  function isNativeReflectConstruct() {
-    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-    if (Reflect.construct.sham) return false;
-    if (typeof Proxy === "function") return true;
-
-    try {
-      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function _construct(Parent, args, Class) {
-    if (isNativeReflectConstruct()) {
-      _construct = Reflect.construct;
-    } else {
-      _construct = function _construct(Parent, args, Class) {
-        var a = [null];
-        a.push.apply(a, args);
-        var Constructor = Function.bind.apply(Parent, a);
-        var instance = new Constructor();
-        if (Class) _setPrototypeOf(instance, Class.prototype);
-        return instance;
-      };
-    }
-
-    return _construct.apply(null, arguments);
-  }
-
-  function _assertThisInitialized(self) {
-    if (self === void 0) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return self;
-  }
 
   /**
    * @file browser.js
@@ -7266,7 +7330,7 @@
 
   var getFileExtension = function getFileExtension(path) {
     if (typeof path === 'string') {
-      var splitPathRe = /^(\/?)([\s\S]*?)((?:\.{1,2}|[^\/]+?)(\.([^\.\/\?]+)))(?:[\/]*|[\?].*)$/;
+      var splitPathRe = /^(\/?)([\s\S]*?)((?:\.{1,2}|[^\/]+?)(\.([^\.\/\?]+)))(?:[\/]*|[\?].*)$/i;
       var pathParts = splitPathRe.exec(path);
 
       if (pathParts) {
@@ -7648,11 +7712,11 @@
     return x.__proto__;
   }; // eslint-disable-line no-proto
 
-  var generatorFunction =  undefined$1;
+  var generatorFunction = undefined$1;
 
-  var asyncFunction =  undefined$1;
+  var asyncFunction = undefined$1;
 
-  var asyncGenFunction =  undefined$1;
+  var asyncGenFunction = undefined$1;
   var TypedArray = typeof Uint8Array === 'undefined' ? undefined$1 : getProto(Uint8Array);
   var INTRINSICS = {
     '$ %Array%': Array,
@@ -7666,11 +7730,11 @@
     '$ %ArrayProto_values%': Array.prototype.values,
     '$ %AsyncFromSyncIteratorPrototype%': undefined$1,
     '$ %AsyncFunction%': asyncFunction,
-    '$ %AsyncFunctionPrototype%':  undefined$1,
-    '$ %AsyncGenerator%':  undefined$1,
+    '$ %AsyncFunctionPrototype%': undefined$1,
+    '$ %AsyncGenerator%': undefined$1,
     '$ %AsyncGeneratorFunction%': asyncGenFunction,
-    '$ %AsyncGeneratorPrototype%':  undefined$1,
-    '$ %AsyncIteratorPrototype%':  undefined$1,
+    '$ %AsyncGeneratorPrototype%': undefined$1,
+    '$ %AsyncIteratorPrototype%': undefined$1,
     '$ %Atomics%': typeof Atomics === 'undefined' ? undefined$1 : Atomics,
     '$ %Boolean%': Boolean,
     '$ %BooleanPrototype%': Boolean.prototype,
@@ -7694,9 +7758,9 @@
     '$ %Float64ArrayPrototype%': typeof Float64Array === 'undefined' ? undefined$1 : Float64Array.prototype,
     '$ %Function%': Function,
     '$ %FunctionPrototype%': Function.prototype,
-    '$ %Generator%':  undefined$1,
+    '$ %Generator%': undefined$1,
     '$ %GeneratorFunction%': generatorFunction,
-    '$ %GeneratorPrototype%':  undefined$1,
+    '$ %GeneratorPrototype%': undefined$1,
     '$ %Int8Array%': typeof Int8Array === 'undefined' ? undefined$1 : Int8Array,
     '$ %Int8ArrayPrototype%': typeof Int8Array === 'undefined' ? undefined$1 : Int8Array.prototype,
     '$ %Int16Array%': typeof Int16Array === 'undefined' ? undefined$1 : Int16Array,
@@ -8211,11 +8275,8 @@
   var es5$1 = ES5;
 
   var replace = functionBind.call(Function.call, String.prototype.replace);
-  /* eslint-disable no-control-regex */
-
   var leftWhitespace = /^[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+/;
   var rightWhitespace = /[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+$/;
-  /* eslint-enable no-control-regex */
 
   var implementation$2 = function trim() {
     var S = es5$1.ToString(es5$1.CheckObjectCoercible(this));
@@ -8237,7 +8298,7 @@
     defineProperties_1(String.prototype, {
       trim: polyfill$1
     }, {
-      trim: function testTrim() {
+      trim: function trim() {
         return String.prototype.trim !== polyfill$1;
       }
     });
@@ -8689,14 +8750,20 @@
         if (track.tech_) {
           // to prevent use before define eslint error, we define loadHandler
           // as a let here
-          track.tech_.any(['vttjsloaded', 'vttjserror'], function (event) {
-            if (event.type === 'vttjserror') {
-              log.error("vttjs failed to load, stopping trying to process " + track.src);
-              return;
-            }
+          var loadHandler;
 
+          var errorHandler = function errorHandler() {
+            log.error("vttjs failed to load, stopping trying to process " + track.src);
+            track.tech_.off('vttjsloaded', loadHandler);
+          };
+
+          loadHandler = function loadHandler() {
+            track.tech_.off('vttjserror', errorHandler);
             return parseCues(responseBody, track);
-          });
+          };
+
+          track.tech_.one('vttjsloaded', loadHandler);
+          track.tech_.one('vttjserror', errorHandler);
         }
       } else {
         parseCues(responseBody, track);
@@ -12180,7 +12247,6 @@
 
       name = toTitleCase(name);
       Tech.techs_[name] = tech;
-      Tech.techs_[toLowerCase(name)] = tech;
 
       if (name !== 'Tech') {
         // camel case the techName for use in techOrder
@@ -12205,11 +12271,11 @@
         return;
       }
 
+      name = toTitleCase(name);
+
       if (Tech.techs_ && Tech.techs_[name]) {
         return Tech.techs_[name];
       }
-
-      name = toTitleCase(name);
 
       if (window$1 && window$1.videojs && window$1.videojs[name]) {
         log.warn("The " + name + " tech was added to the videojs object when it should be registered using videojs.registerTech(name, tech)");
@@ -13067,12 +13133,10 @@
 
 
   function fixSource(src) {
-    if (!src.type) {
-      var mimetype = getMimetype(src.src);
+    var mimetype = getMimetype(src.src);
 
-      if (mimetype) {
-        src.type = mimetype;
-      }
+    if (!src.type && mimetype) {
+      src.type = mimetype;
     }
 
     return src;
@@ -13338,8 +13402,6 @@
         this.el_.removeAttribute('tabIndex');
       }
 
-      this.off('mouseover', this.handleMouseOver);
-      this.off('mouseout', this.handleMouseOut);
       this.off(['tap', 'click'], this.handleClick);
       this.off('keydown', this.handleKeyDown);
     }
@@ -14401,6 +14463,8 @@
       } else {
         this.player_.pause();
       }
+
+      event.stopPropagation();
     }
     /**
      * This gets called once after the video has ended and the user seeks so that
@@ -14604,7 +14668,7 @@
       var _this;
 
       _this = _Component.call(this, player, options) || this;
-      _this.throttledUpdateContent = throttle(bind(_assertThisInitialized(_this), _this.updateContent), UPDATE_REFRESH_INTERVAL);
+      _this.throttledUpdateContent = throttle(bind(_assertThisInitialized(_this), _this.updateContent), 25);
 
       _this.on(player, 'timeupdate', _this.throttledUpdateContent);
 
@@ -15361,8 +15425,7 @@
       this.on('mousedown', this.handleMouseDown);
       this.on('touchstart', this.handleMouseDown);
       this.on('keydown', this.handleKeyDown);
-      this.on('click', this.handleClick); // TODO: deprecated, controlsvisible does not seem to be fired
-
+      this.on('click', this.handleClick);
       this.on(this.player_, 'controlsvisible', this.update);
 
       if (this.playerEvent) {
@@ -15568,10 +15631,10 @@
       var percentage = (progress * 100).toFixed(2) + '%';
       var style = bar.el().style; // Set the new bar width or height
 
-      var sizeKey = this.vertical() ? 'height' : 'width';
-
-      if (style[sizeKey] !== percentage) {
-        style[sizeKey] = percentage;
+      if (this.vertical()) {
+        style.height = percentage;
+      } else {
+        style.width = percentage;
       }
 
       return progress;
@@ -15796,32 +15859,18 @@
   function (_Component) {
     _inheritsLoose(TimeTooltip, _Component);
 
-    /**
-     * Creates an instance of this class.
-     *
-     * @param {Player} player
-     *        The {@link Player} that this class should be attached to.
-     *
-     * @param {Object} [options]
-     *        The key/value store of player options.
-     */
-    function TimeTooltip(player, options) {
-      var _this;
-
-      _this = _Component.call(this, player, options) || this;
-      _this.update = throttle(bind(_assertThisInitialized(_this), _this.update), UPDATE_REFRESH_INTERVAL);
-      return _this;
+    function TimeTooltip() {
+      return _Component.apply(this, arguments) || this;
     }
+
+    var _proto = TimeTooltip.prototype;
+
     /**
      * Create the time tooltip DOM element
      *
      * @return {Element}
      *         The element that was created.
      */
-
-
-    var _proto = TimeTooltip.prototype;
-
     _proto.createEl = function createEl() {
       return _Component.prototype.createEl.call(this, 'div', {
         className: 'vjs-time-tooltip'
@@ -15887,7 +15936,7 @@
     /**
      * Write the time to the tooltip DOM element.
      *
-     * @param {string} content
+     * @param {String} content
      *        The formatted time for the tooltip.
      */
     ;
@@ -15915,7 +15964,7 @@
     ;
 
     _proto.updateTime = function updateTime(seekBarRect, seekBarPoint, time, cb) {
-      var _this2 = this;
+      var _this = this;
 
       // If there is an existing rAF ID, cancel it so we don't over-queue.
       if (this.rafId_) {
@@ -15925,10 +15974,10 @@
       this.rafId_ = this.requestAnimationFrame(function () {
         var content;
 
-        var duration = _this2.player_.duration();
+        var duration = _this.player_.duration();
 
-        if (_this2.player_.liveTracker && _this2.player_.liveTracker.isLive()) {
-          var liveWindow = _this2.player_.liveTracker.liveWindow();
+        if (_this.player_.liveTracker && _this.player_.liveTracker.isLive()) {
+          var liveWindow = _this.player_.liveTracker.liveWindow();
 
           var secondsBehind = liveWindow - seekBarPoint * liveWindow;
           content = (secondsBehind < 1 ? '' : '-') + formatTime(secondsBehind, liveWindow);
@@ -15936,7 +15985,7 @@
           content = formatTime(time, duration);
         }
 
-        _this2.update(seekBarRect, seekBarPoint, content);
+        _this.update(seekBarRect, seekBarPoint, content);
 
         if (cb) {
           cb();
@@ -15961,32 +16010,18 @@
   function (_Component) {
     _inheritsLoose(PlayProgressBar, _Component);
 
-    /**
-     * Creates an instance of this class.
-     *
-     * @param {Player} player
-     *        The {@link Player} that this class should be attached to.
-     *
-     * @param {Object} [options]
-     *        The key/value store of player options.
-     */
-    function PlayProgressBar(player, options) {
-      var _this;
-
-      _this = _Component.call(this, player, options) || this;
-      _this.update = throttle(bind(_assertThisInitialized(_this), _this.update), UPDATE_REFRESH_INTERVAL);
-      return _this;
+    function PlayProgressBar() {
+      return _Component.apply(this, arguments) || this;
     }
+
+    var _proto = PlayProgressBar.prototype;
+
     /**
      * Create the the DOM element for this class.
      *
      * @return {Element}
      *         The element that was created.
      */
-
-
-    var _proto = PlayProgressBar.prototype;
-
     _proto.createEl = function createEl() {
       return _Component.prototype.createEl.call(this, 'div', {
         className: 'vjs-play-progress vjs-slider-bar'
@@ -16065,7 +16100,7 @@
       var _this;
 
       _this = _Component.call(this, player, options) || this;
-      _this.update = throttle(bind(_assertThisInitialized(_this), _this.update), UPDATE_REFRESH_INTERVAL);
+      _this.update = throttle(bind(_assertThisInitialized(_this), _this.update), 25);
       return _this;
     }
     /**
@@ -16124,7 +16159,7 @@
 
   var PAGE_KEY_MULTIPLIER = 12; // The interval at which the bar should update as it progresses.
 
-  var UPDATE_REFRESH_INTERVAL$1 = 30;
+  var UPDATE_REFRESH_INTERVAL = 30;
   /**
    * Seek bar and container for the progress bars. Uses {@link PlayProgressBar}
    * as its `bar`.
@@ -16165,7 +16200,7 @@
     var _proto = SeekBar.prototype;
 
     _proto.setEventHandlers_ = function setEventHandlers_() {
-      this.update = throttle(bind(this, this.update), UPDATE_REFRESH_INTERVAL$1);
+      this.update = throttle(bind(this, this.update), UPDATE_REFRESH_INTERVAL);
       this.on(this.player_, 'timeupdate', this.update);
       this.on(this.player_, 'ended', this.handleEnded);
       this.on(this.player_, 'durationchange', this.update);
@@ -16202,7 +16237,7 @@
       this.clearInterval(this.updateInterval);
       this.updateInterval = this.setInterval(function () {
         _this2.requestAnimationFrame(_this2.update);
-      }, UPDATE_REFRESH_INTERVAL$1);
+      }, UPDATE_REFRESH_INTERVAL);
     };
 
     _proto.disableInterval_ = function disableInterval_(e) {
@@ -16600,8 +16635,8 @@
       var _this;
 
       _this = _Component.call(this, player, options) || this;
-      _this.handleMouseMove = throttle(bind(_assertThisInitialized(_this), _this.handleMouseMove), UPDATE_REFRESH_INTERVAL);
-      _this.throttledHandleMouseSeek = throttle(bind(_assertThisInitialized(_this), _this.handleMouseSeek), UPDATE_REFRESH_INTERVAL);
+      _this.handleMouseMove = throttle(bind(_assertThisInitialized(_this), _this.handleMouseMove), 25);
+      _this.throttledHandleMouseSeek = throttle(bind(_assertThisInitialized(_this), _this.handleMouseSeek), 25);
 
       _this.enable();
 
@@ -17300,7 +17335,7 @@
       _this = _Component.call(this, player, options) || this; // hide this control if volume support is missing
 
       checkVolumeSupport(_assertThisInitialized(_this), player);
-      _this.throttledHandleMouseMove = throttle(bind(_assertThisInitialized(_this), _this.handleMouseMove), UPDATE_REFRESH_INTERVAL);
+      _this.throttledHandleMouseMove = throttle(bind(_assertThisInitialized(_this), _this.handleMouseMove), 25);
 
       _this.on('mousedown', _this.handleMouseDown);
 
@@ -17638,17 +17673,7 @@
 
       _this = _Component.call(this, player, options) || this;
 
-      _this.on(player, ['loadstart'], _this.volumePanelState_);
-
-      _this.on(_this.muteToggle, 'keyup', _this.handleKeyPress);
-
-      _this.on(_this.volumeControl, 'keyup', _this.handleVolumeControlKeyUp);
-
-      _this.on('keydown', _this.handleKeyPress);
-
-      _this.on('mouseover', _this.handleMouseOver);
-
-      _this.on('mouseout', _this.handleMouseOut); // while the slider is active (the mouse has been pressed down and
+      _this.on(player, ['loadstart'], _this.volumePanelState_); // while the slider is active (the mouse has been pressed down and
       // is dragging) we do not want to hide the VolumeBar
 
 
@@ -17722,80 +17747,6 @@
       return _Component.prototype.createEl.call(this, 'div', {
         className: "vjs-volume-panel vjs-control " + orientationClass
       });
-    }
-    /**
-     * Dispose of the `volume-panel` and all child components.
-     */
-    ;
-
-    _proto.dispose = function dispose() {
-      this.handleMouseOut();
-
-      _Component.prototype.dispose.call(this);
-    }
-    /**
-     * Handles `keyup` events on the `VolumeControl`, looking for ESC, which closes
-     * the volume panel and sets focus on `MuteToggle`.
-     *
-     * @param {EventTarget~Event} event
-     *        The `keyup` event that caused this function to be called.
-     *
-     * @listens keyup
-     */
-    ;
-
-    _proto.handleVolumeControlKeyUp = function handleVolumeControlKeyUp(event) {
-      if (keycode.isEventKey(event, 'Esc')) {
-        this.muteToggle.focus();
-      }
-    }
-    /**
-     * This gets called when a `VolumePanel` gains hover via a `mouseover` event.
-     * Turns on listening for `mouseover` event. When they happen it
-     * calls `this.handleMouseOver`.
-     *
-     * @param {EventTarget~Event} event
-     *        The `mouseover` event that caused this function to be called.
-     *
-     * @listens mouseover
-     */
-    ;
-
-    _proto.handleMouseOver = function handleMouseOver(event) {
-      this.addClass('vjs-hover');
-      on(document, 'keyup', bind(this, this.handleKeyPress));
-    }
-    /**
-     * This gets called when a `VolumePanel` gains hover via a `mouseout` event.
-     * Turns on listening for `mouseout` event. When they happen it
-     * calls `this.handleMouseOut`.
-     *
-     * @param {EventTarget~Event} event
-     *        The `mouseout` event that caused this function to be called.
-     *
-     * @listens mouseout
-     */
-    ;
-
-    _proto.handleMouseOut = function handleMouseOut(event) {
-      this.removeClass('vjs-hover');
-      off(document, 'keyup', bind(this, this.handleKeyPress));
-    }
-    /**
-     * Handles `keyup` event on the document or `keydown` event on the `VolumePanel`,
-     * looking for ESC, which hides the `VolumeControl`.
-     *
-     * @param {EventTarget~Event} event
-     *        The keypress that triggered this event.
-     *
-     * @listens keydown | keyup
-     */
-    ;
-
-    _proto.handleKeyPress = function handleKeyPress(event) {
-      if (keycode.isEventKey(event, 'Esc')) {
-        this.handleMouseOut();
-      }
     };
 
     return VolumePanel;
@@ -18160,14 +18111,8 @@
       _this.on(_this.menuButton_, 'keydown', _this.handleKeyDown);
 
       _this.on(_this.menuButton_, 'mouseenter', function () {
-        _this.addClass('vjs-hover');
-
         _this.menu.show();
-
-        on(document, 'keyup', bind(_assertThisInitialized(_this), _this.handleMenuKeyUp));
       });
-
-      _this.on('mouseleave', _this.handleMouseLeave);
 
       _this.on('keydown', _this.handleSubmenuKeyDown);
 
@@ -18338,16 +18283,6 @@
       return this.menuButton_.controlText(text, el);
     }
     /**
-     * Dispose of the `menu-button` and all child components.
-     */
-    ;
-
-    _proto.dispose = function dispose() {
-      this.handleMouseLeave();
-
-      _Component.prototype.dispose.call(this);
-    }
-    /**
      * Handle a click on a `MenuButton`.
      * See {@link ClickableComponent#handleClick} for instances where this is called.
      *
@@ -18366,20 +18301,6 @@
       } else {
         this.pressButton();
       }
-    }
-    /**
-     * Handle `mouseleave` for `MenuButton`.
-     *
-     * @param {EventTarget~Event} event
-     *        The `mouseleave` event that caused this function to be called.
-     *
-     * @listens mouseleave
-     */
-    ;
-
-    _proto.handleMouseLeave = function handleMouseLeave(event) {
-      this.removeClass('vjs-hover');
-      off(document, 'keyup', bind(this, this.handleMenuKeyUp));
     }
     /**
      * Set the focus to the actual button, not to this element
@@ -18427,23 +18348,6 @@
           event.preventDefault();
           this.pressButton();
         }
-      }
-    }
-    /**
-     * Handle a `keyup` event on a `MenuButton`. The listener for this is added in
-     * the constructor.
-     *
-     * @param {EventTarget~Event} event
-     *        Key press event
-     *
-     * @listens keyup
-     */
-    ;
-
-    _proto.handleMenuKeyUp = function handleMenuKeyUp(event) {
-      // Escape hides popup menu
-      if (keycode.isEventKey(event, 'Esc') || keycode.isEventKey(event, 'Tab')) {
-        this.removeClass('vjs-hover');
       }
     }
     /**
@@ -20505,13 +20409,8 @@
 
 
   ControlBar.prototype.options_ = {
-    children: ['playToggle', 'volumePanel', 'currentTimeDisplay', 'timeDivider', 'durationDisplay', 'progressControl', 'liveDisplay', 'seekToLive', 'remainingTimeDisplay', 'customControlSpacer', 'playbackRateMenuButton', 'chaptersButton', 'descriptionsButton', 'subsCapsButton', 'audioTrackButton', 'fullscreenToggle']
+    children: ['playToggle', 'volumePanel', 'currentTimeDisplay', 'timeDivider', 'durationDisplay', 'progressControl', 'liveDisplay', 'seekToLive', 'remainingTimeDisplay', 'customControlSpacer', 'playbackRateMenuButton', 'chaptersButton', 'descriptionsButton', 'subsCapsButton', 'audioTrackButton', 'pictureInPictureToggle', 'fullscreenToggle']
   };
-
-  if ('exitPictureInPicture' in document) {
-    ControlBar.prototype.options_.children.splice(ControlBar.prototype.options_.children.length - 1, 0, 'pictureInPictureToggle');
-  }
-
   Component.registerComponent('ControlBar', ControlBar);
 
   /**
@@ -21850,6 +21749,15 @@
     };
   };
 
+  function _templateObject$1() {
+    var data = _taggedTemplateLiteralLoose(["Text Tracks are being loaded from another origin but the crossorigin attribute isn't used.\n            This may prevent text tracks from loading."]);
+
+    _templateObject$1 = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
   /**
    * HTML5 Media Controller - Wrapper for HTML5 Media API
    *
@@ -21931,7 +21839,7 @@
       _this.proxyNativeTracks_();
 
       if (_this.featuresNativeTextTracks && crossoriginTracks) {
-        log.warn('Text Tracks are being loaded from another origin but the crossorigin attribute isn\'t used.\n' + 'This may prevent text tracks from loading.');
+        log.warn(tsml(_templateObject$1()));
       } // prevent iOS Safari from disabling metadata text tracks during native playback
 
 
@@ -23777,6 +23685,15 @@
   Html5.registerSourceHandler(Html5.nativeSourceHandler);
   Tech.registerTech('Html5', Html5);
 
+  function _templateObject$2() {
+    var data = _taggedTemplateLiteralLoose(["\n        Using the tech directly can be dangerous. I hope you know what you're doing.\n        See https://github.com/videojs/video.js/issues/2617 for more info.\n      "]);
+
+    _templateObject$2 = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
   // on the player when they happen
 
   var TECH_EVENTS_RETRIGGER = [
@@ -24889,7 +24806,7 @@
 
     _proto.tech = function tech(safety) {
       if (safety === undefined) {
-        log.warn('Using the tech directly can be dangerous. I hope you know what you\'re doing.\n' + 'See https://github.com/videojs/video.js/issues/2617 for more info.\n');
+        log.warn(tsml(_templateObject$2()));
       }
 
       return this.tech_;
@@ -25214,22 +25131,22 @@
         updateSourceCaches(eventSrc); // if the `sourceset` `src` was an empty string
         // wait for a `loadstart` to update the cache to `currentSrc`.
         // If a sourceset happens before a `loadstart`, we reset the state
+        // as this function will be called again.
 
         if (!event.src) {
-          this.tech_.any(['sourceset', 'loadstart'], function (e) {
-            // if a sourceset happens before a `loadstart` there
-            // is nothing to do as this `handleTechSourceset_`
-            // will be called again and this will be handled there.
-            if (e.type === 'sourceset') {
-              return;
+          var updateCache = function updateCache(e) {
+            if (e.type !== 'sourceset') {
+              var techSrc = _this6.techGet('currentSrc');
+
+              _this6.lastSource_.tech = techSrc;
+
+              _this6.updateSourceCaches_(techSrc);
             }
 
-            var techSrc = _this6.techGet('currentSrc');
+            _this6.tech_.off(['sourceset', 'loadstart'], updateCache);
+          };
 
-            _this6.lastSource_.tech = techSrc;
-
-            _this6.updateSourceCaches_(techSrc);
-          });
+          this.tech_.one(['sourceset', 'loadstart'], updateCache);
         }
       }
 
@@ -26692,22 +26609,17 @@
 
 
       var excludeElement = function excludeElement(el) {
-        var tagName = el.tagName.toLowerCase(); // The first and easiest test is for `contenteditable` elements.
+        var tagName = el.tagName.toLowerCase(); // These tags will be excluded entirely.
 
-        if (el.isContentEditable) {
-          return true;
-        } // Inputs matching these types will still trigger hotkey handling as
+        var excludedTags = ['textarea']; // Inputs matching these types will still trigger hotkey handling as
         // they are not text inputs.
-
 
         var allowedInputTypes = ['button', 'checkbox', 'hidden', 'radio', 'reset', 'submit'];
 
         if (tagName === 'input') {
           return allowedInputTypes.indexOf(el.type) === -1;
-        } // The final test is by tag name. These tags will be excluded entirely.
+        }
 
-
-        var excludedTags = ['textarea'];
         return excludedTags.indexOf(tagName) !== -1;
       }; // Bail out if the user is focused on an interactive form element.
 

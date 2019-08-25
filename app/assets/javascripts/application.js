@@ -17,4 +17,6 @@
 //= require turbolinks
 //= require cocoon
 //= require video
-//= require_tree .
+//= require videojs-playlist
+//= require videojs-playlist-ui
+//= require Youtube

@@ -1,55 +1,43 @@
+<%= stylesheet_link_tag "my_videos" %>
+
 <div class="container">
   <div class="header-title">
     <h1>My Videos</h1>
     <h2>You can watch you video sets below:</h2>
   </div>
 
-  <div>
-    <video id='video' class='video-js vjs-fluid' controls>
-      <source src='<%= rails_blob_path(Medium.find(3).video) %>' type='video/mp4'>
+  <div class="player-container">
+    <video
+      id="video"
+      class="video-js vjs-fluid"
+      controls>
+      <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+      <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
     </video>
 
-    <div class="playlist-container  preview-player-dimensions">
-      <ol class="vjs-playlist"></ol>
+    <div class="vjs-playlist">
+      <!--
+        The contents of this element will be filled based on the
+        currently loaded playlist
+      -->
     </div>
   </div>
 </div>
 
 <script>
   var player = videojs('video');
-
   player.playlist([{
-    sources: [{
-      src: 'http://media.w3.org/2010/05/sintel/trailer.mp4',
-      type: 'video/mp4'
-    }],
-    poster: 'http://media.w3.org/2010/05/sintel/poster.png'
-  }, {
-    sources: [{
-      src: 'http://media.w3.org/2010/05/bunny/trailer.mp4',
-      type: 'video/mp4'
-    }],
-    poster: 'http://media.w3.org/2010/05/bunny/poster.png'
-  }, {
-    sources: [{
-      src: 'http://vjs.zencdn.net/v/oceans.mp4',
-      type: 'video/mp4'
-    }],
-    poster: 'http://www.videojs.com/img/poster.jpg'
-  }, {
-    sources: [{
-      src: 'http://media.w3.org/2010/05/bunny/movie.mp4',
-      type: 'video/mp4'
-    }],
-    poster: 'http://media.w3.org/2010/05/bunny/poster.png'
-  }, {
-    sources: [{
-      src: 'http://media.w3.org/2010/05/video/movie_300.mp4',
-      type: 'video/mp4'
-    }],
-    poster: 'http://media.w3.org/2010/05/video/poster.png'
-  }]);
-
-  // Play through the playlist automatically.
-  player.playlist.autoadvance(0);
+    name: '<%= Medium.find(3).title %>',
+    sources: [
+      { src: '<%= rails_blob_path(Medium.find(3).video) %>', type: 'video/mp4' },
+    ]
+  },
+  {
+    name: '<%= Medium.find(5).title %>',
+    sources: [
+      { src: '<%= rails_blob_path(Medium.find(5).video) %>', type: 'video/mp4' },
+    ]
+  }
+  ]);
+  player.playlistUi();
 </script>
