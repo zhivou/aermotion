@@ -1,26 +1,31 @@
 <%= stylesheet_link_tag "my_videos" %>
 
 <div class="container">
+  <%= react_component('VideoJSComponent', videos: "Here it is") %>
   <div class="header-title">
     <h1>My Videos</h1>
     <h2>You can watch you video sets below:</h2>
   </div>
 
   <div class="player-container">
-    <video
-      id="video"
-      class="video-js vjs-fluid"
-      controls>
-      <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-      <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
-    </video>
+    <% @workouts.each do |workout| %>
+      <h1><%= workout.title %></h1>
+      <video
+        id="video<%= workout.title %>"
+        class="video-js vjs-fluid"
+        controls>
+      </video>
 
-    <div class="vjs-playlist">
-      <!--
-        The contents of this element will be filled based on the
-        currently loaded playlist
-      -->
-    </div>
+      <div class="vjs-playlist">
+        <!--
+          The contents of this element will be filled based on the
+          currently loaded playlist
+        -->
+      </div>
+      <% workout.media.each do |m| %>
+
+      <% end %>
+    <% end %>
   </div>
 </div>
 
@@ -32,12 +37,12 @@
       { src: '<%= rails_blob_path(Medium.find(3).video) %>', type: 'video/mp4' },
     ]
   },
-  {
-    name: '<%= Medium.find(5).title %>',
-    sources: [
-      { src: '<%= rails_blob_path(Medium.find(5).video) %>', type: 'video/mp4' },
-    ]
-  }
+    {
+      name: '<%= Medium.find(5).title %>',
+      sources: [
+        { src: '<%= rails_blob_path(Medium.find(5).video) %>', type: 'video/mp4' },
+      ]
+    }
   ]);
   player.playlistUi();
 </script>
