@@ -8,10 +8,8 @@
   </div>
 
   <div class="player-container">
-    <% @workouts.each do |workout| %>
-      <h1><%= workout.title %></h1>
       <video
-        id="video<%= workout.title %>"
+        id="video"
         class="video-js vjs-fluid"
         controls>
       </video>
@@ -22,27 +20,27 @@
           currently loaded playlist
         -->
       </div>
-      <% workout.media.each do |m| %>
-
-      <% end %>
-    <% end %>
   </div>
 </div>
 
 <script>
   var player = videojs('video');
-  player.playlist([{
-    name: '<%= Medium.find(3).title %>',
-    sources: [
-      { src: '<%= rails_blob_path(Medium.find(3).video) %>', type: 'video/mp4' },
-    ]
-  },
-    {
-      name: '<%= Medium.find(5).title %>',
-      sources: [
-        { src: '<%= rails_blob_path(Medium.find(5).video) %>', type: 'video/mp4' },
-      ]
-    }
+  player.playlist([
+
+      {
+        name: '<%= Medium.find(3).title %>',
+        sources: [
+            { src: '<%= rails_blob_path(Medium.find(3).video) %>', type: 'video/mp4' },]
+      },
+
+      {
+        name: '<%= Medium.find(5).title %>',
+        sources: [
+          { src: '<%= rails_blob_path(Medium.find(5).video) %>', type: 'video/mp4' },
+        ]
+      }
+
   ]);
   player.playlistUi();
 </script>
+
