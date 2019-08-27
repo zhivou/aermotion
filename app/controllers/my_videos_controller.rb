@@ -1,7 +1,14 @@
 class MyVideosController < ApplicationController
 
   def index
-    @workouts = current_user.workout_sets
+    container = {}
+    current_user.workout_sets.each do |set|
+      container[set.title] = []
+      set.media.each do |v|
+        container[set.title] << rails_blob_path(v.video)
+      end
+    end
+    gon.mediaSets = container
   end
 
   private
