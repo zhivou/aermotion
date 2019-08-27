@@ -8,17 +8,22 @@ class MyVideosController < ApplicationController
   private
   ##
   # Returns data set for JS injection:
-  # [{ title, type, video_url },{} ... {}]
+  # [{ id, title, type, video_url },{} ... {}]
   #
   def get_media_per_user
     container = []
     current_user.workout_sets.each do |set|
       hash = {}
+      hash[:id] = set.id
       hash[:title] = set.title
       hash[:type] = Type.find(set.type_id).name
-      hash[:video] = []
+      hash[:videos] = []
       set.media.each do |v|
-        hash[:video] << rails_blob_path(v.video)
+        videos_hash = {}
+        videos_hash[:id] = v.id
+        videos_hash[:name] = v.title
+        videos_hash[:url] = rails_blob_path(v.video)
+        hash[:videos] << videos_hash
       end
       container << hash
     end

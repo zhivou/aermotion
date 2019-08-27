@@ -23,23 +23,19 @@
 </div>
 
 <script>
-  var player = videojs('video');
-  player.playlist([
+  let mediaSets = gon.mediaSets;
 
+  $.each( mediaSets, function( index, value ) {
+    let player = videojs(value.id);
+    player.playlist([
       {
         name: '<%= Medium.find(3).title %>',
         sources: [
-            { src: '<%= rails_blob_path(Medium.find(3).video) %>', type: 'video/mp4' },]
+          { src: '<%= rails_blob_path(Medium.find(3).video) %>', type: 'video/mp4' },]
       },
+    ]);
+  });
 
-      {
-        name: '<%= Medium.find(5).title %>',
-        sources: [
-          { src: '<%= rails_blob_path(Medium.find(5).video) %>', type: 'video/mp4' },
-        ]
-      }
-
-  ]);
   player.playlistUi();
 </script>
 
