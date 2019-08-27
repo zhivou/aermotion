@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   # My Videos Section
   #
   get 'my_videos', to: "my_videos#index"
+  get 'my_videos/:id', to: "my_videos#show"
 end

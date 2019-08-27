@@ -1,0 +1,27 @@
+<%= javascript_include_tag "my_videos" %>
+
+<div class="container">
+  <div class="header-title">
+    <h1>My Videos</h1>
+    <h2><%= @workout.title %>:</h2>
+  </div>
+
+  <div class="player-container">
+    <video
+      id="video"
+      class="video-js vjs-fluid"
+      controls>
+    </video>
+
+    <div class="vjs-playlist">
+      <!--
+        The contents of this element will be filled based on the
+        currently loaded playlist
+      -->
+    </div>
+  </div>
+
+  <div class="my-video-navigation">
+    <%= link_to 'Go Back', my_videos_path %>
+  </div>
+</div>

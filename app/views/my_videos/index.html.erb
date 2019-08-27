@@ -6,25 +6,12 @@
     <h2>You can watch you video sets below:</h2>
   </div>
 
-  <div class="player-container">
-      <video
-        id="video"
-        class="video-js vjs-fluid"
-        controls>
-      </video>
-
-      <div class="vjs-playlist">
-        <!--
-          The contents of this element will be filled based on the
-          currently loaded playlist
-        -->
-      </div>
-  </div>
+  <% @workouts.each do |workout| %>
+    <div class="workout-container">
+      <a href="/my_videos/<%= workout.id %>">
+        <h1><%= workout.title %></h1>
+      </a>
+    </div>
+  <% end %>
 </div>
-
-<script>
-  let player = videojs('video');
-  player.playlist(gon.mediaSets);
-  player.playlistUi();
-</script>
 
