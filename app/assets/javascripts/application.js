@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require jquery-ui
 //= require bootstrap
 //= require activestorage
 //= require turbolinks
 //= require cocoon
-//= require_tree .
+//= require video
+//= require videojs-playlist
+//= require videojs-playlist-ui
+//= require Youtube

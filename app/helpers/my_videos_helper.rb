@@ -1,0 +1,2 @@
+module MyVideosHelper
+end

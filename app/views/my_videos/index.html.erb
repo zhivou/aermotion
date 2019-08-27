@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag "my_videos" %>
+
+<div class="container">
+  <div class="header-title">
+    <h1>My Videos</h1>
+    <h2>You can watch you video sets below:</h2>
+  </div>
+
+  <% @workouts.each do |workout| %>
+    <div class="workout-container">
+      <a href="/my_videos/<%= workout.id %>">
+        <h1><%= workout.title %></h1>
+      </a>
+    </div>
+  <% end %>
+</div>
+

@@ -1,6 +1,10 @@
 @import "bootstrap";
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap');
+@import "video-js";
+@import "videojs-playlist";
+@import "videojs-playlist-ui";
+@import "videojs-playlist-ui.vertical";
 
 body {
   min-height: 800px;
@@ -30,6 +34,19 @@ body {
 
 .block {
   display: block;
+}
+
+.header-title {
+  margin: 40px;
+}
+.header-title > * {
+  text-align: center;
+}
+.header-title >h1 {
+  font-size: 75px !important;
+}
+.header-title > h2 {
+  font-size: 35px;
 }
 
 .inline-list li {
