@@ -23,19 +23,8 @@
 </div>
 
 <script>
-  let mediaSets = gon.mediaSets;
-
-  $.each( mediaSets, function( index, value ) {
-    let player = videojs(value.id);
-    player.playlist([
-      {
-        name: '<%= Medium.find(3).title %>',
-        sources: [
-          { src: '<%= rails_blob_path(Medium.find(3).video) %>', type: 'video/mp4' },]
-      },
-    ]);
-  });
-
+  let player = videojs('video');
+  player.playlist(gon.mediaSets);
   player.playlistUi();
 </script>
 
