@@ -47,7 +47,7 @@ class PaypalPayment
       }]
     })
 
-    create_p(payment)
+    { redirect: create_p(payment), payment_info: payment }
   end
 
   def self.create_p(payment)

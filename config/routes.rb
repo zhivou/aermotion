@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   #
   # PayPal Section
   #
-  get 'transactions', to: "transaction#index"
+  get 'payment_details', to: "transaction#details"
   get 'transactions/:id', to: "transaction#create_payment"
   get 'payment_execute', to: "transaction#payment_execute"
 end

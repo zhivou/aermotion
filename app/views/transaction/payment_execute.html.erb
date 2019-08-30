@@ -1,3 +1,13 @@
 <div class="container">
-  Payment went successful!
+  <h3>
+    Thank you for you bussines. Here is your transaction details:
+  </h3>
+  <hr>
+  <p>Payment ID: <%= @payment_invoice.id %></p>
+  <p>Issued: <%= @payment_invoice.create_time %></p>
+  <p>Pay Method: <%= @payment_invoice.payer.payment_method %></p>
+  <p>Payed Amount: <%= @payment_invoice.transactions[0].amount.total %></p>
+
+  <h3>Go to my videos to watch it:</h3>
+  <%= link_to 'My Videos', my_videos_path %>
 </div>

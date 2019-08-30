@@ -1,8 +1,18 @@
 <div class="container">
   <div class="header-title">
     <h1>Purchase Details</h1>
-    <h2>Please carefullly review purchase details below. If everything looks good click buy button</h2>
+    <h2>Please carefullly review purchase details below. If everything looks good click Checkout button to continue.</h2>
   </div>
 
+  <div class="payment-info">
+    <h2>Purchasing</h2>
+    <hr>
+    <p>Item: <%= @payment[:payment_info].transactions[0].item_list.items[0].name %></p>
+    <p>Price: <%= @payment[:payment_info].transactions[0].item_list.items[0].price %> <%= @payment[:payment_info].transactions[0].item_list.items[0].currency %></p>
+    <p>Quantity: <%= @payment[:payment_info].transactions[0].item_list.items[0].quantity %></p>
+    <p>Description: <%= @payment[:payment_info].transactions[0].description %></p>
+    <p>Total: <strong class="text-danger"><%= @payment[:payment_info].transactions[0].amount.total %> </strong>$</p>
+  </div>
 
+  <%= link_to "Checkout", @payment[:redirect], class: "btn btn-success text-center" %>
 </div>
