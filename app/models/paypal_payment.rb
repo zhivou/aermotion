@@ -1,15 +1,16 @@
 require 'paypal-sdk-rest'
 
+#
+# sb-f9eex117376@personal.example.com
+# gyN3z%R?
+#
+
 class PaypalPayment
   include PayPal::SDK::REST
 
-  def initialize(price:,
-                 item_name:,
-                 description:,
-                 return_url:,
-                 cancel_url:)
+  def self.setup(price:, item_name:, description:, return_url:, cancel_url:)
 
-    Payment.new({
+    payment = Payment.new({
       :intent =>  "sale",
 
       # Set payment type
@@ -45,27 +46,32 @@ class PaypalPayment
         :description =>  description
       }]
     })
+
+    create_p(payment)
   end
 
-  def create(payment)
+  def self.create_p(payment)
     # Create payment
     if payment.create
       # Capture redirect url
       payment.links.find{|v| v.rel == "approval_url" }.href
+      #transaction.update_columns(payment_id: payment.id, approval_url: approval_url)
+
       # Redirect the customer to redirect_url
     else
       logger.error payment.error.inspect
     end
   end
 
-  def execute_payment(id)
+  def self.execute_payment(id, payer)
     payment = Payment.find(id)
 
-    if payment.execute( :payer_id => "L8LM5D77TRWW4" )
+    if payment.execute( :payer_id => payer )
       # Success Message
       # Note that you'll need to `Payment.find` the payment again to access user info like shipping address
     else
       payment.error # Error Hash
     end
   end
+
 end

@@ -36,4 +36,5 @@ Rails.application.routes.draw do
   #
   get 'transactions', to: "transaction#index"
   get 'transactions/:id', to: "transaction#create_payment"
+  get 'payment_execute', to: "transaction#payment_execute"
 end
