@@ -30,4 +30,10 @@ Rails.application.routes.draw do
   get 'my_videos/:id', to: "my_videos#show"
   get 'support', to: "support#index"
   get 'contact_us', to: "contacts#index"
+
+  #
+  # PayPal Section
+  #
+  get 'transactions', to: "transaction#index"
+  get 'transactions/:id', to: "transaction#create_payment"
 end

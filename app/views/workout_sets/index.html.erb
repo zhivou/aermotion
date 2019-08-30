@@ -12,6 +12,7 @@
           <h3><%= workout_set.title %></h3>
           <small>Price: <%= workout_set.price %>$</small>
         </a>
+        <a href="/transactions/<%= workout_set.id %>">Buy</a>
         <div class="navigation">
           <%= link_to 'Edit', edit_workout_set_path(workout_set) %>
           <%= link_to 'Destroy', workout_set, method: :delete, data: { confirm: 'Are you sure?' } %>
