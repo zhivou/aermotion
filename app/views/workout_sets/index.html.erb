@@ -1,33 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="header-title">
+    <h1>Workout Sets</h1>
+    <h2>You can purchase sets below:</h2>
+  </div>
 
-<h1>Workout Sets</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Price</th>
-      <th>Type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div>
     <% @workout_sets.each do |workout_set| %>
-      <tr>
-        <td><%= workout_set.title %></td>
-        <td><%= workout_set.price %></td>
-        <td><%= workout_set.type.name %></td>
-        <td><%= link_to 'Show', workout_set %></td>
-        <td><%= link_to 'Edit', edit_workout_set_path(workout_set) %></td>
-        <td><%= link_to 'Destroy', workout_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="p-3">
+        <a href="/workout_sets/<%= workout_set.id %>">
+          <%= image_tag workout_set.main_image.variant(resize: "500") %>
+          <h3><%= workout_set.title %></h3>
+          <small>Price: <%= workout_set.price %>$</small>
+        </a>
+        <a href="/transactions/<%= workout_set.id %>">Buy</a>
+        <div class="navigation">
+          <%= link_to 'Edit', edit_workout_set_path(workout_set) %>
+          <%= link_to 'Destroy', workout_set, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'New Workout Set', new_workout_set_path %>
-<br>
-<%= link_to 'Back', root_path %>
+  <div class="navigation p-3">
+    <%= link_to 'New Workout Set', new_workout_set_path %>
+    <br>
+    <%= link_to 'Back', root_path %>
+  </div>
+</div>

@@ -3,4 +3,5 @@ class WorkoutSet < ApplicationRecord
   has_and_belongs_to_many :users
   has_and_belongs_to_many :media
   accepts_nested_attributes_for :type, allow_destroy: true
+  has_one_attached :main_image
 end

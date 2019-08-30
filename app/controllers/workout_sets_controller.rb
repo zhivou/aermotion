@@ -73,6 +73,7 @@ class WorkoutSetsController < ApplicationController
         :title,
         :price,
         :type_id,
+        :main_image,
         types_attributes: [:id, :name, :_destroy]
     )
   end

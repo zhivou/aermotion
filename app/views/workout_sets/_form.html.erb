@@ -26,6 +26,11 @@
     <%= form.collection_select(:type_id, Type.all, :id, :name) %>
   </div>
 
+  <div class="field">
+    <%= form.label"Upload Main Picture" %>
+    <%= form.file_field :main_image, class: "m-4" %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
