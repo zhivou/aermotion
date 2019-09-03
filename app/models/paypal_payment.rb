@@ -34,7 +34,8 @@ class PaypalPayment
               :sku => "item",
               :price => price,
               :currency => "USD",
-              :quantity => 1
+              :quantity => 1,
+              :category => "Digital"
             }]
         },
 

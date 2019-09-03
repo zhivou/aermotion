@@ -37,5 +37,6 @@ Rails.application.routes.draw do
   get 'payment_details', to: "transaction#details"
   get 'transactions/:id', to: "transaction#create_payment"
   get 'payment_execute', to: "transaction#payment_execute"
-  post 'webhooks', to: "webhooks#index"
+  get 'webhooks', to: "webhooks#index"
+  post 'webhooks', to: "webhooks#get_event"
 end
