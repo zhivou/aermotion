@@ -1,5 +1,8 @@
 <%= stylesheet_link_tag "admin_panel" %>
-<%= javascript_include_tag 'admin_panel' %>
+
+<ul>
+  <li><%= link_to 'Workout Sets', admin_workouts_path %></li>
+</ul>
 
 <div class="container">
   <div class="header-title">
@@ -18,10 +21,6 @@
     <%= render 'show_user_connections', users: @users %>
   </div>
 
-  <div class="p-4">
-    <h3> Workout Sets:</h3>
-    <%= render 'show_workouts', workouts: @workouts %>
-  </div>
 
   <div class="p-4">
     <h3> Videos:</h3>

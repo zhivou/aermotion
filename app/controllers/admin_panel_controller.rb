@@ -1,8 +1,11 @@
 class AdminPanelController < ApplicationController
   def index
     @users = User.all
-    @workouts = WorkoutSet.all
     @videos = Medium.all
+  end
+
+  def admin_workouts
+    @workouts = WorkoutSet.all
   end
 
   def new_video

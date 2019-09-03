@@ -52,13 +52,8 @@ class PaypalPayment
   end
 
   def self.create_p(payment)
-    # Create payment
     if payment.create
-      # Capture redirect url
       payment.links.find{|v| v.rel == "approval_url" }.href
-      #transaction.update_columns(payment_id: payment.id, approval_url: approval_url)
-
-      # Redirect the customer to redirect_url
     else
       logger.error payment.error.inspect
     end
@@ -68,8 +63,8 @@ class PaypalPayment
     payment = Payment.find(id)
 
     if payment.execute( :payer_id => payer )
-      # Success Message
-      # Note that you'll need to `Payment.find` the payment again to access user info like shipping address
+      # TODO: Add new table Transactions here and create a new record. Use Payment.find to get all
+      # TODO: data, Execute User -> WorkoutSets adding
     else
       payment.error # Error Hash
     end
