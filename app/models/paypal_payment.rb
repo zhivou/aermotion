@@ -9,9 +9,9 @@ class PaypalPayment
   include PayPal::SDK::REST
 
   def self.setup(price:, item_name:, description:, return_url:, cancel_url:)
-
     payment = Payment.new({
       :intent =>  "sale",
+      :experience_profile_id => fetch_paypal_web_experience_profile.id,
 
       # Set payment type
       :payer =>  {
@@ -73,6 +73,26 @@ class PaypalPayment
     else
       payment.error # Error Hash
     end
+  end
+
+  def self.fetch_paypal_web_experience_profile(profile_name: 'media_payment')
+
+    experience_profiles = PayPal::SDK::REST::WebProfile.get_list
+    experience_profile = experience_profiles.find { |profile| profile.name == profile_name }
+
+    if experience_profile.nil?
+      experience_profile = PayPal::SDK::REST::WebProfile.new(
+          name: profile_name,
+          temporary: false,
+          input_fields: {
+              no_shipping: 1,
+              address_override: 1
+          }
+      )
+      experience_profile.create
+    end
+
+    experience_profile
   end
 
 end
