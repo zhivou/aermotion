@@ -1,0 +1,2 @@
+class PayPalTransaction < ApplicationRecord
+end

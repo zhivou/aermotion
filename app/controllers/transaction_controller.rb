@@ -20,6 +20,7 @@ class TransactionController < ApplicationController
   def payment_execute
     PaypalPayment.execute_payment(payment_params[:paymentId], payment_params[:PayerID])
     @payment_invoice = Payment.find(payment_params[:paymentId])
+    p ''
   end
 
   private
