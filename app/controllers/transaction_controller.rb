@@ -10,7 +10,7 @@ class TransactionController < ApplicationController
     workout = @workout_set
     @payment = PaypalPayment.setup(
         price: workout.price,
-        item_name: workout.title,
+        item_name: workout.id.to_s + " " + workout.title,
         description: "Add description to WorkoutSets",
         return_url: "http://localhost:3000/payment_execute",
         cancel_url: workout_sets_path
@@ -41,6 +41,8 @@ class TransactionController < ApplicationController
     unless PayPalTransaction.where(transaction_id: payment_params[:paymentId]).pluck("transaction_id").first == payment_params[:paymentId]
       transaction.save
     end
+
+    add_user_to_workouts(transaction[:item])
   end
 
   private
@@ -50,5 +52,20 @@ class TransactionController < ApplicationController
 
   def payment_params
     params.permit(:paymentId, :token, :PayerID, :id)
+  end
+
+  def add_user_to_workouts(item_name_with_id)
+    workout_id = item_name_with_id.split[0]
+    if current_user.workout_sets.where(id: workout_id).present?
+      false
+    else
+      link = UsersWorkoutSet.new(user_id: current_user.id, workout_set_id: WorkoutSet.find(workout_id).id)
+      if link.save
+        flash[:notice] = "New Workout Set was successfuly added to My Videos"
+      else
+        flash[:notice] = "Not saved: #{link.errors}"
+      end
+      true
+    end
   end
 end
