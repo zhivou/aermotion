@@ -1,20 +1,15 @@
 <%= stylesheet_link_tag "admin_panel" %>
 
-<ul>
-  <li><%= link_to 'Workout Sets', admin_workouts_path %></li>
-</ul>
-
 <div class="container">
   <div class="header-title">
     <h1 class="">AdminPanel</h1>
   </div>
-
   <hr>
 
-  <div class="p-4">
-    <h3> Users Mapping:</h3>
-    <%= render 'show_users', users: @users %>
-  </div>
+  <ul>
+    <li><%= link_to 'Workout Sets', admin_workouts_path %></li>
+    <li><%= link_to 'User Mapping', admin_users_mapping_path %></li>
+  </ul>
 
   <div class="p-4">
     <h3> Add user to Workout Sets:</h3>
