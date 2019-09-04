@@ -65,6 +65,18 @@ class PaypalPayment
     if payment.execute( :payer_id => payer )
       # TODO: Add new table Transactions here and create a new record. Use Payment.find to get all
       # TODO: data, Execute User -> WorkoutSets adding
+      # id
+      # @payment_invoice.create_time
+      # @payment_invoice.payer.payment_method
+      # @payment_invoice.transactions[0].amount.total
+      # payer
+      # current_user.id
+      # current_user.email
+      # @payment_invoice.transactions[0].item_list.items[0].name
+      # @payment_invoice.transactions[0].item_list.items[0].price
+      # @payment_invoice.transactions[0].item_list.items[0].currency
+      # @payment_invoice.transactions[0].item_list.items[0].quantity
+      # @payment_invoice.transactions[0].item_list.items[0].tax
     else
       payment.error # Error Hash
     end
