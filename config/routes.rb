@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'admin_users_mapping', to: "admin_panel#admin_users_mapping"
   get 'admin_user_connection', to: "admin_panel#admin_user_connection"
   get 'admin_add_videos', to: "admin_panel#admin_add_videos"
+  get 'admin_paypal_transactions', to: "admin_panel#admin_paypal_transactions"
 
   resources :media
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

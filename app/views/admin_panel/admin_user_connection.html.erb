@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag "admin_panel" %>
 
 <div class="container">
+  <%= paginate @users %>
   <table>
     <thead>
     <tr class="admin-head">
@@ -36,6 +37,7 @@
     <% end %>
 
   </table>
+  <%= paginate @users %>
   <small>In order to add regular user - use standard registration form</small>
   <br>
   <button type="button" class="btn btn-success" onclick="showAddAdmin()" data-toggle="modal" >

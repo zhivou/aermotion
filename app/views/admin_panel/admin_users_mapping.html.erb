@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag "admin_panel" %>
 
 <div class="container">
+  <%= paginate @users %>
   <table class="table">
     <thead>
     <tr class="admin-head">
@@ -41,5 +42,6 @@
       </tr>
     <% end %>
   </table>
+  <%= paginate @users %>
   <%=link_to "Back", admin_panel_path %>
 </div>

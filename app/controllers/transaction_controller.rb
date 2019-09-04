@@ -38,7 +38,9 @@ class TransactionController < ApplicationController
         error: @payment_invoice.error
     )
 
-    transaction.save
+    unless PayPalTransaction.where(transaction_id: payment_params[:paymentId]).pluck("transaction_id").first == payment_params[:paymentId]
+      transaction.save
+    end
   end
 
   private

@@ -63,8 +63,6 @@ class PaypalPayment
     payment = Payment.find(id)
 
     if payment.execute( :payer_id => payer )
-      # TODO: Add new table Transactions here and create a new record. Use Payment.find to get all
-      # TODO: data, Execute User -> WorkoutSets adding
     else
       payment.error # Error Hash
     end

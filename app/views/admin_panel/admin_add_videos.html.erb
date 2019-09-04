@@ -2,6 +2,7 @@
 
 <div class="container">
   <small>Total: <%= @videos.count %> video/s</small>
+  <%= paginate @videos %>
   <table>
     <thead>
     <tr class="admin-head">
@@ -16,6 +17,7 @@
       </tr>
     <% end %>
   </table>
+  <%= paginate @videos %>
   <%= link_to "Add new Video", new_medium_path, class: "btn btn-success" %>
   <%= link_to "Back", admin_panel_path %>
 </div>
