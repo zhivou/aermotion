@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag "admin_panel" %>
 
 <div class="container">
+  <%= paginate @workouts %>
   <table>
     <thead>
     <tr class="admin-head">
@@ -40,8 +41,9 @@
       </tr>
     <% end %>
   </table>
+  <%= paginate @workouts %>
+  <%= link_to 'Back', admin_panel_path %>
 </div>
 
-<%= link_to "Add new Workout", new_workout_set_path, class: "btn btn-success" %>
 <%= render 'modal_video' %>
 <%= render 'modal_remove_video' %>

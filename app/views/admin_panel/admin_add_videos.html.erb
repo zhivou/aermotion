@@ -14,10 +14,11 @@
     <% @videos.each do |v| %>
       <tr class="admin-row">
         <td><a href="/media/<%= v.id %>"><%= v.title %></a></td>
+        <td><%= link_to 'Edit', edit_medium_path(v) %></td>
+        <td><%= link_to 'Destroy', v, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </table>
   <%= paginate @videos %>
-  <%= link_to "Add new Video", new_medium_path, class: "btn btn-success" %>
   <%= link_to "Back", admin_panel_path %>
 </div>

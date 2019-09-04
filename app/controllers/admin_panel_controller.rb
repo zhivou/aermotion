@@ -7,7 +7,7 @@ class AdminPanelController < ApplicationController
   end
 
   def admin_users_mapping
-    @users = User.order(:id).page(params[:page]).per(25)
+    @users = User.order(:id).page(params[:page]).per(5)
   end
 
   def admin_user_connection
