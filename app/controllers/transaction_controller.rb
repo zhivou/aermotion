@@ -20,6 +20,27 @@ class TransactionController < ApplicationController
   def payment_execute
     PaypalPayment.execute_payment(payment_params[:paymentId], payment_params[:PayerID])
     @payment_invoice = Payment.find(payment_params[:paymentId])
+
+    transaction = PayPalTransaction.new(
+        transaction_id: payment_params[:paymentId],
+        local_user_id: current_user.id.to_i,
+        local_user_email: current_user.email,
+        method: @payment_invoice.payer.payment_method,
+        payer_id: payment_params[:PayerID],
+        item: @payment_invoice.transactions[0].item_list.items[0].name,
+        price: @payment_invoice.transactions[0].item_list.items[0].price.to_f,
+        currency: @payment_invoice.transactions[0].item_list.items[0].currency,
+        quantity: @payment_invoice.transactions[0].item_list.items[0].quantity,
+        tax: @payment_invoice.transactions[0].item_list.items[0].tax.to_f,
+        total: @payment_invoice.transactions[0].amount.total.to_f,
+        paypal_created_time: @payment_invoice.create_time,
+        status: @payment_invoice.state,
+        error: @payment_invoice.error
+    )
+
+    unless PayPalTransaction.where(transaction_id: payment_params[:paymentId]).pluck("transaction_id").first == payment_params[:paymentId]
+      transaction.save
+    end
   end
 
   private

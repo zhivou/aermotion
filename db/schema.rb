@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_214434) do
+ActiveRecord::Schema.define(version: 2019_09_04_195238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,25 @@ ActiveRecord::Schema.define(version: 2019_08_16_214434) do
     t.bigint "workout_set_id", null: false
     t.index ["medium_id"], name: "index_media_workout_sets_on_medium_id"
     t.index ["workout_set_id"], name: "index_media_workout_sets_on_workout_set_id"
+  end
+
+  create_table "pay_pal_transactions", force: :cascade do |t|
+    t.string "transaction_id"
+    t.integer "local_user_id"
+    t.string "local_user_email"
+    t.string "method"
+    t.string "payer_id"
+    t.string "item"
+    t.decimal "price"
+    t.string "currency"
+    t.integer "quantity"
+    t.decimal "tax"
+    t.decimal "total"
+    t.string "paypal_created_time"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "error"
   end
 
   create_table "types", force: :cascade do |t|

@@ -9,9 +9,9 @@ class PaypalPayment
   include PayPal::SDK::REST
 
   def self.setup(price:, item_name:, description:, return_url:, cancel_url:)
-
     payment = Payment.new({
       :intent =>  "sale",
+      :experience_profile_id => fetch_paypal_web_experience_profile.id,
 
       # Set payment type
       :payer =>  {
@@ -34,7 +34,8 @@ class PaypalPayment
               :sku => "item",
               :price => price,
               :currency => "USD",
-              :quantity => 1
+              :quantity => 1,
+              :category => "Digital"
             }]
         },
 
@@ -51,13 +52,8 @@ class PaypalPayment
   end
 
   def self.create_p(payment)
-    # Create payment
     if payment.create
-      # Capture redirect url
       payment.links.find{|v| v.rel == "approval_url" }.href
-      #transaction.update_columns(payment_id: payment.id, approval_url: approval_url)
-
-      # Redirect the customer to redirect_url
     else
       logger.error payment.error.inspect
     end
@@ -67,11 +63,25 @@ class PaypalPayment
     payment = Payment.find(id)
 
     if payment.execute( :payer_id => payer )
-      # Success Message
-      # Note that you'll need to `Payment.find` the payment again to access user info like shipping address
     else
       payment.error # Error Hash
     end
   end
 
+  def self.fetch_paypal_web_experience_profile(profile_name: 'media_payment')
+    experience_profiles = PayPal::SDK::REST::WebProfile.get_list
+    experience_profile = experience_profiles.find { |profile| profile.name == profile_name }
+    if experience_profile.nil?
+      experience_profile = PayPal::SDK::REST::WebProfile.new(
+          name: profile_name,
+          temporary: false,
+          input_fields: {
+              no_shipping: 1,
+              address_override: 1
+          }
+      )
+      experience_profile.create
+    end
+    experience_profile
+  end
 end

@@ -1,0 +1,47 @@
+<%= javascript_include_tag 'admin_panel' %>
+<%= stylesheet_link_tag "admin_panel" %>
+
+<div class="container">
+  <%= paginate @users %>
+  <table class="table">
+    <thead>
+    <tr class="admin-head">
+      <th class="text-center">ID</th>
+      <th class="text-center">Email</th>
+      <th class="text-center">Sign Count</th>
+      <th class="text-center">Created</th>
+      <th class="text-center">Workout Sets/Videos</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <% @users.each do |user| %>
+      <tr class="admin-row">
+        <td class="text-center"><%= user.id %></td>
+        <td class="text-center"><%= user.email %></td>
+        <td class="text-center"><%= user.sign_in_count %></td>
+        <td class="text-center"><%= user.created_at %></td>
+        <td class="text-center">
+          <% user.workout_sets.each do |set| %>
+            <table class="table">
+              <tr>
+                <td>
+                  <a href="/workout_sets/<%= set.id %>"><%= set.title %></a>
+                </td>
+                <td>
+                  <% set.media.each do |m| %>
+                    <div>
+                      <a href="/media/<%= m.id %>"><%= m.title %></a>
+                    </div>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate @users %>
+  <%=link_to "Back", admin_panel_path %>
+</div>
