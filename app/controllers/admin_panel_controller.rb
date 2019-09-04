@@ -1,6 +1,5 @@
 class AdminPanelController < ApplicationController
   def index
-    @videos = Medium.all
   end
 
   def admin_workouts
@@ -13,6 +12,10 @@ class AdminPanelController < ApplicationController
 
   def admin_user_connection
     @users = User.all
+  end
+
+  def admin_add_videos
+    @videos = Medium.all
   end
 
   def new_video

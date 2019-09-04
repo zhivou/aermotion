@@ -7,13 +7,10 @@
   <hr>
 
   <ul>
+    <h3>Main Flow Setup:</h3>
     <li><%= link_to 'Users Mapping', admin_users_mapping_path %></li>
     <li><%= link_to 'Workout Sets', admin_workouts_path %></li>
     <li><%= link_to 'Assign User', admin_user_connection_path %></li>
+    <li><%= link_to 'Add Videos', admin_add_videos_path %></li>
   </ul>
-
-  <div class="p-4">
-    <h3> Videos:</h3>
-    <%= render 'show_videos', videos: @videos %>
-  </div>
 </div>
