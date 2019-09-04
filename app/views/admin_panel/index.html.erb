@@ -7,15 +7,10 @@
   <hr>
 
   <ul>
+    <li><%= link_to 'Users Mapping', admin_users_mapping_path %></li>
     <li><%= link_to 'Workout Sets', admin_workouts_path %></li>
-    <li><%= link_to 'User Mapping', admin_users_mapping_path %></li>
+    <li><%= link_to 'Assign User', admin_user_connection_path %></li>
   </ul>
-
-  <div class="p-4">
-    <h3> Add user to Workout Sets:</h3>
-    <%= render 'show_user_connections', users: @users %>
-  </div>
-
 
   <div class="p-4">
     <h3> Videos:</h3>
