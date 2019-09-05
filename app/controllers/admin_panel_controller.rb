@@ -99,7 +99,11 @@ class AdminPanelController < ApplicationController
         email: format_params_admin_user.email,
         password: format_params_admin_user.encrypted_password
     )
-    user.save
+    if user.save
+      redirect_to admin_user_connection_path, notice: "Admin user successfully created"
+    else
+      redirect_to admin_user_connection_path, notice: user.errors
+    end
   end
 
   private

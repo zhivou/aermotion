@@ -34,7 +34,7 @@ class TransactionController < ApplicationController
         tax: @payment_invoice.transactions[0].item_list.items[0].tax.to_f,
         total: @payment_invoice.transactions[0].amount.total.to_f,
         paypal_created_time: @payment_invoice.create_time,
-        status: @payment_invoice.state,
+        status: @payment_invoice.transactions[0].related_resources[0].sale.state,
         error: @payment_invoice.error
     )
 
@@ -42,7 +42,9 @@ class TransactionController < ApplicationController
       transaction.save
     end
 
-    add_user_to_workouts(transaction[:item])
+    if transaction[:status] == "completed"
+      add_user_to_workouts(transaction[:item])
+    end
   end
 
   private

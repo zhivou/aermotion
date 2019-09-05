@@ -4,7 +4,11 @@ class WorkoutSetsController < ApplicationController
   # GET /workout_sets
   # GET /workout_sets.json
   def index
-    @workout_sets = WorkoutSet.includes(:type)
+    if user_signed_in?
+      @workout_sets = WorkoutSet.includes(:type).where.not(id: current_user.workout_sets.includes(:type).each {|i| i})
+    else
+      @workout_sets = WorkoutSet.includes(:type)
+    end
   end
 
   # GET /workout_sets/1
