@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blogs
   get 'admin_panel', to: 'admin_panel#index'
 
   #
