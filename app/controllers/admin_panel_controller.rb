@@ -2,6 +2,10 @@ class AdminPanelController < ApplicationController
   def index
   end
 
+  def admin_show_users
+    @users = User.order(:id).page(params[:page]).per(25)
+  end
+
   def admin_workouts
     @workouts = WorkoutSet.order(:id).page(params[:page]).per(25)
   end
