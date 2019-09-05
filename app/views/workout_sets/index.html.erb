@@ -13,7 +13,7 @@
           <small>Price: <%= workout_set.price %>$</small>
         </a>
         <a href="/transactions/<%= workout_set.id %>">Buy</a>
-        <div class="navigation">
+        <div class="navigation admin-show">
           <%= link_to 'Edit', edit_workout_set_path(workout_set) %>
           <%= link_to 'Destroy', workout_set, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="navigation p-3">
-    <%= link_to 'New Workout Set', new_workout_set_path %>
+    <%= link_to 'New Workout Set', new_workout_set_path, class: "admin-show" %>
     <br>
     <%= link_to 'Back', root_path %>
   </div>

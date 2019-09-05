@@ -1,4 +1,8 @@
 class AdminPanelController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :is_admin?
+
   def index
   end
 
@@ -140,5 +144,9 @@ class AdminPanelController < ApplicationController
         email: link_set_params[:admin_email],
         encrypted_password: link_set_params[:admin_password]
     )
+  end
+
+  def is_admin?
+    redirect_to root_path unless current_user.admin
   end
 end

@@ -1,4 +1,6 @@
 class WorkoutSetsController < ApplicationController
+
+  before_action :is_admin?, only: [:new, :edit, :update, :create, :destroy]
   before_action :set_workout_set, only: [:show, :edit, :update, :destroy]
 
   # GET /workout_sets

@@ -1,6 +1,7 @@
 class TransactionController < ApplicationController
 
   include PayPal::SDK::REST
+  before_action :authenticate_user!
   before_action :set_payment_info, only: [:details, :create_payment]
 
   def details

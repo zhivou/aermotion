@@ -1,4 +1,7 @@
 class MediaController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :is_admin?
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
 
   # GET /media
