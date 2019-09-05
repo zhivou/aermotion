@@ -3,11 +3,11 @@ class AdminPanelController < ApplicationController
   end
 
   def admin_show_users
-    @users = User.order(:id).page(params[:page]).per(25)
+    @users = User.order(:id).page(params[:page]).per(10)
   end
 
   def admin_workouts
-    @workouts = WorkoutSet.order(:id).page(params[:page]).per(25)
+    @workouts = WorkoutSet.order(:id).page(params[:page]).per(10)
   end
 
   def admin_users_mapping
@@ -15,15 +15,15 @@ class AdminPanelController < ApplicationController
   end
 
   def admin_user_connection
-    @users = User.order(:id).page(params[:page]).per(25)
+    @users = User.order(:id).page(params[:page]).per(10)
   end
 
   def admin_add_videos
-    @videos = Medium.order(:id).page(params[:page]).per(25)
+    @videos = Medium.order(:id).page(params[:page]).per(10)
   end
 
   def admin_paypal_transactions
-    @transactions = PayPalTransaction.order("id DESC").page(params[:page]).per(25)
+    @transactions = PayPalTransaction.order("id DESC").page(params[:page]).per(10)
   end
 
   def new_video
