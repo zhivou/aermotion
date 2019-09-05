@@ -1,5 +1,6 @@
 class MyVideosController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :get_media_per_user_single, only: [:show]
 
   def index

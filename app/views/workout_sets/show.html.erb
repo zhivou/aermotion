@@ -14,5 +14,5 @@
   <%= image_tag @workout_set.main_image.variant(resize: "300") %>
 </div>
 
-<%= link_to 'Edit', edit_workout_set_path(@workout_set) %> |
+<%= link_to 'Edit', edit_workout_set_path(@workout_set), class: "admin-show" %> |
 <%= link_to 'Back', workout_sets_path %>

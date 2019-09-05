@@ -7,6 +7,15 @@
     <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      .admin-show {
+        <% if user_signed_in? && current_user.admin %>
+          display: block;
+        <% else %>
+          display: none;
+        <% end %>
+      }
+    </style>
     <%= javascript_pack_tag 'application' %>
   </head>
 

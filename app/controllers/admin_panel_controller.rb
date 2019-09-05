@@ -1,9 +1,17 @@
 class AdminPanelController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :is_admin?
+
   def index
   end
 
+  def admin_show_users
+    @users = User.order(:id).page(params[:page]).per(10)
+  end
+
   def admin_workouts
-    @workouts = WorkoutSet.order(:id).page(params[:page]).per(25)
+    @workouts = WorkoutSet.order(:id).page(params[:page]).per(10)
   end
 
   def admin_users_mapping
@@ -11,15 +19,15 @@ class AdminPanelController < ApplicationController
   end
 
   def admin_user_connection
-    @users = User.order(:id).page(params[:page]).per(25)
+    @users = User.order(:id).page(params[:page]).per(10)
   end
 
   def admin_add_videos
-    @videos = Medium.order(:id).page(params[:page]).per(25)
+    @videos = Medium.order(:id).page(params[:page]).per(10)
   end
 
   def admin_paypal_transactions
-    @transactions = PayPalTransaction.order("id DESC").page(params[:page]).per(25)
+    @transactions = PayPalTransaction.order("id DESC").page(params[:page]).per(10)
   end
 
   def new_video
@@ -99,7 +107,11 @@ class AdminPanelController < ApplicationController
         email: format_params_admin_user.email,
         password: format_params_admin_user.encrypted_password
     )
-    user.save
+    if user.save
+      redirect_to admin_user_connection_path, notice: "Admin user successfully created"
+    else
+      redirect_to admin_user_connection_path, notice: user.errors
+    end
   end
 
   private
@@ -132,5 +144,9 @@ class AdminPanelController < ApplicationController
         email: link_set_params[:admin_email],
         encrypted_password: link_set_params[:admin_password]
     )
+  end
+
+  def is_admin?
+    redirect_to root_path unless current_user.admin
   end
 end
