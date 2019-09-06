@@ -3,8 +3,8 @@
 <section class="publicaciones-blog-home">
   <div class="container">
     <div class="">
-      <h2>My  <b>Blog</b></h2>
-      <h3>Check out the latest news, announcements, new video releases</h3>
+      <h2 class="blog-title">My  <b>Blog</b></h2>
+      <h3 class="blog-undertext">Check out the latest news, announcements, new video releases</h3>
       <div class="row-page row">
         <% @counter = 0 %>
         <% @blogs.each do |blog| %>
@@ -12,7 +12,7 @@
             <div class="col-page col-sm-8 col-md-6">
               <a href="/blogs/<%= blog.id %>" class="black fondo-publicacion-home">
                 <div class="img-publicacion-principal-home">
-                  <%= image_tag blog.main_image.variant(resize: "300x500") %>
+                  <%= image_tag blog.main_image.variant(resize: "500x300") %>
                 </div>
                 <div class="contenido-publicacion-principal-home">
                   <h3><%= blog.title %></h3>
@@ -23,11 +23,11 @@
                 </div>
               </a>
             </div>
-            <% elsif @counter >= 1 && @counter <= 5 %>
+            <% elsif @counter >= 0 && @counter < 6 %>
               <div class="col-page col-sm-4 col-md-3">
                 <a href="/blogs/<%= blog.id %>"  class="fondo-publicacion-home">
                   <div class="img-publicacion-home">
-                    <%= image_tag blog.main_image.variant(resize: "500x300"), class: "img-responsive" %>
+                    <%= image_tag blog.main_image.variant(resize: "300x500"), class: "img-responsive" %>
                   </div>
                   <div class="contenido-publicacion-home">
                     <h3><%= blog.title %></h3>
@@ -38,7 +38,7 @@
                   </div>
                 </a>
               </div>
-            <% elsif @counter == 6 %>
+            <% else %>
               <div class="col-page col-sm-4 col-md-3">
                 <a href="/blogs/<%= blog.id %>" class="todas-las-publicaciones-home">
                   <span><%= blog.title %></span>
@@ -46,7 +46,7 @@
               </div>
             <% end %>
           <% @counter +=1 %>
-          <% @counter = 0 if @counter == 6 %>
+          <% @counter = 0 if @counter == 7 %>
         <% end %>
       </div>
     </div>
