@@ -46,4 +46,9 @@ Rails.application.routes.draw do
   get 'payment_execute', to: "transaction#payment_execute"
   get 'webhooks', to: "webhooks#index"
   post 'webhooks', to: "webhooks#get_event"
+
+  #
+  # About
+  #
+  get "about", to: "about#index"
 end
