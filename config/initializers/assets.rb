@@ -12,6 +12,7 @@ Rails.application.config.assets.precompile += %w( admin_panel.js )
 Rails.application.config.assets.precompile += %w( home.css )
 Rails.application.config.assets.precompile += %w( my_videos.js )
 Rails.application.config.assets.precompile += %w( my_videos.css )
+Rails.application.config.assets.precompile += %w( blogs.css )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

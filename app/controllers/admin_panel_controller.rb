@@ -34,6 +34,10 @@ class AdminPanelController < ApplicationController
     @workouts = WorkoutSet.all
   end
 
+  def admin_blogs
+    @blogs = Blog.order(:id).page(params[:page]).per(10)
+  end
+
   def create_video
     param_container = format_params
     message = "Link was successfully created."

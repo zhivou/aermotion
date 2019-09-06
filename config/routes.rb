@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blogs
   get 'admin_panel', to: 'admin_panel#index'
 
   #
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   get 'admin_add_videos', to: "admin_panel#admin_add_videos"
   get 'admin_paypal_transactions', to: "admin_panel#admin_paypal_transactions"
   get 'admin_show_users', to: "admin_panel#admin_show_users"
+  get 'admin_blogs', to: "admin_panel#admin_blogs"
 
   resources :media
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

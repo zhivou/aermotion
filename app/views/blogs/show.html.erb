@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog.title %>
+</p>
+<div class="blogBody"><%= @blog.main_image %></div>
+<div class="blogBody"><%= @blog.body_area %></div>
+
+
+<%= link_to 'Back', blogs_path %>

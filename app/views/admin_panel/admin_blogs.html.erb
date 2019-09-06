@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "admin_panel" %>
+
+<div class="container">
+  <%= paginate @blogs %>
+  <table>
+    <thead>
+    <tr class="admin-head">
+      <th class="text-center">Entry ID</th>
+      <th class="text-center">Title</th>
+      <th class="text-center">Actions</th>
+    </tr>
+    </thead>
+
+    <% @blogs.each do |b| %>
+      <tr class="admin-row">
+        <td><%= b.id %></td>
+        <td><%= b.title %></td>
+        <td>
+          <%= link_to 'Show', blog_path(b) %>
+          <%= link_to 'Edit', edit_blog_path(b) %>
+          <%= link_to 'Destroy', b, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate @blogs %>
+  <%= link_to 'Add New', new_blog_path %>
+  <hr>
+  <%= link_to "Back", admin_panel_path %>
+</div>
