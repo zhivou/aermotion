@@ -1,27 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "blogs" %>
 
-<h1>Blogs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Blog', new_blog_path %>
+<section class="publicaciones-blog-home">
+  <div class="container">
+    <div class="">
+      <h2>My  <b>Blog</b></h2>
+      <h3>Check out the latest news, announcements, new video releases</h3>
+      <div class="row-page row">
+        <% @counter = 0 %>
+        <% @blogs.each do |blog| %>
+          <% if @counter == 0 %>
+            <div class="col-page col-sm-8 col-md-6">
+              <a href="/blogs/<%= blog.id %>" class="black fondo-publicacion-home">
+                <div class="img-publicacion-principal-home">
+                  <%= image_tag blog.main_image.variant(resize: "300x500") %>
+                </div>
+                <div class="contenido-publicacion-principal-home">
+                  <h3><%= blog.title %></h3>
+                  <p><%= blog.body_area.to_plain_text.first(150)%><span>...</span></p>
+                </div>
+                <div class="mascara-enlace-blog-home">
+                  <span>Read More </span>
+                </div>
+              </a>
+            </div>
+            <% @counter +=1 %>
+            <% @counter = 0 if @counter == 7 %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
