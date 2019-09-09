@@ -12,4 +12,4 @@ development:
 
 production:
   <<: *default
-  mode: live
+  mode: default
