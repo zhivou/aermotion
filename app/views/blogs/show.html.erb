@@ -1,13 +1,16 @@
 <%= stylesheet_link_tag "blogs" %>
 
-<div class="d-flex picHolder text-center sliderWrapper" style="background-image: url(<%= url_for(@blog.main_image) %>);">
-  <div class="container align-self-center p-2 bd-highlight">
-    <h1 class="display-3" id="textHolder"><%= @blog.title %></h1>
+<div class="blog-wrapper">
+  <div class="d-flex picHolder text-center sliderWrapper" style="background-image: url(<%= url_for(@blog.main_image) %>);">
+    <div class="container align-self-center p-2 bd-highlight">
+      <h1 class="display-3" id="textHolder"><%= @blog.title %></h1>
+    </div>
   </div>
+
+
+  <div class="container blog-body"><%= @blog.body_area %></div>
+
+
+  <%= link_to 'Back', blogs_path %>
 </div>
 
-
-<div class="container blog-body"><%= @blog.body_area %></div>
-
-
-<%= link_to 'Back', blogs_path %>
