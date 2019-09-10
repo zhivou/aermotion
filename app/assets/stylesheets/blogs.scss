@@ -196,3 +196,24 @@
   margin-bottom: 30px;
 }
 
+.sliderWrapper {
+  background-position: center center;
+  transition: background-image 0.3s ease-in-out;
+  height: 100%;
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  overflow-x: hidden;
+  background-size: cover;
+}
+
+#textHolder {
+  background-color: rgba(24,28,31,0.8);
+  color: white;
+  font-weight: 600;
+}
+
+.blog-body {
+
+}
