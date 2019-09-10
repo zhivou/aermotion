@@ -209,11 +209,18 @@
 }
 
 #textHolder {
+  margin-top: -12%;
   background-color: rgba(24,28,31,0.8);
   color: white;
   font-weight: 600;
 }
 
 .blog-body {
-
+  padding: 50px;
+  background-image: linear-gradient(#ECF0F1, #ECF0F1);
+  margin-top: -200px;
+  position: relative;
+  left: 30px;
+  border-radius: 2px;
+  min-height: 100vh;
 }
