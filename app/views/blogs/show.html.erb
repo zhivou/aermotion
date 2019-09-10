@@ -10,6 +10,13 @@
 
   <div class="container blog-body"><%= @blog.body_area %></div>
 
+  <% unless user_signed_in? %>
+    <div class="registration-wrapper container text-center">
+      <h3>Register to Aermotion Project</h3>
+      <p>Get the latest free videos and workouts</p>
+      <%= link_to "Sign Up", new_user_registration_path %>
+    </div>
+  <% end %>
 
   <%= link_to 'Back', blogs_path %>
 </div>
