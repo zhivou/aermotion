@@ -1,6 +1,12 @@
-<h1>Editing Blog</h1>
+<%= stylesheet_link_tag "blogs" %>
 
-<%= render 'form', blog: @blog %>
+<div class="blog-form-wrapper container">
+  <h1>Editing Blog</h1>
 
-<%= link_to 'Show', @blog %> |
-<%= link_to 'Back', blogs_path %>
+  <%= render 'form', blog: @blog %>
+
+  <div class="text-center">
+    <%= link_to 'Show', @blog %> |
+    <%= link_to 'Back', admin_blogs_path %>
+  </div>
+</div>
