@@ -109,7 +109,7 @@ body {
 
 //This is for wrapping relative elements
 .wrap {
-  width: 100%; /* useless */
-  overflow:hidden; /* establish a new formatting context */
+  width: 100%;
+  overflow: hidden;
   min-height: 20px;
 }

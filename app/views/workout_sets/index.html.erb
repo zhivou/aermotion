@@ -12,12 +12,12 @@
         <%= image_tag workout_set.main_image.variant(resize: "500"), alt: "sample85" %>
         <figcaption>
           <h3><%= workout_set.title %></h3>
-          <p>All this modern technology just makes people try to do everything at once.</p>
+          <p><%= workout_set.description.first(150) unless workout_set.description.is_a?(NilClass) %></p>
           <div class="price">
             $<%= workout_set.price %>
           </div>
         </figcaption><i class="ion-plus-round"></i>
-        <a href="/transactions/<%= workout_set.id %>"></a>
+        <%= link_to '', workout_set_path(workout_set) %>
       </figure>
     <% end %>
   </div>

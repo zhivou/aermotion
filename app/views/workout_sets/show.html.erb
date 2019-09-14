@@ -1,23 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @workout_set.title %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @workout_set.price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @workout_set.description %>
-</p>
-
-<div>
-  <%= image_tag @workout_set.main_image.variant(resize: "300") %>
+<div class="container">
+  <div class="row p-3">
+    <div class="col-8">
+      ​<picture>
+        <source srcset="" type="image/svg+xml">
+        <%= image_tag @workout_set.main_image.variant(resize: "1800"), class:"img-fluid img-thumbnail"  %>
+      </picture>
+      <h1>
+        <%= @workout_set.title %>
+      </h1>
+      <p>
+        <%= @workout_set.description %>
+      </p>
+    </div>
+    <div class="col-4">
+      <div class="p-3">
+        <%= image_tag 'paypal-logo.png', class: "img-fluid m-3" %>
+        <a href="/transactions/<%= @workout_set.id %>" class="btn btn-success btn-lg btn-block m-3">BUY WORKOUT</a>
+        <h1 class="text-center p-3">$<%= @workout_set.price %></h1>
+        <div>
+          <% @workout_set.media.each do |m| %>
+            <div>
+              <a href="/media/<%= m.id %>"><%= m.title %></a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to 'Edit', edit_workout_set_path(@workout_set), class: "admin-show" %> |
-<%= link_to 'Back', workout_sets_path %>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container text-center p-3">
+  <%= link_to 'Back', workout_sets_path, class: "btn btn-light" %>
+</div>
