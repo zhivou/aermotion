@@ -1,26 +1,96 @@
-<h2>Log in</h2>
+<div id="LoginForm">
+  <div class="container">
+    <div class="login-form">
+      <div class="main-div">
+        <div class="panel">
+          <h1>Login</h1>
+          <p>Please enter your email and password</p>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), id: "Login") do |f| %>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "inputEmail", placeholder: "Email Address" %>
+          </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "inputPassword", placeholder: "Password" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="field mt-5">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="actions">
+            <%= f.submit "Log in", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+        <div class="forgot">
+          <%= render "devise/shared/links" %>
+        </div>
+
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+  </div></div>
 
-<%= render "devise/shared/links" %>
+
+</div>
+
+<style>
+  #LoginForm{ background-image:url("<%= asset_path "login-background.jpg" %>"); background-repeat:no-repeat; background-position:center; background-size:cover; padding:80px; min-height: 100vh}
+
+  .form-heading { color:#fff; font-size:45px; }
+  .panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+  .panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+  .login-form .form-control {
+    background: #f7f7f7 none repeat scroll 0 0;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+  }
+  .main-div {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 38%;
+    min-width: 300px;
+    padding: 30px 40px 40px 41px;
+  }
+
+  .login-form .form-group {
+    margin-bottom:20px;
+  }
+  .login-form{ text-align:center;}
+  .forgot a {
+    color: #777777;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+  .login-form  .btn.btn-primary {
+    background: #2BBCDE none repeat scroll 0 0;
+    border-color: #2BBCDE;
+    color: #ffffff;
+    font-size: 14px;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+  }
+  .forgot {
+    text-align: left; margin-bottom:30px;
+  }
+  .botto-text {
+    color: #ffffff;
+    font-size: 14px;
+    margin: auto;
+  }
+  .login-form .btn.btn-primary.reset {
+    background: #2Bb0FE none repeat scroll 0 0;
+  }
+  .back { text-align: left; margin-top:10px;}
+  .back a {color: #444444; font-size: 13px;text-decoration: none;}
+</style>
