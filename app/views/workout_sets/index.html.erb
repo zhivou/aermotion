@@ -8,7 +8,7 @@
 
   <div class="wrap">
     <% @workout_sets.each do |workout_set| %>
-      <figure class="snip1492">
+      <figure class="card snip1492">
         <%= image_tag workout_set.main_image.variant(resize: "500"), alt: "sample85" %>
         <figcaption>
           <h3><%= workout_set.title %></h3>

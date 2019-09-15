@@ -18,6 +18,8 @@ body {
   color: #000000;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   font-size: 16px;
+  min-height: 450px;
+  max-height: 450px;
 }
 
 .snip1492 * {
@@ -31,7 +33,7 @@ body {
   max-width: 100%;
   vertical-align: top;
   position: relative;
-  background-color: #666666;
+  background-color: #333333;
   padding-top: 40px;
 }
 
@@ -80,7 +82,7 @@ body {
   line-height: 56px;
   text-align: center;
   border-radius: 50%;
-  background-color: #666666;
+  background-color: #333333;
   color: #ffffff;
   font-size: 36px;
 }
