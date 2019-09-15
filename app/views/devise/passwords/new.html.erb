@@ -1,16 +1,43 @@
-<h2>Forgot your password?</h2>
+<div id="LoginForm">
+  <div class="container">
+    <div class="login-form">
+      <div class="main-div">
+        <div class="panel">
+          <h1>Password Recovery</h1>
+          <p>Please enter email address. Then click Send me Reset Instruction button.</p>
+        </div>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, id: "Login") do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "inputEmail", placeholder: "Email Address" %>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="actions">
+              <%= f.submit "Send me reset password instructions", class: "btn btn-primary mt-3" %>
+            </div>
+          <% end %>
+
+          <div class="forgot">
+            <%= render "devise/shared/links" %>
+          </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+<style>
+  #LoginForm{ background-image:url("<%= asset_path "login-background.jpg" %>"); background-repeat:no-repeat; background-position:center; background-size:cover; padding:80px; min-height: 100vh}
 
-<%= render "devise/shared/links" %>
+  .form-heading { color:#fff; font-size:45px; }
+  .panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+  .panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+  .login-form .form-control {
+    background: #f7f7f7 none repeat scroll 0 0;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+  }
+</style>
