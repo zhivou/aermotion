@@ -1,9 +1,10 @@
 <%= stylesheet_link_tag "home" %>
-<div id="firstSlide" class="sliderWrapper" style="background-image: url(<%= asset_path "slide2.jpg" %>);">
-  <div class="d-flex home container text-center">
-    <div class="slogan align-self-center white">
-      <h1 class="display-2 text-center">Workouts & Programs</h1>
-      <h1 class="text-center">Workouts, Programs and Technique Guides that just work</h1>
-    </div>
+<div class="slogan-wrapper">
+  <div class="slogan align-self-center white">
+    <h1 class="display-2 text-center slogan-text">Workouts & Programs</h1>
+    <h1 class="text-center slogan-text">Workouts, Programs and Technique Guides that just work</h1>
   </div>
 </div>
+<video autoplay muted loop class="embed-responsive embed-responsive-16by9">
+  <source src="<%= asset_path "180419_Boxing_05_06.mp4" %>" type="video/mp4">
+</video>
