@@ -14,11 +14,6 @@ body {
   font-family: 'Rajdhani', sans-serif;
 }
 
-.spacer {
-  height: 40px;
-  background: #333333;
-}
-
 .transparent {
   background-color: transparent;
 }
@@ -67,14 +62,19 @@ body {
   padding: 5px 10px;
   text-decoration: none;
   color: white;
-  font-size: 20px;
+  transition: 0.4s;
+}
+
+#nav-holder {
+  font-size: 30px;
+  padding: 20px;
 }
 
 .page-width {
 }
 
 .toolbar {
-  position: absolute;
+  background: #333333;
   left:0;
   right:0;
   margin-left: auto;
