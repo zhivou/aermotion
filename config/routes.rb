@@ -35,7 +35,6 @@ Rails.application.routes.draw do
   #
   get 'my_videos', to: "my_videos#index"
   get 'my_videos/:id', to: "my_videos#show"
-  get 'support', to: "support#index"
   get 'contact_us', to: "contacts#index"
 
   #
