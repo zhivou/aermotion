@@ -15,3 +15,4 @@ console.log("WebPack Loader...");
 
 require("trix")
 require("@rails/actiontext")
+require("jquery-parallax.js")

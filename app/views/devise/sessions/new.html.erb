@@ -1,26 +1,53 @@
-<h2>Log in</h2>
+<div id="LoginForm">
+  <div class="container">
+    <div class="login-form">
+      <div class="main-div">
+        <div class="panel">
+          <h1>Login</h1>
+          <p>Please enter your email and password</p>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), id: "Login") do |f| %>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "inputEmail", placeholder: "Email Address" %>
+          </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "inputPassword", placeholder: "Password" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="field mt-5">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="actions">
+            <%= f.submit "Log in", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+        <div class="forgot">
+          <%= render "devise/shared/links" %>
+        </div>
+
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+  </div>
+</div>
 
-<%= render "devise/shared/links" %>
+<style>
+  #LoginForm{ background-image:url("<%= asset_path "login-background.jpg" %>"); background-repeat:no-repeat; background-position:center; background-size:cover; padding:80px; min-height: 100vh}
+
+  .form-heading { color:#fff; font-size:45px; }
+  .panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+  .panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+  .login-form .form-control {
+    background: #f7f7f7 none repeat scroll 0 0;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+  }
+</style>
