@@ -8,3 +8,29 @@
 <video autoplay muted loop class="embed-responsive embed-responsive-16by9">
   <source src="<%= asset_path "180419_Boxing_05_06.mp4" %>" type="video/mp4">
 </video>
+<!-- Div to draw the effect -->
+<div class="my-div"></div>
+
+<!-- library needed -->
+
+<style>
+  .my-div{
+    position:relative;
+    height:410px;
+    width:690px;
+    background:black;
+    display:flex;
+    align-items:flex-end;
+    box-shadow: 0px 10px 40px rgba(0,0,0,.4);
+  }
+</style>
+
+<script>
+  var myAnimation = new hoverEffect({
+    parent: document.querySelector('.my-div'),
+    intensity: 0.3,
+    image1: '<%= asset_path "girl1.jpg" %>',
+    image2: '<%= asset_path "girl2.jpg" %>',
+    displacementImage: '<%= asset_path "displacement/1.jpg" %>'
+  });
+</script>
