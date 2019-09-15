@@ -4,42 +4,49 @@
 
       <div class="toolbar__item toolbar-menu">
         <ul class="inline-list" id="nav-holder">
+          <div class="row">
+            <div class="col-12 col-md-8 text-left">
+              <li>
+                <%= link_to "Home", root_path, class: "nav-item" %>
+              </li>
 
-          <li>
-            <%= link_to "Home", root_path, class: "nav-item" %>
-          </li>
+              <li>
+                <%= link_to "Skills & Drills", workout_sets_path, class: "nav-item" %>
+              </li>
 
-          <li>
-            <%= link_to "Skills & Drills", workout_sets_path, class: "nav-item" %>
-          </li>
+              <li>
+                <div class="wrapper">
+                  <%= link_to "Blog", blogs_path, class: "nav-item effect-underline" %>
+                </div>
+              </li>
 
-          <li>
-            <%= link_to "Blog", blogs_path, class: "nav-item" %>
-          </li>
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to "My Videos", my_videos_path, class: "nav-item" %>
+                </li>
+              <% end %>
 
-          <% if user_signed_in? && current_user.admin %>
-            <li>
-              <%= link_to "Admin Panel", admin_panel_path, class: "nav-item" %>
-            </li>
-          <% end %>
+              <li>
+                <%= link_to "Contact Me", contact_us_path, class: "nav-item" %>
+              </li>
+            </div>
+            <div class="col-6 col-md-4 text-right">
+              <li><i class="fa fa-user user-icon"></i></li>
+              <% if user_signed_in? %>
+                <li><%= link_to "My Profile", edit_user_registration_path, class: "nav-item" %></li>
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item" %></li>
+              <% else %>
+                <li><%= link_to "Login", new_user_session_path, class: "nav-item" %></li>
+                <li><%= link_to "Register", new_user_registration_path, class: "nav-item" %></li>
+              <% end %>
 
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to "My Videos", my_videos_path, class: "nav-item" %>
-            </li>
-          <% end %>
-
-          <li>
-            <%= link_to "Contact Me", contact_us_path, class: "nav-item" %>
-          </li>
-
-          <% if user_signed_in? %>
-            <li><%= link_to "My Profile", edit_user_registration_path, class: "nav-item" %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item" %></li>
-          <% else %>
-            <li><%= link_to "Login", new_user_session_path, class: "nav-item" %></li>
-            <li><%= link_to "Register", new_user_registration_path, class: "nav-item" %></li>
-          <% end %>
+              <% if user_signed_in? && current_user.admin %>
+                <li>
+                  <%= link_to "Admin Panel", admin_panel_path, class: "nav-item" %>
+                </li>
+              <% end %>
+            </div>
+          </div>
         </ul>
       </div>
     </div>
