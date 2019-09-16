@@ -1,17 +1,45 @@
 <%= stylesheet_link_tag "home" %>
+<%= stylesheet_link_tag "hover_grid" %>
+
 <div class="slogan-wrapper">
   <div class="slogan align-self-center white">
-    <h1 class="display-2 text-center slogan-text">Workouts & Programs</h1>
+    <h1 class="display-2 text-center slogan-text">Workouts <b>&</b> Programs</h1>
     <h1 class="text-center slogan-text">Workouts, Programs and Technique Guides that just work</h1>
   </div>
 </div>
 <video autoplay muted loop class="embed-responsive embed-responsive-16by9">
   <source src="<%= asset_path "180419_Boxing_05_06.mp4" %>" type="video/mp4">
 </video>
-<!-- Div to draw the effect -->
-<div class="my-div"></div>
 
-<!-- library needed -->
+
+<div class="grid">
+  <div class="grid__item theme-1">
+    <div class="grid__item-content">
+      <nav class="grid__item-nav">
+        <a href="https://tympanus.net/Development/GridMenu/" class="grid__item-link">Previous Demo</a>
+        <a href="https://tympanus.net/codrops/?p=34430" class="grid__item-link">Article</a>
+      </nav>
+      <h2 class="grid__item-title grid__item-title--small">Distortion Hover Effect</h2>
+      <a class="pater" href="http://go.thoughtleaders.io/HelloSignCodrops100418" onclick="recordOutboundLink(this, 'Outbound Links', 'HelloSignCodrops100418');return false;">
+        <div class="pater__img">
+        </div>
+        <h3 class="pater__title">Workout Sets for you which will bring you back to the shape you deserve!</h3>
+        <p class="pater__description">With a robust SDK, amazing support, detailed documentation, and super clean dashboard, HelloSign API is sure to make your team happy. <strong>Try it today!</strong></p>
+      </a>
+    </div>
+  </div>
+  <div class="grid__item grid__item--bg theme-2 slide-2">
+    <div class="grid__item-content">
+      <span class="grid__item-meta">California</span>
+      <h2 class="grid__item-title">Jumping Around</h2>
+      <h3 class="grid__item-subtitle">
+        <span>California's last empty jump spots</span>
+        <a class="grid__item-link" href="#">Discover more</a>
+      </h3>
+    </div>
+  </div>
+</div>
+
 
 <style>
   .my-div{
@@ -27,10 +55,10 @@
 
 <script>
   var myAnimation = new hoverEffect({
-    parent: document.querySelector('.my-div'),
+    parent: document.querySelector('.slide-2'),
     intensity: 0.3,
     image1: '<%= asset_path "girl1.jpg" %>',
     image2: '<%= asset_path "girl2.jpg" %>',
-    displacementImage: '<%= asset_path "displacement/1.jpg" %>'
+    displacementImage: '<%= asset_path "displacement/6.jpg" %>'
   });
 </script>

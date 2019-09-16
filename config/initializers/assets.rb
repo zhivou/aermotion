@@ -14,6 +14,8 @@ Rails.application.config.assets.precompile += %w( my_videos.js )
 Rails.application.config.assets.precompile += %w( my_videos.css )
 Rails.application.config.assets.precompile += %w( blogs.css )
 Rails.application.config.assets.precompile += %w( workout_sets.css )
+Rails.application.config.assets.precompile += %w( hover_grid.css )
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
