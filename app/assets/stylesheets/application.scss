@@ -207,3 +207,15 @@ footer .section-title {
 .user-icon {
   color: #2BBCDE;
 }
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+  outline: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-link-hover);
+  outline: none;
+}
