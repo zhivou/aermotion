@@ -20,3 +20,7 @@
 //= require videojs-playlist
 //= require videojs-playlist-ui
 //= require Youtube
+//= require imagesloaded.pkgd.min.js
+//= require three.min.js
+//= require TweenMax.min.js
+//= require hover-effect.umd.js

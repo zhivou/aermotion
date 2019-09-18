@@ -1,5 +1,64 @@
 <div class="footer">
-  <div class="container text-center">
-    FOOTER
-  </div>
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row text-center text-xs-center text-sm-left text-md-left">
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Site Map</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="<%= root_path %>"><i class="fa fa-angle-double-right"></i>Home</a></li>
+            <li><a href="<%= workout_sets_path %>"><i class="fa fa-angle-double-right"></i>Workout Sets</a></li>
+            <li><a href="<%= blogs_path %>"><i class="fa fa-angle-double-right"></i>Blog</a></li>
+            <li><a href="<%= contact_us_path %>"><i class="fa fa-angle-double-right"></i>Contact Me</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Personal Access</h5>
+          <ul class="list-unstyled quick-links">
+            <% if user_signed_in? && current_user.admin %>
+              <li><a href="<%= admin_panel_path %>"><i class="fa fa-angle-double-right"></i>Admin Panel</a></li>
+            <% end %>
+            <% if user_signed_in? %>
+              <li><a href="<%= my_videos_path %>"><i class="fa fa-angle-double-right"></i>My Videos</a></li>
+            <% end %>
+            <% if user_signed_in? %>
+              <li><a href="<%= edit_user_registration_path %>"><i class="fa fa-angle-double-right"></i>My Profile</a></li>
+            <% else %>
+              <li><a href="<%= new_user_session_path %>"><i class="fa fa-angle-double-right"></i>Login</a></li>
+              <li><a href="<%= new_user_registration_path %>"><i class="fa fa-angle-double-right"></i>Register</a></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Latest Blogs</h5>
+          <ul class="list-unstyled quick-links">
+            <% Blog.order("created_at desc").limit(5).each do |blog| %>
+              <li><a href="/blogs/<%= blog.id %>"><i class="fa fa-angle-double-right"></i><%= blog.title %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+          <ul class="list-unstyled list-inline social text-center">
+            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div>
+        </hr>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+          <p class="h6">&copy All right Reversed, All content belongs to Aermotion project and it's owner Mikhail Nazarev, <%= Date.today.year %></p>
+          <p class="h6"><a class="ml-2" href="https://www.skrdev.com" target="_blank">Developed by Dmitrii Skrylev</a></p>
+          <%= image_tag 'logo-title.png', class: "mt-3" %>
+        </div>
+        </hr>
+      </div>
+    </div>
+  </footer>
+  <!-- ./Footer -->
 </div>
