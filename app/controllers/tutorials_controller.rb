@@ -1,5 +1,5 @@
-class MyVideosController < ApplicationController
+class TutorialsController < ApplicationController
   def index
-    @tutorials = WorkoutSet.where(type: 'tutorial')
+    @tutorials = WorkoutSet.where(type: 'Tutorial')
   end
 end
