@@ -11,7 +11,7 @@
   height: 100%;
   display: block;
   position: relative;
-  min-height: 70vh;
+  min-height: 100vh;
   overflow-x: hidden;
   background-size: cover;
   z-index: -1;
@@ -21,22 +21,15 @@
   margin: auto;
 }
 
-.slogan-wrapper {
-  padding-top: 200px;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
-
 .slogan-text {
   font-weight: 800;
   text-transform: uppercase;
   background-color: #333333;
   display:inline-block;
-  margin-left: 200px;
+}
+
+.slogan-wrapper {
+  margin-top: -13%;
 }
 
 b {

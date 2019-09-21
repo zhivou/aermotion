@@ -1,15 +1,34 @@
 <%= stylesheet_link_tag "home" %>
 <%= stylesheet_link_tag "hover_grid" %>
 
-<div class="slogan-wrapper">
-  <div class="slogan align-self-center white">
-    <h1 class="display-2 text-center slogan-text">Workouts <b>&</b> Programs</h1>
-    <h1 class="text-center slogan-text">Workouts, Programs and Technique Guides that just work</h1>
+<!--<div class="slogan-wrapper">-->
+<!--  <div class="slogan align-self-center white">-->
+<!--    <h1 class="display-2 text-center slogan-text">Aerobic Calisthenics Fitness Guide</h1>-->
+<!--    <h1 class="text-center slogan-text">Skills progressions</h1>-->
+<!--    <h1 class="text-center slogan-text">Effective specific muscle conditioning workout programs</h1>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<video autoplay muted loop class="embed-responsive embed-responsive-16by9">-->
+<!--  <source src="<%#= asset_path "180419_Boxing_05_06.mp4" %>" type="video/mp4">-->
+<!--</video>-->
+
+<div class="d-flex picHolder text-center sliderWrapper" style="background-image: url(<%= asset_path "misha_cover.jpg" %>);">
+  <div class="container align-self-center p-2 bd-highlight white slogan-wrapper">
+    <h1 class="display-2 text-center slogan-text"><b>Aerobic</b> Calisthenics Fitness Guide</h1>
+    <h1 class="text-center slogan-text">Skills progressions</h1>
+    <h1 class="text-center slogan-text">Effective specific muscle conditioning workout programs</h1>
   </div>
 </div>
-<video autoplay muted loop class="embed-responsive embed-responsive-16by9">
-  <source src="<%= asset_path "180419_Boxing_05_06.mp4" %>" type="video/mp4">
-</video>
+
+<div class="jumbotron d-flex align-items-center full-height m-0">
+  <div class="container text-center">
+    <h1 class="display-4">Hello, world!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </div>
+</div>
 
 <div
   class="picHolder text-center sliderWrapper parallax-window p-0 m-0"
