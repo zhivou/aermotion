@@ -3,9 +3,7 @@
     <div class="toolbar__content">
 
       <div class="toolbar__item toolbar-menu">
-        <ul class="inline-list" id="nav-holder">
-          <div class="row">
-            <div class="col-12 col-md-8 text-left">
+        <ul class="inline-list left" id="nav-holder">
               <li>
                 <%= link_to "Home", root_path, class: "nav-item" %>
               </li>
@@ -33,8 +31,7 @@
               <li>
                 <%= link_to "Contact Me", contact_us_path, class: "nav-item" %>
               </li>
-            </div>
-            <div class="col-6 col-md-4 text-right">
+
               <li><i class="fa fa-user user-icon"></i></li>
               <% if user_signed_in? %>
                 <li><%= link_to "My Profile", edit_user_registration_path, class: "nav-item" %></li>
@@ -49,8 +46,6 @@
                   <%= link_to "Admin Panel", admin_panel_path, class: "nav-item" %>
                 </li>
               <% end %>
-            </div>
-          </div>
         </ul>
       </div>
     </div>
