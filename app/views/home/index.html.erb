@@ -21,39 +21,44 @@
   </div>
 </div>
 
-<div class="full-height m-0 p-0">
+<div class="latest-tutorials full-height gray-bg white">
+<div class="container">
+      <!-- Top Navigation -->
+      <div class="content">
+        <div class="grid">
+          <% @workout_sets.each do |w| %>
+          <figure class="effect-ravi p-0 m-0">
+            <%= image_tag w.main_image.variant(resize: "600"), alt: "w.id"%>
+            <figcaption>
+              <div>
+                <h2>Workout</h2>
+                <p><%= w.title %></p>
+              </div>
+              <a href="/workout_sets/<%= w.id %>">View more</a>
+            </figcaption>
+          </figure>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="m-0 p-0">
   <div class="text-center">
     <div class="row">
       <div class="jumbotron d-flex align-items-center m-0 p-0">
-        <div class="col-6 align-items-center">
+        <div class="col-6 align-items-center m-0 p-0">
           <h1 class="display-4">Hello, world!</h1>
           <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
           <hr class="my-4">
           <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
           <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
         </div>
-        <div class="col-6">
+        <div class="col-6 m-0 p-0">
           <%= image_tag 'misha_cover2.jpg', class: "img-fluid" %>
         </div>
       </div>
-      </div>
-  </div>
-</div>
-
-<div class="container latest-tutorials full-height">
-  <h1>Latest Workouts:</h1>
-  <% @workout_sets.each do |w| %>
-    <%= w.title %>
-  <% end %>
-</div>
-
-<div class="jumbotron d-flex align-items-center full-height m-0">
-  <div class="container text-center">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
   </div>
 </div>
 
