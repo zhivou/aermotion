@@ -4,7 +4,7 @@
 
       <div class="toolbar__item toolbar-menu">
         <div class="my-2 my-md-0 mr-md-3">
-          <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="nav-holder">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,8 +19,8 @@
                 <% end %>
                 <li class="nav-item"><%= link_to "Contact Me", contact_us_path, class: "nav-link" %></li>
               </ul>
-              <ul class="navbar-nav mr-auto">
-                <i class="fa fa-user user-icon nav-item"></i>
+              <ul class="navbar-nav ml-auto">
+                <i class="fa fa-user user-icon nav-link"></i>
                 <% if user_signed_in? %>
                   <li class="nav-item"><%= link_to "My Profile", edit_user_registration_path, class: "nav-link" %></li>
                   <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
