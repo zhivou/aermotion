@@ -10,8 +10,14 @@
 @import "actiontext";
 
 body {
+  margin-top: 90px;
   min-height: 800px;
   font-family: 'Rajdhani', sans-serif;
+  background: #333333;
+}
+
+.bg-dark {
+  background: #333333 !important ;
 }
 
 .transparent {
@@ -205,7 +211,7 @@ footer .section-title {
 }
 
 .user-icon {
-  color: #2BBCDE;
+  color: #2BBCDE !important;
 }
 
 a {
@@ -219,3 +225,12 @@ a:focus {
   color: var(--color-link-hover);
   outline: none;
 }
+
+.full-height {
+  min-height: 97vh;
+}
+
+.gray-bg {
+  background: #333333;
+}
+
