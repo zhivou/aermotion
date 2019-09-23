@@ -26,10 +26,11 @@
   text-transform: uppercase;
   background-color: #333333;
   display:inline-block;
+  z-index: 1000;
 }
 
 .slogan-wrapper {
-  margin-top: -13%;
+  margin-top: -10%;
 }
 
 b {
@@ -190,4 +191,8 @@ figure.effect-ravi:hover p {
     margin: 10px auto;
     width: 100%;
   }
+}
+
+.jumbotron {
+  background-color: #333333 !important;
 }
