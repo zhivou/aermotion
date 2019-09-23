@@ -54,10 +54,26 @@
     <h1 class="text-center slogan-text">Add some text here to explain what tutorials are:</h1>
   </div>
 </div>
-
-
-<div class="container latest-tutorials full-height">
-
+<div class="latest-tutorials gray-bg white">
+  <div class="">
+    <!-- Top Navigation -->
+    <div>
+      <div class="grid">
+        <% @tutorials.each do |t| %>
+          <figure class="effect-ravi p-0 m-0">
+            <%= image_tag t.main_image.variant(resize: "600"), alt: "w.id"%>
+            <figcaption>
+              <div>
+                <h2>Tutorial</h2>
+                <p><%= t.title %></p>
+              </div>
+              <a href="/workout_sets/<%= t.id %>">View more</a>
+            </figcaption>
+          </figure>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!--<div class="grid">-->
