@@ -2,12 +2,13 @@ class WorkoutSetsController < ApplicationController
 
   before_action :is_admin?, only: [:new, :edit, :update, :create, :destroy]
   before_action :set_workout_set, only: [:show, :edit, :update, :destroy]
+  before_action :get_set, only: [:index]
 
   # GET /workout_sets
   # GET /workout_sets.json
   def index
     if user_signed_in?
-      @workout_sets = WorkoutSet.includes(:type).where.not(id: current_user.workout_sets.includes(:type).where(type: Type.where(name:"Set").take.id).each {|i| i})
+      @workout_sets = WorkoutSet.includes(:type).where.not(id: current_user.workout_sets.includes(:type).each {|i| i})
     else
       @workout_sets = WorkoutSet.includes(:type).where(type: Type.where(name:"Set").take.id)
     end
@@ -71,6 +72,10 @@ class WorkoutSetsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_workout_set
     @workout_set = WorkoutSet.find(params[:id])
+  end
+
+  def get_set
+    @type = Type.where(name:"Set").take.id
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
