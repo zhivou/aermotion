@@ -3,50 +3,39 @@
     <div class="toolbar__content">
 
       <div class="toolbar__item toolbar-menu">
-        <ul class="inline-list left" id="nav-holder">
-              <li>
-                <%= link_to "Home", root_path, class: "nav-item" %>
-              </li>
+        <div class="my-2 my-md-0 mr-md-3">
+          <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Workouts", workout_sets_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Tutorials", tutorials_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Blog", blogs_path, class: "nav-link effect-underline" %></li>
+                <% if user_signed_in? %>
+                  <li class="nav-item"><%= link_to "My Videos", my_videos_path, class: "nav-link" %></li>
+                <% end %>
+                <li class="nav-item"><%= link_to "Contact Me", contact_us_path, class: "nav-link" %></li>
+              </ul>
+              <ul class="navbar-nav mr-auto">
+                <i class="fa fa-user user-icon nav-item"></i>
+                <% if user_signed_in? %>
+                  <li class="nav-item"><%= link_to "My Profile", edit_user_registration_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+                <% else %>
+                  <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to "Register", new_user_registration_path, class: "nav-link" %></li>
+                <% end %>
 
-              <li>
-                <%= link_to "Workouts", workout_sets_path, class: "nav-item" %>
-              </li>
-
-              <li>
-                <%= link_to "Tutorials", tutorials_path, class: "nav-item" %>
-              </li>
-
-              <li>
-                <div class="wrapper">
-                  <%= link_to "Blog", blogs_path, class: "nav-item effect-underline" %>
-                </div>
-              </li>
-
-              <% if user_signed_in? %>
-                <li>
-                  <%= link_to "My Videos", my_videos_path, class: "nav-item" %>
-                </li>
-              <% end %>
-
-              <li>
-                <%= link_to "Contact Me", contact_us_path, class: "nav-item" %>
-              </li>
-
-              <li><i class="fa fa-user user-icon"></i></li>
-              <% if user_signed_in? %>
-                <li><%= link_to "My Profile", edit_user_registration_path, class: "nav-item" %></li>
-                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item" %></li>
-              <% else %>
-                <li><%= link_to "Login", new_user_session_path, class: "nav-item" %></li>
-                <li><%= link_to "Register", new_user_registration_path, class: "nav-item" %></li>
-              <% end %>
-
-              <% if user_signed_in? && current_user.admin %>
-                <li>
-                  <%= link_to "Admin Panel", admin_panel_path, class: "nav-item" %>
-                </li>
-              <% end %>
-        </ul>
+                <% if user_signed_in? && current_user.admin %>
+                  <li class="nav-item"><%= link_to "Admin Panel", admin_panel_path, class: "nav-link" %></li>
+                <% end %>
+              </ul>
+            </div>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
