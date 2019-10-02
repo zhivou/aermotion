@@ -12,7 +12,7 @@
 <!--  <source src="<%#= asset_path "180419_Boxing_05_06.mp4" %>" type="video/mp4">-->
 <!--</video>-->
 
-<div class="d-flex picHolder text-center sliderWrapper parallax-window full-height" data-parallax="scroll" data-image-src="<%= asset_path "misha_cover.jpg" %>">
+<div class="d-flex picHolder text-center sliderWrapper parallax-window full-height" data-parallax="scroll" data-image-src="<%= asset_path "misha_cover2.jpg" %>">
   <div class="container align-self-center p-2 bd-highlight white slogan-wrapper">
     <h1 class="display-2 text-center slogan-text"><b>Aerobic</b> Calisthenics Fitness Guide</h1>
     <h1 class="text-center slogan-text">Skills progressions</h1>
@@ -27,26 +27,26 @@
   </div>
 </div>
 
-<div class="latest-tutorials gray-bg white">
-<div class="">
-      <!-- Top Navigation -->
-      <div>
-        <div class="grid">
-          <% @workout_sets.each do |w| %>
-          <figure class="effect-ravi p-0 m-0">
-            <%= image_tag w.main_image.variant(resize: "600"), alt: "w.id"%>
-            <figcaption>
-              <div>
-                <h2>Workout</h2>
-                <p><%= w.title %></p>
-              </div>
-              <a href="/workout_sets/<%= w.id %>">View more</a>
-            </figcaption>
-          </figure>
-          <% end %>
-        </div>
+<div class="latest-tutorials gray-bg white d-none d-md-none d-lg-block">
+  <div class="">
+    <!-- Top Navigation -->
+    <div>
+      <div class="grid">
+        <% @workout_sets.each do |w| %>
+        <figure class="effect-ravi p-0 m-0">
+          <%= image_tag w.main_image.variant(resize: "600"), alt: "w.id"%>
+          <figcaption>
+            <div>
+              <h2>Workout</h2>
+              <p><%= w.title %></p>
+            </div>
+            <a href="/workout_sets/<%= w.id %>">View more</a>
+          </figcaption>
+        </figure>
+        <% end %>
       </div>
     </div>
+  </div>
 </div>
 <div class="jumbotron jumbotron-fluid">
   <div class="container align-self-center p-2 bd-highlight white">
@@ -54,27 +54,27 @@
     <h1 class="text-center slogan-text">Add some text here to explain what tutorials are:</h1>
   </div>
 </div>
-<div class="latest-tutorials gray-bg white">
-  <div class="">
-    <!-- Top Navigation -->
-    <div>
-      <div class="grid">
-        <% @tutorials.each do |t| %>
-          <figure class="effect-ravi p-0 m-0">
-            <%= image_tag t.main_image.variant(resize: "600"), alt: "w.id"%>
-            <figcaption>
-              <div>
-                <h2>Tutorial</h2>
-                <p><%= t.title %></p>
-              </div>
-              <a href="/workout_sets/<%= t.id %>">View more</a>
-            </figcaption>
-          </figure>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="latest-tutorials gray-bg white">-->
+<!--  <div class="">-->
+
+<!--    <div>-->
+<!--      <div class="grid">-->
+        <%# @tutorials.each do |t| %>
+<!--          <figure class="effect-ravi p-0 m-0">-->
+            <%#= image_tag t.main_image.variant(resize: "600"), alt: "w.id"%>
+<!--            <figcaption>-->
+<!--              <div>-->
+<!--                <h2>Tutorial</h2>-->
+<!--                <p><%#= t.title %></p>-->
+<!--              </div>-->
+<!--              <a href="/workout_sets/<%#= t.id %>">View more</a>-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+        <%# end %>
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!--<div class="grid">-->
 <!--  <div class="grid__item theme-1">-->
