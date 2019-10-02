@@ -48,6 +48,28 @@
     </div>
   </div>
 </div>
+
+<div class="latest-tutorials gray-bg white d-lg-none d-xl-none">
+  <div class="">
+    <!-- Top Navigation -->
+    <div>
+      <div class="">
+        <% @workout_sets.each do |w| %>
+          <a href="/workout_sets/<%= w.id %>" id="href">
+            <figure class="effect-ravi p-0 m-0">
+              <%= image_tag w.main_image.variant(resize: "600"), alt: "w.id"%>
+                <div>
+                  <h2>Workout</h2>
+                  <p><%= w.title %></p>
+                </div>
+            </figure>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="jumbotron jumbotron-fluid">
   <div class="container align-self-center p-2 bd-highlight white">
     <h1 class="display-2 text-center slogan-text">Tutorials</h1>
