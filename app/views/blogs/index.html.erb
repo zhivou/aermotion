@@ -1,10 +1,8 @@
 <%= stylesheet_link_tag "blogs" %>
 
-<section class="publicaciones-blog-home">
-  <div class="container">
+<section class="publicaciones-blog-home pt-3 pb-3">
+  <div class="container pt-5">
     <div class="">
-      <h2 class="blog-title">My  <b>Blog</b></h2>
-      <h3 class="blog-undertext">Check out the latest news, announcements, new video releases</h3>
       <div class="row-page row">
         <% @counter = 0 %>
         <% @blogs.each do |blog| %>

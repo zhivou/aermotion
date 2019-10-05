@@ -1,5 +1,5 @@
 class TutorialsController < ApplicationController
   def index
-    @tutorials = WorkoutSet.where(type: 'Tutorial')
+    @tutorials = WorkoutSet.order("created_at desc").includes(:type).where(type: Type.where(name:"Tutorial").take.id)
   end
 end
