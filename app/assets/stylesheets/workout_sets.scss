@@ -2,7 +2,17 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:300,400);
 
 body {
-  background-color: white !important;
+  background-color: white;
+  padding-top: 75px;
+  margin-top: 0;
+}
+
+section {
+  min-height: 100vh;
+}
+
+center {
+  min-height: 100vh;
 }
 
 .snip1492 {
@@ -113,7 +123,7 @@ body {
 .wrap {
   width: 100%;
   overflow: hidden;
-  min-height: 20px;
+  min-height: 100vh;
   padding-left: 12%;
 }
 

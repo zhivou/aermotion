@@ -13,7 +13,7 @@
           <%= image_tag t.main_image.variant(resize: "500"), alt: "sample85" %>
           <figcaption>
             <h3><%= t.title %></h3>
-            <p><%= t.description.first(150) unless workout_set.description.is_a?(NilClass) %></p>
+            <p><%= t.description.first(150) %></p>
             <div class="price">
               $<%= t.price %>
             </div>
@@ -22,12 +22,5 @@
         </figure>
       <% end %>
     </div>
-  </div>
-
-
-  <div class="navigation p-3">
-    <%= link_to 'New Workout Set', new_workout_set_path, class: "admin-show" %>
-    <br>
-    <%= link_to 'Back', root_path %>
   </div>
 </div>
