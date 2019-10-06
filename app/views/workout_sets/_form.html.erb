@@ -23,6 +23,9 @@
 
   <div class="field">
     <%= form.label :description %>
+    <br>
+    <small> Use first 126 characters as a PayPal description. It will only show this much to user when checking out. Will show the rest for regular view page.</small>
+    <br>
     <%= form.text_area :description, id: :description %>
   </div>
 

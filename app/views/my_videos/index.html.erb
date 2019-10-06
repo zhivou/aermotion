@@ -6,15 +6,24 @@
       <h1>My Videos</h1>
       <h2>You can watch you video sets below:</h2>
     </div>
-
-    <% @workouts.each do |workout| %>
-      <div class="workout-container">
-        <a href="/my_videos/<%= workout.id %>">
-          <h1><%= workout.title %></h1>
-          
-        </a>
+    <div class="mt-5">
+      <div class="row sortable">
+        <% @workouts.each do |workout| %>
+          <div class="col-md-12 col-xl-4 col-lg-4 col-sm-12 col-12 m-0 p-1" data-id="<%= workout.id %>">
+            <div class="card mb-4 shadow-sm projectCard">
+              <div id="img-cropper">
+                <a href="/my_videos/<%= workout.id %>"><%= image_tag workout.main_image, class: "bd-placeholder-img card-img-top imageHolder", id: "imageProject" %></a>
+              </div>
+              <div class="card-body">
+                <p class="card-title"><%= Type.find(workout.type.id).name %>: <%= workout.title %></p>
+                <p class="card-text cardContent"><%= workout.description%></p>
+                <small class="text-muted">Added: <%= distance_of_time_in_words(workout.created_at, Time.now) %> ago.</small>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </section>
 
