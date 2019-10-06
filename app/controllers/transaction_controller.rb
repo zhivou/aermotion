@@ -12,7 +12,7 @@ class TransactionController < ApplicationController
     @payment = PaypalPayment.setup(
         price: workout.price,
         item_name: workout.id.to_s + " " + workout.title,
-        description: "Add description to WorkoutSets",
+        description: workout.description,
         return_url: "http://localhost:3000/payment_execute",
         cancel_url: workout_sets_path
     )

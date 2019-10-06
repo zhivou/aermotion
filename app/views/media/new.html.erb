@@ -1,5 +1,11 @@
-<h1>New Medium</h1>
+<%= stylesheet_link_tag "media" %>
 
-<%= render 'form', medium: @medium %>
+<section>
+  <div class="container pt-5">
+    <h1>Upload Video:</h1>
 
-<%= link_to 'Back', media_path %>
+    <%= render 'form', medium: @medium %>
+    <%= link_to 'Back', admin_panel_path %>
+  </div>
+</section>
+

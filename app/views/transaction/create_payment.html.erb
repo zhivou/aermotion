@@ -1,18 +1,36 @@
-<div class="container">
-  <div class="header-title">
-    <h1>Purchase Details</h1>
-    <h2>Please carefullly review purchase details below. If everything looks good click Checkout button to continue.</h2>
-  </div>
+<%= stylesheet_link_tag "transaction" %>
 
-  <div class="payment-info">
-    <h2>Purchasing</h2>
-    <hr>
-    <p>Item: <%= @payment[:payment_info].transactions[0].item_list.items[0].name %></p>
-    <p>Price: <%= @payment[:payment_info].transactions[0].item_list.items[0].price %> <%= @payment[:payment_info].transactions[0].item_list.items[0].currency %></p>
-    <p>Quantity: <%= @payment[:payment_info].transactions[0].item_list.items[0].quantity %></p>
-    <p>Description: <%= @payment[:payment_info].transactions[0].description %></p>
-    <p>Total: <strong class="text-danger"><%= @payment[:payment_info].transactions[0].amount.total %> </strong>$</p>
-  </div>
+<section>
+  <div class="container">
+    <div class="header-title">
+      <h1>Purchase Details</h1>
+      <h2>Please carefullly review purchase details below. If everything looks good click Checkout button to continue.</h2>
+    </div>
 
-  <%= link_to "Checkout", @payment[:redirect], class: "btn btn-success text-center" %>
-</div>
+    <table class="table mt-5">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Item</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Description</th>
+        <th scope="col">Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= @payment[:payment_info].transactions[0].item_list.items[0].name %></td>
+        <td><%= @payment[:payment_info].transactions[0].item_list.items[0].price %> <%= @payment[:payment_info].transactions[0].item_list.items[0].currency %></td>
+        <td><%= @payment[:payment_info].transactions[0].item_list.items[0].quantity %></td>
+        <td><%= @payment[:payment_info].transactions[0].description %></td>
+        <td><strong class="text-danger"><%= @payment[:payment_info].transactions[0].amount.total %> </strong>$</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <%= link_to "Cancel", root_path, class: "btn btn-secondary btn-lg float-right m-1" %>
+    <%= link_to "Checkout", @payment[:redirect], class: "btn btn-dark btn-lg float-right m-1" %>
+  </div>
+</section>
