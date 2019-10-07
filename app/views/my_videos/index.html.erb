@@ -16,8 +16,6 @@
               </div>
               <div class="card-body">
                 <p class="card-title"><%= Type.find(workout.type.id).name %>: <%= workout.title %></p>
-                <p class="card-text cardContent"><%= workout.description%></p>
-                <small class="text-muted">Added: <%= distance_of_time_in_words(workout.created_at, Time.now) %> ago.</small>
               </div>
             </div>
           </div>
