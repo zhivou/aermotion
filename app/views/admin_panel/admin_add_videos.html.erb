@@ -1,24 +1,27 @@
 <%= stylesheet_link_tag "admin_panel" %>
 
-<div class="container">
-  <small>Total: <%= @videos.count %> video/s</small>
-  <%= paginate @videos %>
-  <table>
-    <thead>
-    <tr class="admin-head">
-      <th class="text-center">Title</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
-
-    <% @videos.each do |v| %>
-      <tr class="admin-row">
-        <td><a href="/media/<%= v.id %>"><%= v.title %></a></td>
-        <td><%= link_to 'Edit', edit_medium_path(v) %></td>
-        <td><%= link_to 'Destroy', v, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<section>
+  <div class="container mt-5 mb-5">
+    <small>Total: <%= @videos.count %> video/s</small>
+    <%= paginate @videos %>
+    <table>
+      <thead>
+      <tr class="admin-head">
+        <th class="text-center">Title</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </table>
-  <%= paginate @videos %>
-  <%= link_to "Back", admin_panel_path %>
-</div>
+      </thead>
+
+      <% @videos.each do |v| %>
+        <tr class="admin-row">
+          <td><a href="/media/<%= v.id %>"><%= v.title %></a></td>
+          <td><%= link_to 'Edit', edit_medium_path(v) %></td>
+          <td><%= link_to 'Destroy', v, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @videos %>
+    <%= link_to "Back", admin_panel_path %>
+  </div>
+</section>
+

@@ -1,10 +1,13 @@
 <%= stylesheet_link_tag "blogs" %>
 
-<div class="blog-form-wrapper container">
-  <h1>New Blog</h1>
+<section>
+  <div class="blog-form-wrapper container mt-5 mb-5">
+    <h1>New Blog</h1>
 
-  <%= render 'form', blog: @blog %>
+    <%= render 'form', blog: @blog %>
 
-  <%= link_to 'Back', admin_panel_path %>
-</div>
+    <%= link_to 'Back', admin_panel_path %>
+  </div>
+</section>
+
 
