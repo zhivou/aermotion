@@ -1,13 +1,18 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "media" %>
 
-<div>
-  <div>
-    <strong>Video Name:</strong>
-    <%= @medium.title %>
+<section>
+  <div class="container mt-5 mb-5">
+    <div>
+      <div>
+        <strong>Video Name:</strong>
+        <%= @medium.title %>
+      </div>
+      <%= video_tag rails_blob_path(@medium.video), controls: true, size: "450x320" %>
+    </div>
+
+    <%= link_to 'Edit', edit_medium_path(@medium) %> |
+    <%= link_to 'Back', admin_add_videos_path %>
   </div>
-  <%= video_tag rails_blob_path(@medium.video), controls: true, size: "450x320" %>
-</div>
+  <p id="notice"><%= notice %></p>
+</section>
 
-
-<%= link_to 'Edit', edit_medium_path(@medium) %> |
-<%= link_to 'Back', media_path %>

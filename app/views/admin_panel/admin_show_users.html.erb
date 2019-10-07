@@ -1,41 +1,43 @@
 <%= stylesheet_link_tag "admin_panel" %>
 
-<div class="container">
-  <%= paginate @users %>
-  <table>
-    <thead>
-    <tr class="admin-head">
-      <th class="text-center">ID</th>
-      <th class="text-center">Email Address</th>
-      <th class="text-center">Reset Password Sent At</th>
-      <th class="text-center">Remember Created At</th>
-      <th class="text-center">Sign in Count</th>
-      <th class="text-center">Current Sign in At</th>
-      <th class="text-center">Last Sign in At</th>
-      <th class="text-center">Current Sign in IP</th>
-      <th class="text-center">Last Sign in IP</th>
-      <th class="text-center">Created At</th>
-      <th class="text-center">Updated At</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
-
-    <% @users.each do |u| %>
-      <tr class="admin-row">
-        <td><%= u.id %></td>
-        <td><%= u.email %></td>
-        <td><%= u.reset_password_sent_at %></td>
-        <td><%= u.remember_created_at %></td>
-        <td><%= u.sign_in_count %></td>
-        <td><%= u.current_sign_in_at %></td>
-        <td><%= u.last_sign_in_at %></td>
-        <td><%= u.current_sign_in_ip %></td>
-        <td><%= u.last_sign_in_ip %></td>
-        <td><%= u.created_at %></td>
-        <td><%= u.updated_at %></td>
+<section>
+  <div class="container mt-5">
+    <%= paginate @users %>
+    <table>
+      <thead>
+      <tr class="admin-head">
+        <th class="text-center">ID</th>
+        <th class="text-center">Email Address</th>
+        <th class="text-center">Reset Password Sent At</th>
+        <th class="text-center">Remember Created At</th>
+        <th class="text-center">Sign in Count</th>
+        <th class="text-center">Current Sign in At</th>
+        <th class="text-center">Last Sign in At</th>
+        <th class="text-center">Current Sign in IP</th>
+        <th class="text-center">Last Sign in IP</th>
+        <th class="text-center">Created At</th>
+        <th class="text-center">Updated At</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </table>
-  <%= paginate @users %>
-  <%= link_to "Back", admin_panel_path %>
-</div>
+      </thead>
+
+      <% @users.each do |u| %>
+        <tr class="admin-row">
+          <td><%= u.id %></td>
+          <td><%= u.email %></td>
+          <td><%= u.reset_password_sent_at %></td>
+          <td><%= u.remember_created_at %></td>
+          <td><%= u.sign_in_count %></td>
+          <td><%= u.current_sign_in_at %></td>
+          <td><%= u.last_sign_in_at %></td>
+          <td><%= u.current_sign_in_ip %></td>
+          <td><%= u.last_sign_in_ip %></td>
+          <td><%= u.created_at %></td>
+          <td><%= u.updated_at %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @users %>
+    <%= link_to "Back", admin_panel_path %>
+  </div>
+</section>
