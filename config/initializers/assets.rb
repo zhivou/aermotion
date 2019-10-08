@@ -19,6 +19,7 @@ Rails.application.config.assets.precompile += %w( tutorial.css )
 Rails.application.config.assets.precompile += %w( contact.css )
 Rails.application.config.assets.precompile += %w( transaction.css )
 Rails.application.config.assets.precompile += %w( media.css )
+Rails.application.config.assets.precompile += %w( about.css )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
