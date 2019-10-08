@@ -13,7 +13,7 @@ class TransactionController < ApplicationController
         price: workout.price,
         item_name: workout.id.to_s + " " + workout.title,
         description: workout.description,
-        return_url: "http://localhost:3000/payment_execute",
+        return_url: "https://aermotion.herokuapp.com/payment_execute",
         cancel_url: workout_sets_path
     )
   end
