@@ -1,0 +1,14 @@
+[
+  {
+    "origin": [
+      "https://aermotion.herokuapp.com",
+      "http://aermotion.herokuapp.com",
+      "aermotion.herokuapp.com"
+    ],
+
+    "responseHeader": ["Content-Type", "Content-Md5"],
+
+    "method": ["GET", "HEAD", "DELETE", "PUT", "POST", "OPTIONS"],
+    "maxAgeSeconds": 3600
+  }
+]
