@@ -1,6 +1,12 @@
-<h1>Editing Workout Set</h1>
+<%= stylesheet_link_tag "workout_sets" %>
 
-<%= render 'form', workout_set: @workout_set %>
+<section>
+  <div class="container pt-4 pb-4">
+      <h1>Editing Workout Set</h1>
 
-<%= link_to 'Show', @workout_set %> |
-<%= link_to 'Back', workout_sets_path %>
+    <%= render 'form', workout_set: @workout_set %>
+
+    <%= link_to 'Show', @workout_set %> |
+    <%= link_to 'Back', admin_workouts_path %>
+  </div>
+</section>
