@@ -1,5 +1,6 @@
 class WorkoutSetsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :is_admin?, only: [:new, :edit, :update, :create, :destroy]
   before_action :set_workout_set, only: [:show, :edit, :update, :destroy]
   before_action :get_set, only: [:index]
