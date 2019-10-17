@@ -123,10 +123,6 @@ ActiveRecord::Schema.define(version: 2019_10_17_222459) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "type_id", null: false
     t.text "description"
-    t.string "front_image_file_name"
-    t.string "front_image_content_type"
-    t.integer "front_image_file_size"
-    t.datetime "front_image_updated_at"
     t.index ["type_id"], name: "index_workout_sets_on_type_id"
   end
 
