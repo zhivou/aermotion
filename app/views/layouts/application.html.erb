@@ -24,8 +24,10 @@
     <% unless params[:controller] == 'home' %>
       <div class="spacer"></div>
     <% end %>
-    <p class="notice" style="display: <%= "none" unless notice %>;"><%= notice %></p>
-    <p class="alert" style="display: <%= "none" unless notice %>;"><%= alert %></p>
+    <div class="alert-wrapper background-white m-0 p-0">
+      <p class="notice m-0 p-0" style="display: <%= "none" unless notice %>;"><%= notice %></p>
+      <p class="alert m-0 p-0" style="display: <%= "none" unless notice %>;"><%= alert %></p>
+    </div>
     <%= yield %>
     <%= render 'aplication/footer' %>
   </body>
