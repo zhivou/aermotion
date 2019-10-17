@@ -34,7 +34,7 @@
       <div class="grid">
         <% @workout_sets.each do |w| %>
         <figure class="effect-ravi p-0 m-0">
-          <%= image_tag w.main_image.variant(resize: "600"), alt: "w.id"%>
+          <%= image_tag w.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
           <figcaption>
             <div>
               <h2>Workout</h2>
@@ -57,7 +57,7 @@
         <% @workout_sets.each do |w| %>
           <a href="/workout_sets/<%= w.id %>" id="href">
             <figure class="effect-ravi p-0 m-0">
-              <%= image_tag w.main_image.variant(resize: "600"), alt: "w.id"%>
+              <%= image_tag w.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
                 <div>
                   <h2>Workout</h2>
                   <p><%= w.title %></p>
@@ -84,7 +84,7 @@
       <div class="grid">
         <% @tutorials.each do |t| %>
           <figure class="effect-ravi p-0 m-0">
-            <%= image_tag t.main_image.variant(resize: "600"), alt: "w.id"%>
+            <%= image_tag t.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
             <figcaption>
               <div>
                 <h2>Tutorial</h2>
@@ -107,7 +107,7 @@
         <% @tutorials.each do |t| %>
           <a href="/workout_sets/<%= t.id %>" id="href">
             <figure class="effect-ravi p-0 m-0">
-              <%= image_tag t.main_image.variant(resize: "600"), alt: "w.id"%>
+              <%= image_tag t.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
                 <div>
                   <h2>Tutorial</h2>
                   <p><%= t.title %></p>
