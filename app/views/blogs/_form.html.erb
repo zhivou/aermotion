@@ -25,6 +25,12 @@
     <%= form.file_field :main_image, class: "m-4" %>
   </div>
 
+  <div class="field">
+    <%= form.label"Embed youtube video" %>
+    <%= form.text_field :youtube_link, class: "m-4" %>
+    <small>Just copy and past the link from youtube in order to add it to the top of the blog page.</small>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

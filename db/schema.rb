@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_11_164518) do
+ActiveRecord::Schema.define(version: 2019_10_17_222459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_164518) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "youtube_link"
   end
 
   create_table "media", force: :cascade do |t|
@@ -122,6 +123,10 @@ ActiveRecord::Schema.define(version: 2019_09_11_164518) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "type_id", null: false
     t.text "description"
+    t.string "front_image_file_name"
+    t.string "front_image_content_type"
+    t.integer "front_image_file_size"
+    t.datetime "front_image_updated_at"
     t.index ["type_id"], name: "index_workout_sets_on_type_id"
   end
 

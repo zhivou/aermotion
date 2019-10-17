@@ -7,7 +7,14 @@
     </div>
   </div>
 
-  <div class="container blog-body"><%= @blog.body_area %></div>
+  <div class="container blog-body">
+    <% if @blog.youtube_link %>
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" src="<%='https://www.youtube.com/embed/' + @blog.youtube_link %>" frameborder='0' allowfullscreen></iframe>
+      </div>
+    <% end %>
+    <%= @blog.body_area %>
+  </div>
 
   <% unless user_signed_in? %>
     <div class="registration-wrapper container text-center">
