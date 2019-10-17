@@ -26,7 +26,9 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    @blog = Blog.new(blog_params)
+    local_params = blog_params
+    local_params[:youtube_link] = pars_youtube_link(local_params[:youtube_link])
+    @blog = Blog.new(local_params)
 
     respond_to do |format|
       if @blog.save
@@ -42,6 +44,7 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
+    blog_params[:youtube_link] = pars_youtube_link(blog_params[:youtube_link])
     respond_to do |format|
       if @blog.update(blog_params)
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
@@ -64,16 +67,22 @@ class BlogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def blog_params
-      params.require(:blog).permit(
-          :title,
-          :main_image,
-          :body_area,)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def blog_params
+    params.require(:blog).permit(
+        :title,
+        :main_image,
+        :body_area,
+        :youtube_link)
+  end
+
+  def pars_youtube_link(link)
+    return link.scan(/https:\/\/www.youtube.com\/watch\?v=(.{1,})/)[0][0] if link
+    nil
+  end
 end
