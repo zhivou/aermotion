@@ -10,7 +10,7 @@
     <div class="workout-center">
       <% @tutorials.each do |t| %>
         <figure class="card snip1492">
-          <%= image_tag t.main_image.variant(resize_to_fill: [313, 200]), alt: "sample85" %>
+          <%= image_tag t.main_image.variant(combine_options: { resize: '600^', resize_to_fill: [313, 200] }), alt: "sample85" %>
           <figcaption>
             <h3><%= t.title %></h3>
             <p><%= t.description.first(150) %></p>
