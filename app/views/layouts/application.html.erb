@@ -24,9 +24,12 @@
     <% unless params[:controller] == 'home' %>
       <div class="spacer"></div>
     <% end %>
-    <div class="alert-wrapper background-white m-0 p-0">
-      <p class="notice m-0 p-0" style="display: <%= "none" unless notice %>;"><%= notice %></p>
-      <p class="alert m-0 p-0" style="display: <%= "none" unless notice %>;"><%= alert %></p>
+    <div class="alert alert-warning alert-dismissible fade show m-0 p-0 alert-wrapper" role="alert">
+      <p class="notice m-0 p-0 mr-3" style="display: <%= "none" unless notice %>;"><%= notice %></p>
+      <p class="alert m-0 p-0 mr-3" style="display: <%= "none" unless notice %>;"><%= alert %></p>
+      <button type="button" class="close p-0 m-0" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <%= yield %>
     <%= render 'aplication/footer' %>
