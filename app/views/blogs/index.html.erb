@@ -3,6 +3,10 @@
 <section class="publicaciones-blog-home pt-3 pb-3">
   <div class="container pt-5">
     <div class="">
+      <%= form_tag blogs_path, method: 'get' do %>
+        <%= text_area_tag :search, params[:search], class: 'form-control' %>
+        <%= submit_tag "Search" %>
+      <% end %>
       <%= paginate @blogs %>
       <hr>
       <div class="row-page row">
