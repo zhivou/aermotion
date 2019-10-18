@@ -10,7 +10,7 @@
             <div class="col-page col-sm-8 col-md-6">
               <a href="/blogs/<%= blog.id %>" class="black fondo-publicacion-home">
                 <div class="img-publicacion-principal-home">
-                  <%= image_tag blog.main_image.variant(resize: "500x300") %>
+                  <%= image_tag blog.main_image.variant(combine_options: { resize: '^400', resize_to_fill: [270, 400] }) %>
                 </div>
                 <div class="contenido-publicacion-principal-home">
                   <h3><%= blog.title %></h3>
@@ -25,7 +25,7 @@
               <div class="col-page col-sm-4 col-md-3">
                 <a href="/blogs/<%= blog.id %>"  class="fondo-publicacion-home">
                   <div class="img-publicacion-home">
-                    <%= image_tag blog.main_image.variant(resize: "300x500"), class: "img-responsive" %>
+                    <%= image_tag blog.main_image.variant(combine_options: { resize: '400^', resize_to_fill: [400, 225] }), class: "img-responsive" %>
                   </div>
                   <div class="contenido-publicacion-home">
                     <h3><%= blog.title %></h3>
