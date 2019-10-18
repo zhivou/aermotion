@@ -3,6 +3,8 @@
 <section class="publicaciones-blog-home pt-3 pb-3">
   <div class="container pt-5">
     <div class="">
+      <%= paginate @blogs %>
+      <hr>
       <div class="row-page row">
         <% @counter = 0 %>
         <% @blogs.each do |blog| %>
@@ -47,6 +49,8 @@
           <% @counter = 0 if @counter == 7 %>
         <% end %>
       </div>
+      <hr>
+      <%= paginate @blogs %>
     </div>
   </div>
 </section>
