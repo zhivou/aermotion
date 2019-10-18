@@ -3,6 +3,22 @@
 <section class="publicaciones-blog-home pt-3 pb-3">
   <div class="container pt-5">
     <div class="">
+      <div class="search mb-3 mt-3 mr-3">
+        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#searchSimple" aria-expanded="false" aria-controls="collapseExample">
+          Quick Search
+        </button>
+        <!--        Simple Search-->
+        <div class="collapse mt-3" id="searchSimple">
+          <div class="search_wrapper">
+            <%= form_tag blogs_path, method: 'get' do %>
+              <%= text_field_tag :search, params[:search], class: 'form-control' %>
+              <%= submit_tag "Search", class: 'btn btn-outline-dark mt-3' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= paginate @blogs %>
+      <hr>
       <div class="row-page row">
         <% @counter = 0 %>
         <% @blogs.each do |blog| %>
@@ -47,6 +63,8 @@
           <% @counter = 0 if @counter == 7 %>
         <% end %>
       </div>
+      <hr>
+      <%= paginate @blogs %>
     </div>
   </div>
 </section>

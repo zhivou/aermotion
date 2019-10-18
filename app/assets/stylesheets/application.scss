@@ -242,3 +242,13 @@ a:focus {
   position: absolute;
   top: 95px;
 }
+
+//pagination
+.page-link {
+  color: #333333 !important;
+}
+
+.page-item, .active > a {
+  background-color: #333333 !important;
+  color: white !important;
+}
