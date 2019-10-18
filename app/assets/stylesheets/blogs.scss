@@ -1,3 +1,5 @@
+@import "bootstrap-datepicker3";
+
 body {
   background-color: white;
   padding-top: 75px;
@@ -255,4 +257,8 @@ section {
   padding: 115px;
   padding-top: 47px;
   padding-bottom: 47px;
+}
+
+.search_wrapper {
+  width: 300px;
 }
