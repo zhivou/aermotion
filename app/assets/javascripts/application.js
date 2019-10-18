@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require rails-ujs
 //= require bootstrap
 //= require activestorage
@@ -24,3 +25,4 @@
 //= require three.min.js
 //= require TweenMax.min.js
 //= require hover-effect.umd.js
+//= require bootstrap-datepicker.min.js
