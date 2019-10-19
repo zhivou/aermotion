@@ -82,7 +82,7 @@ class BlogsController < ApplicationController
   end
 
   def pars_youtube_link(link)
-    return link.scan(/https:\/\/www.youtube.com\/watch\?v=(.{1,})/)[0][0] if link
+    return link.scan(/https:\/\/www.youtube.com\/watch\?v=(.{1,})/)[0][0] unless link == ''
     nil
   end
 end
