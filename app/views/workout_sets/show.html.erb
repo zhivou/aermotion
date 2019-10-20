@@ -1,15 +1,15 @@
 <%= stylesheet_link_tag "workout_sets" %>
 
 <section>
-  <div class="container pt-4 pb-4">
+  <div class="container pt-5 pb-4">
     <div class="row p-3">
       <div class="col-8">
+        <h1 class="display-4"><%= @workout_set.title %></h1>
         ​<picture>
         <source srcset="" type="image/svg+xml">
         <%= image_tag @workout_set.main_image.variant(resize: "1800"), class:"img-fluid img-thumbnail"  %>
       </picture>
         <div class="mt-3">
-          <h1><%= @workout_set.title %></h1>
           <div class="description-content"><%= @workout_set.description %></div>
         </div>
       </div>
@@ -37,6 +37,16 @@
 
 <div class="container">
   <div id="disqus_thread"></div>
+</div>
+
+<hr>
+<div class="container">
+  <div class="header-title">
+    <h1>Blogs</h1>
+    <h2>Some latest blogs you might be interested in:</h2>
+  </div>
+
+  <%= render 'aplication/show_blogs' %>
 </div>
 
 <script>

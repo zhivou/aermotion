@@ -9,7 +9,7 @@ class WorkoutSetsController < ApplicationController
   # GET /workout_sets.json
   def index
     if user_signed_in?
-      @workout_sets = WorkoutSet.includes(:type).where(type: Type.where(name:"Set").take.id).where.not(id: current_user.workout_sets.order(id: :desc).page(params[:page]).per(12).includes(:type).each {|i| i})
+      @workout_sets = WorkoutSet.includes(:type).page(params[:page]).per(12).where(type: Type.where(name:"Set").take.id).where.not(id: current_user.workout_sets.order(id: :desc).includes(:type).each {|i| i})
     else
       @workout_sets = WorkoutSet.includes(:type).where(type: Type.where(name:"Set").take.id).order(id: :desc).page(params[:page]).per(12)
     end
