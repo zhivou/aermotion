@@ -8,6 +8,7 @@
 
   <div class="wrap">
     <div class="workout-center">
+      <%= paginate @workout_sets %>
       <% @workout_sets.each do |workout_set| %>
         <figure class="card snip1492">
           <%= image_tag workout_set.main_image.variant(combine_options: { resize: '600^', resize_to_fill: [313, 200] }), alt: "sample85" %>
