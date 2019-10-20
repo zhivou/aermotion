@@ -1,7 +1,7 @@
 <% @blogs = Blog.order(id: :desc).limit(6) %>
 
 <div class="pb-5 d-none d-md-none d-lg-block">
-  <div class="row">
+  <div class="row blog-bg">
       <div class="col-8 p-0 blog-item">
         <a href="/blogs/<%= @blogs[0].id %>">
           <%= image_tag @blogs[0].main_image.variant(combine_options: { resize: '1300^', resize_to_fill: [1300, 905] }), class: "img-fluid", alt: "Responsive image"%>
@@ -29,7 +29,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row blog-bg">
     <div class="col-4 p-0 blog-item">
       <a href="/blogs/<%= @blogs[3].id %>">
         <%= image_tag @blogs[3].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
