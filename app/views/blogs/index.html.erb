@@ -38,6 +38,23 @@
           </div>
         </div>
       </div>
+
+      <!--      Main blog-->
+      <div class="col-page col-sm-8 col-md-12 p-0 pb-4">
+        <div class="main-blg-wrapper">
+          <a href="/blogs/<%= @blogs[0].id %>">
+            <div>
+              <%= image_tag @blogs[0].main_image.variant(combine_options: { resize: '1400^', resize_to_fill: [1600, 600] }), class: "img-fluid", id: 'main-blog' %>
+            </div>
+            <div class="main-blog-text">
+              <h3><%= @blogs[0].title.upcase %></h3>
+              <p><%= @blogs[0].body_area.to_plain_text.first(150)%><span>...</span></p>
+              <span>Read More </span>
+            </div>
+          </a>
+        </div>
+      </div>
+
       <%= paginate @blogs %>
       <hr>
       <div class="row-page row">

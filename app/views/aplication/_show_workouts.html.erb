@@ -1,4 +1,4 @@
-<% @workouts = WorkoutSet.includes(:type).where(type: Type.where(name:"Set").take.id).order('RANDOM()').first(5) %>
+<% @workouts = WorkoutSet.includes(:type).where(type: Type.where(name:"Set").take.id).order('RANDOM()').first(6) %>
 
 <div class="card mb-3" style="width: 22rem;">
   <div class="card-body">
@@ -29,5 +29,21 @@
     <h5 class="card-title"><%= image_tag 'dumbbell.png', style: "width: 20px; margin-bottom: 3px;" %> <%= @workouts[3].title %></h5>
     <p class="card-text"><%= @workouts[3].description.first(150) unless @workouts[3].description.is_a?(NilClass) %>...</p>
     <a href="/workout_sets/<%= @workouts[3].id %>" class="btn btn-secondary">Read More</a>
+  </div>
+</div>
+
+<div class="card mb-3" style="width: 22rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= image_tag 'dumbbell.png', style: "width: 20px; margin-bottom: 3px;" %> <%= @workouts[4].title %></h5>
+    <p class="card-text"><%= @workouts[4].description.first(150) unless @workouts[4].description.is_a?(NilClass) %>...</p>
+    <a href="/workout_sets/<%= @workouts[4].id %>" class="btn btn-secondary">Read More</a>
+  </div>
+</div>
+
+<div class="card mb-3" style="width: 22rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= image_tag 'dumbbell.png', style: "width: 20px; margin-bottom: 3px;" %> <%= @workouts[5].title %></h5>
+    <p class="card-text"><%= @workouts[5].description.first(150) unless @workouts[5].description.is_a?(NilClass) %>...</p>
+    <a href="/workout_sets/<%= @workouts[5].id %>" class="btn btn-secondary">Read More</a>
   </div>
 </div>
