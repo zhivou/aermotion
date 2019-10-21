@@ -2,7 +2,7 @@
 
 <div class="card mb-3" style="width: 22rem;">
   <div class="card-body">
-    <h5 class="card-title"><%= @workouts[0].title %></h5>
+    <h5 class="card-title"><%= image_tag 'dumbbell.png', style: "width: 20px; margin-bottom: 3px;" %> <%= @workouts[0].title %></h5>
     <p class="card-text"><%= @workouts[0].description.first(150) unless @workouts[0].description.is_a?(NilClass) %>...</p>
     <a href="/workout_sets/<%= @workouts[0].id %>" class="btn btn-secondary">Read More</a>
   </div>
@@ -10,7 +10,7 @@
 
 <div class="card mb-3" style="width: 22rem;">
   <div class="card-body">
-    <h5 class="card-title"><%= @workouts[1].title %></h5>
+    <h5 class="card-title"><%= image_tag 'dumbbell.png', style: "width: 20px; margin-bottom: 3px;" %> <%= @workouts[1].title %></h5>
     <p class="card-text"><%= @workouts[1].description.first(150) unless @workouts[1].description.is_a?(NilClass) %>...</p>
     <a href="/workout_sets/<%= @workouts[1].id %>" class="btn btn-secondary">Read More</a>
   </div>
@@ -18,7 +18,7 @@
 
 <div class="card mb-3" style="width: 22rem;">
   <div class="card-body">
-    <h5 class="card-title"><%= @workouts[2].title %></h5>
+    <h5 class="card-title"><%= image_tag 'dumbbell.png', style: "width: 20px; margin-bottom: 3px;" %> <%= @workouts[2].title %></h5>
     <p class="card-text"><%= @workouts[2].description.first(150) unless @workouts[2].description.is_a?(NilClass) %>...</p>
     <a href="/workout_sets/<%= @workouts[2].id %>" class="btn btn-secondary">Read More</a>
   </div>
@@ -26,7 +26,7 @@
 
 <div class="card mb-3" style="width: 22rem;">
   <div class="card-body">
-    <h5 class="card-title"><%= @workouts[3].title %></h5>
+    <h5 class="card-title"><%= image_tag 'dumbbell.png', style: "width: 20px; margin-bottom: 3px;" %> <%= @workouts[3].title %></h5>
     <p class="card-text"><%= @workouts[3].description.first(150) unless @workouts[3].description.is_a?(NilClass) %>...</p>
     <a href="/workout_sets/<%= @workouts[3].id %>" class="btn btn-secondary">Read More</a>
   </div>

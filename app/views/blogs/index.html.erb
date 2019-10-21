@@ -62,7 +62,7 @@
               <div class="col-page col-sm-4 col-md-3">
                 <a href="/blogs/<%= blog.id %>"  class="fondo-publicacion-home">
                   <div class="img-publicacion-home">
-                    <%= image_tag blog.main_image.variant(combine_options: { resize: '255^', resize_to_fill: [255, 180] }), class: "img-responsive" %>
+                    <%= image_tag blog.main_image.variant(combine_options: { resize: '255^', resize_to_fill: [400, 180] }), class: "img-responsive" %>
                   </div>
                   <div class="contenido-publicacion-home">
                     <h3><%= blog.title %></h3>
