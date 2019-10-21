@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "blogs" %>
 
-<section class="container-fluid publicaciones-blog-home pt-3 pb-3">
+<section class="container-fluid publicaciones-blog-home pt-3 pb-0 mb-0">
   <div class="row">
     <div class="col-md-7 offset-md-1">
       <div class="search mb-3 mt-3 mr-3">
@@ -46,9 +46,9 @@
             <div>
               <%= image_tag @blogs[0].main_image.variant(combine_options: { resize: '1400^', resize_to_fill: [1600, 600] }), class: "img-fluid", id: 'main-blog' %>
             </div>
-            <div class="main-blog-text">
+            <div class="main-blog-text p-3">
               <h3><%= @blogs[0].title.upcase %></h3>
-              <p><%= @blogs[0].body_area.to_plain_text.first(150)%><span>...</span></p>
+              <p><%= @blogs[0].body_area.to_plain_text.first(200)%><span>...</span></p>
               <span>Read More </span>
             </div>
           </a>
@@ -109,6 +109,18 @@
         <h3 class="mb-3">Best sets of workouts for you</h3>
         <%= render 'aplication/show_workouts' %>
       </div>
+    </div>
+  </div>
+
+  <div class="tutorials-wrapper">
+    <%= render 'aplication/show_tutorials' %>
+  </div>
+
+  <div class="jumbotron jumbotron-fluid mb-0">
+    <div class="container p-5">
+      <h1 class="display-4">Have Any Questions?</h1>
+      <p class="lead">Please contact me. Contrary to popular belief, Lorem Ipsum is not simply random text</p>
+      <a href="/contact_us" class="btn btn-secondary">CONTACT US</a>
     </div>
   </div>
 </section>

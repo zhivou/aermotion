@@ -1,0 +1,161 @@
+<% @tutorials = WorkoutSet.all.includes(:type).where(type: Type.where(name:"Tutorial").take.id).order('RANDOM()').first(6) %>
+
+<style>
+  a{
+    text-decoration:none;
+  }
+  .section-title h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+  }
+  .section-title h2 {
+    font-size: 32px;
+    text-transform: capitalize;
+    margin: 15px 0;
+    display: inline-block;
+    position: relative;
+    font-weight: 700;
+    padding-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .section-title p {
+    font-weight: 300;
+    font-size: 14px;
+  }
+  .black-bg .section-title h2, .black-bg .section-title h4, .black-bg .section-title p {
+    color:#fff
+  }
+  .section-title h2:before {
+    position: absolute;
+    content: "";
+    width: 150px;
+    height: 1px;
+    background-color: #777;
+    bottom: 0;
+    left: 50%;
+    margin-left: -75px;
+  }
+  .section-title h2:after {
+    position: absolute;
+    content: "";
+    width: 80px;
+    height: 3px;
+    background-color: #4bb4e7;
+    border: darkblue;
+    bottom: -1px;
+    left: 50%;
+    margin-left: -40px;
+  }
+  .section-title {
+    margin-bottom: 70px;
+  }
+  .single-price {
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  }
+  .price-title h4 {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .price-tag {
+    margin: 30px 0;
+  }
+  .price-tag {
+    margin: 30px 0;
+    background-color: #fafafa;
+    color: #000;
+    padding: 10px 0;
+  }
+  .center.price-tag {
+    background-color: #4bb4e7;
+    color:#fff
+  }
+  .price-tag h2 {
+    font-size: 45px;
+    font-weight: 600;
+    font-family: poppins;
+  }
+  .price-tag h2 span {
+    font-weight: 300;
+    font-size: 16px;
+    font-style: italic;
+  }
+  .price-item ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .price-item ul li {
+    font-size: 14px;
+    padding: 5px 0;
+    border-bottom: 1px dashed #eee;
+    margin: 5px 0;
+  }
+  .price-item ul li:last-child {
+    border-bottom: 0;
+  }
+  .single-price a {
+    margin-top: 15px;
+  }
+  a.box-btn {
+    background-color: #333333;
+    padding: 5px 20px;
+    display: inline-block;
+    color: #fff;
+    text-transform: capitalize;
+    border-radius: 3px;
+    font-size: 15px;
+    transition: .3s;
+  }
+  a.box-btn:hover, a.border-btn:hover {
+    background-color: #4bb4e7;
+  }
+</style>
+
+<div class="pricing-area pt-100 pb-100" id="pricing">
+  <div class="">
+    <div class="row">
+      <div class="col-xl-8 mx-auto text-center">
+        <div class="section-title">
+          <h4>cheap prices</h4>
+          <h2>Tutorials</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+
+
+      <% @tutorials.each do |t| %>
+        <div class="col-xl-2">
+          <div class="single-price">
+            <div class="price-title">
+              <h4>tutorial</h4>
+            </div>
+            <div class="price-tag">
+              <h2>$<%= t.price %></h2>
+            </div>
+            <div class="price-item">
+              <ul>
+                <li><%= t.title %></li>
+                <li>Videos included: <%= t.media.count %></li>
+                <li>Video Time Count</li>
+              </ul>
+            </div>
+            <a href="/workout_sets/<%= t.id %>" class="box-btn">purchase now</a>
+          </div>
+        </div>
+      <% end %>
+
+
+
+
+
+    </div>
+  </div>
+</div>
