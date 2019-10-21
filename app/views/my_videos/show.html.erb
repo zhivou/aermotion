@@ -46,6 +46,10 @@
   <%= render 'aplication/show_blogs' %>
 </div>
 
+<div class="tutorials-wrapper">
+  <%= render 'aplication/show_tutorials' %>
+</div>
+
 <script>
   var disqus_config = function () {
     this.page.url = "https://aermotion.herokuapp.com/workout_sets/<%= @workout.id %>"; //TODO: Update this when deployed to PROD
