@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag "blogs" %>
 
-<section class="publicaciones-blog-home pt-3 pb-3">
-  <div class="container pt-5">
-    <div class="">
+<section class="container-fluid publicaciones-blog-home pt-3 pb-3">
+  <div class="row">
+    <div class="col-md-7 offset-md-1">
       <div class="search mb-3 mt-3 mr-3">
         <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#searchSimple" aria-expanded="false" aria-controls="collapseExample">
           Quick Search
@@ -86,6 +86,12 @@
       </div>
       <hr>
       <%= paginate @blogs %>
+    </div>
+    <div class="col-md-4 ml-auto right-row">
+      <div class="mb-5 mt-5 ml-5">
+        <h3 class="mb-3">Best sets of workouts for you</h3>
+        <%= render 'aplication/show_workouts' %>
+      </div>
     </div>
   </div>
 </section>
