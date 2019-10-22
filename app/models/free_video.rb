@@ -1,0 +1,2 @@
+class FreeVideo < ApplicationRecord
+end

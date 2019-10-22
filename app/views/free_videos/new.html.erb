@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag "admin_panel" %>
+
+<section>
+  <div class="container mt-5 mb-5">
+    <h1>New Free Video</h1>
+
+    <%= render 'form', free_video: @free_video %>
+
+    <%= link_to 'Back', free_videos_path %>
+  </div>
+</section>
+
