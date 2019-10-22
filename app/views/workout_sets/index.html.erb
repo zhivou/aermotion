@@ -27,11 +27,24 @@
 </div>
 
 <hr>
-<div class="container">
-  <div class="header-title">
-    <h1>Blogs</h1>
-    <h2>Some latest blogs you might be interested in:</h2>
+<div class="jumbotron jumbotron-fluid mb-0">
+  <div class="container p-5">
+    <h1 class="display-4">Have Any Questions?</h1>
+    <p class="lead">Please contact me. Contrary to popular belief, Lorem Ipsum is not simply random text</p>
+    <a href="/contact_us" class="btn btn-secondary">CONTACT US</a>
   </div>
+</div>
 
-  <%= render 'aplication/show_blogs' %>
+<div class="row-fluid">
+  <div class="col-md-8 offset-md-2">
+    <div class="header-title">
+      <h2>Some latest blogs you might be interested in:</h2>
+    </div>
+
+    <%= render 'aplication/show_blogs' %>
+  </div>
+</div>
+
+<div class="tutorials-wrapper">
+  <%= render 'aplication/show_tutorials' %>
 </div>
