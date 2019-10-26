@@ -1,4 +1,4 @@
-<% @videos = FreeVideo.all.take(4) %>
+<% @videos = FreeVideo.order('RANDOM()').take(4) %>
 
 <div class="row">
   <% @videos.each do |v| %>
