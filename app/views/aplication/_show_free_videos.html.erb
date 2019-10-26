@@ -3,7 +3,7 @@
 <div class="row">
   <% @videos.each do |v| %>
     <div class="embed-responsive embed-responsive-16by9 col-3">
-      <iframe class="embed-responsive-item" src="<%='https://www.youtube.com/embed/' + ApplicationHelper.trim_url(v.url) %>" frameborder='0' allowfullscreen></iframe>
+      <iframe class="embed-responsive-item" src="<%= v.url %>" frameborder='0' allowfullscreen></iframe>
     </div>
   <% end %>
 </div>
