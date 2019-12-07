@@ -1,9 +1,15 @@
 class TutorialsController < ApplicationController
   def index
     if user_signed_in?
-      @tutorials = WorkoutSet.includes(:type).where(type: Type.where(name:"Tutorial").take.id).where.not(id: current_user.workout_sets.includes(:type).each {|i| i})
+      @tutorials = WorkoutSet
+                       .includes(:type)
+                       .get_by_type('Tutorial').take.id
+                       .exclude_current_user(current_user) rescue nil
     else
-      @tutorials = WorkoutSet.order("created_at desc").includes(:type).where(type: Type.where(name:"Tutorial").take.id)
+      @tutorials = WorkoutSet
+                       .order("created_at desc")
+                       .includes(:type)
+                       .get_by_type('Tutorial').take.id rescue nil
     end
   end
 end

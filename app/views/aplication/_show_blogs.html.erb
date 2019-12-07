@@ -1,116 +1,119 @@
 <% @blogs = Blog.order(id: :desc).limit(6) %>
 
-<div class="pb-5 d-none d-md-none d-lg-block">
-  <div class="row blog-bg">
-      <div class="col-8 p-0 blog-item">
-        <a href="/blogs/<%= @blogs[0].id %>">
-          <%= image_tag @blogs[0].main_image.variant(combine_options: { resize: '1300^', resize_to_fill: [1300, 905] }), class: "img-fluid", alt: "Responsive image"%>
+<% if @blogs.exists? %>
+
+  <div class="pb-5 d-none d-md-none d-lg-block">
+    <div class="row blog-bg">
+        <div class="col-8 p-0 blog-item">
+          <a href="/blogs/<%= @blogs[0].id %>">
+            <%= image_tag @blogs[0].main_image.variant(combine_options: { resize: '1300^', resize_to_fill: [1300, 905] }), class: "img-fluid", alt: "Responsive image"%>
+            <div class="blog-bg">
+              <h1 class="blog-title-text m-4"><%= @blogs[0].title %></h1>
+            </div>
+          </a>
+        </div>
+      <div class="col-4 p-0">
+        <div class="blog-item">
+          <a href="/blogs/<%= @blogs[1].id %>">
+            <%= image_tag @blogs[1].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
+            <div class="blog-bg">
+              <h3 class="blog-title-text blog-text-l"><%= @blogs[1].title %></h3>
+            </div>
+          </a>
+        </div>
+        <div class="blog-item">
+          <a href="/blogs/<%= @blogs[2].id %>">
+            <%= image_tag @blogs[2].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
+            <div class="blog-bg">
+              <h3 class="blog-title-text blog-text-l"><%= @blogs[2].title %></h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row blog-bg">
+      <div class="col-4 p-0 blog-item">
+        <a href="/blogs/<%= @blogs[3].id %>">
+          <%= image_tag @blogs[3].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
           <div class="blog-bg">
-            <h1 class="blog-title-text m-4"><%= @blogs[0].title %></h1>
+            <h3 class="blog-title-text blog-text-l"><%= @blogs[3].title %></h3>
           </div>
         </a>
       </div>
-    <div class="col-4 p-0">
+      <div class="col-4 p-0 blog-item">
+        <a href="/blogs/<%= @blogs[4].id %>">
+          <%= image_tag @blogs[4].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
+          <div class="blog-bg">
+            <h3 class="blog-title-text blog-text-l"><%= @blogs[4].title %></h3>
+          </div>
+        </a>
+      </div>
+      <div class="col-4 p-0 blog-item">
+        <a href="/blogs/<%= @blogs[5].id %>">
+          <%= image_tag @blogs[5].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
+          <div class="blog-bg">
+            <h3 class="blog-title-text blog-text-l"><%= @blogs[5].title %></h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pb-5 d-lg-none d-xl-none">
+    <div class="col-12 p-0">
+      <div class="blog-item">
+        <a href="/blogs/<%= @blogs[0].id %>">
+          <%= image_tag @blogs[0].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
+          <div class="blog-bg">
+            <h3 class="blog-title-text blog-text-l"><%= @blogs[0].title %></h3>
+          </div>
+        </a>
+      </div>
+
       <div class="blog-item">
         <a href="/blogs/<%= @blogs[1].id %>">
-          <%= image_tag @blogs[1].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
+          <%= image_tag @blogs[1].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
           <div class="blog-bg">
             <h3 class="blog-title-text blog-text-l"><%= @blogs[1].title %></h3>
           </div>
         </a>
       </div>
+
       <div class="blog-item">
         <a href="/blogs/<%= @blogs[2].id %>">
-          <%= image_tag @blogs[2].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
+          <%= image_tag @blogs[2].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
           <div class="blog-bg">
             <h3 class="blog-title-text blog-text-l"><%= @blogs[2].title %></h3>
           </div>
         </a>
       </div>
+
+      <div class="blog-item">
+        <a href="/blogs/<%= @blogs[3].id %>">
+          <%= image_tag @blogs[3].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
+          <div class="blog-bg">
+            <h3 class="blog-title-text blog-text-l"><%= @blogs[3].title %></h3>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-item">
+        <a href="/blogs/<%= @blogs[4].id %>">
+          <%= image_tag @blogs[4].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
+          <div class="blog-bg">
+            <h3 class="blog-title-text blog-text-l"><%= @blogs[4].title %></h3>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-item">
+        <a href="/blogs/<%= @blogs[5].id %>">
+          <%= image_tag @blogs[5].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
+          <div class="blog-bg">
+            <h3 class="blog-title-text blog-text-l"><%= @blogs[5].title %></h3>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
-  <div class="row blog-bg">
-    <div class="col-4 p-0 blog-item">
-      <a href="/blogs/<%= @blogs[3].id %>">
-        <%= image_tag @blogs[3].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
-        <div class="blog-bg">
-          <h3 class="blog-title-text blog-text-l"><%= @blogs[3].title %></h3>
-        </div>
-      </a>
-    </div>
-    <div class="col-4 p-0 blog-item">
-      <a href="/blogs/<%= @blogs[4].id %>">
-        <%= image_tag @blogs[4].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
-        <div class="blog-bg">
-          <h3 class="blog-title-text blog-text-l"><%= @blogs[4].title %></h3>
-        </div>
-      </a>
-    </div>
-    <div class="col-4 p-0 blog-item">
-      <a href="/blogs/<%= @blogs[5].id %>">
-        <%= image_tag @blogs[5].main_image.variant(combine_options: { resize: '650^', resize_to_fill: [650, 463] }), class: "img-fluid", alt: "Responsive image" %>
-        <div class="blog-bg">
-          <h3 class="blog-title-text blog-text-l"><%= @blogs[5].title %></h3>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-
-<div class="pb-5 d-lg-none d-xl-none">
-  <div class="col-12 p-0">
-    <div class="blog-item">
-      <a href="/blogs/<%= @blogs[0].id %>">
-        <%= image_tag @blogs[0].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
-        <div class="blog-bg">
-          <h3 class="blog-title-text blog-text-l"><%= @blogs[0].title %></h3>
-        </div>
-      </a>
-    </div>
-
-    <div class="blog-item">
-      <a href="/blogs/<%= @blogs[1].id %>">
-        <%= image_tag @blogs[1].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
-        <div class="blog-bg">
-          <h3 class="blog-title-text blog-text-l"><%= @blogs[1].title %></h3>
-        </div>
-      </a>
-    </div>
-
-    <div class="blog-item">
-      <a href="/blogs/<%= @blogs[2].id %>">
-        <%= image_tag @blogs[2].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
-        <div class="blog-bg">
-          <h3 class="blog-title-text blog-text-l"><%= @blogs[2].title %></h3>
-        </div>
-      </a>
-    </div>
-
-    <div class="blog-item">
-      <a href="/blogs/<%= @blogs[3].id %>">
-        <%= image_tag @blogs[3].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
-        <div class="blog-bg">
-          <h3 class="blog-title-text blog-text-l"><%= @blogs[3].title %></h3>
-        </div>
-      </a>
-    </div>
-
-    <div class="blog-item">
-      <a href="/blogs/<%= @blogs[4].id %>">
-        <%= image_tag @blogs[4].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
-        <div class="blog-bg">
-          <h3 class="blog-title-text blog-text-l"><%= @blogs[4].title %></h3>
-        </div>
-      </a>
-    </div>
-
-    <div class="blog-item">
-      <a href="/blogs/<%= @blogs[0].id %>">
-        <%= image_tag @blogs[5].main_image.variant(combine_options: { resize: '690^', resize_to_fill: [690, 463] }), class: "img-fluid", alt: "Responsive image" %>
-        <div class="blog-bg">
-          <h3 class="blog-title-text blog-text-l"><%= @blogs[5].title %></h3>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
+<% end %>

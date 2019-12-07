@@ -1,17 +1,6 @@
 <%= stylesheet_link_tag "home" %>
 <%= stylesheet_link_tag "hover_grid" %>
 
-<!--<div class="slogan-wrapper">-->
-<!--  <div class="slogan align-self-center white">-->
-<!--    <h1 class="display-2 text-center slogan-text">Aerobic Calisthenics Fitness Guide</h1>-->
-<!--    <h1 class="text-center slogan-text">Skills progressions</h1>-->
-<!--    <h1 class="text-center slogan-text">Effective specific muscle conditioning workout programs</h1>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<video autoplay muted loop class="embed-responsive embed-responsive-16by9">-->
-<!--  <source src="<%#= asset_path "180419_Boxing_05_06.mp4" %>" type="video/mp4">-->
-<!--</video>-->
-
 <div class="d-flex picHolder text-center sliderWrapper parallax-window full-height" data-parallax="scroll" data-image-src="<%= asset_path "misha_cover2.jpg" %>">
   <div class="container align-self-center p-2 bd-highlight white slogan-wrapper">
     <h1 class="display-2 text-center slogan-text"><b>Aerobic</b> Calisthenics Fitness Guide</h1>
@@ -36,17 +25,19 @@
     <!-- Top Navigation -->
     <div>
       <div class="grid">
-        <% @workout_sets.each do |w| %>
-        <figure class="effect-ravi p-0 m-0">
-          <%= image_tag w.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
-          <figcaption>
-            <div>
-              <h2>Workout</h2>
-              <p><%= w.title %></p>
-            </div>
-            <a href="/workout_sets/<%= w.id %>">View more</a>
-          </figcaption>
-        </figure>
+        <% unless @workout_sets.nil? %>
+          <% @workout_sets.each do |w| %>
+          <figure class="effect-ravi p-0 m-0">
+            <%= image_tag w.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
+            <figcaption>
+              <div>
+                <h2>Workout</h2>
+                <p><%= w.title %></p>
+              </div>
+              <a href="/workout_sets/<%= w.id %>">View more</a>
+            </figcaption>
+          </figure>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -58,16 +49,18 @@
     <!-- Top Navigation -->
     <div>
       <div class="">
-        <% @workout_sets.each do |w| %>
-          <a href="/workout_sets/<%= w.id %>" id="href">
-            <figure class="effect-ravi p-0 m-0">
-              <%= image_tag w.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
-                <div>
-                  <h2>Workout</h2>
-                  <p><%= w.title %></p>
-                </div>
-            </figure>
-          </a>
+        <% unless @workout_sets.nil? %>
+          <% @workout_sets.each do |w| %>
+            <a href="/workout_sets/<%= w.id %>" id="href">
+              <figure class="effect-ravi p-0 m-0">
+                <%= image_tag w.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
+                  <div>
+                    <h2>Workout</h2>
+                    <p><%= w.title %></p>
+                  </div>
+              </figure>
+            </a>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -86,17 +79,19 @@
 
     <div>
       <div class="grid">
-        <% @tutorials.each do |t| %>
-          <figure class="effect-ravi p-0 m-0">
-            <%= image_tag t.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
-            <figcaption>
-              <div>
-                <h2>Tutorial</h2>
-                <p><%= t.title %></p>
-              </div>
-              <a href="/workout_sets/<%= t.id %>">View more</a>
-            </figcaption>
-          </figure>
+        <% unless @tutorials.nil? %>
+          <% @tutorials.each do |t| %>
+            <figure class="effect-ravi p-0 m-0">
+              <%= image_tag t.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
+              <figcaption>
+                <div>
+                  <h2>Tutorial</h2>
+                  <p><%= t.title %></p>
+                </div>
+                <a href="/workout_sets/<%= t.id %>">View more</a>
+              </figcaption>
+            </figure>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -108,16 +103,18 @@
 
     <div>
       <div class="container">
-        <% @tutorials.each do |t| %>
-          <a href="/workout_sets/<%= t.id %>" id="href">
-            <figure class="effect-ravi p-0 m-0">
-              <%= image_tag t.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
-                <div>
-                  <h2>Tutorial</h2>
-                  <p><%= t.title %></p>
-                </div>
-            </figure>
-          </a>
+        <% unless @tutorials.nil? %>
+          <% @tutorials.each do |t| %>
+            <a href="/workout_sets/<%= t.id %>" id="href">
+              <figure class="effect-ravi p-0 m-0">
+                <%= image_tag t.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
+                  <div>
+                    <h2>Tutorial</h2>
+                    <p><%= t.title %></p>
+                  </div>
+              </figure>
+            </a>
+          <% end %>
         <% end %>
       </div>
     </div>

@@ -1,4 +1,4 @@
-<% @tutorials = WorkoutSet.all.includes(:type).where(type: Type.where(name:"Tutorial").take.id).order('RANDOM()').first(6) %>
+<% @tutorials = WorkoutSet.all.includes(:type).where(type: Type.where(name:"Tutorial").take.id).order('RANDOM()').first(6) rescue nil %>
 
 <style>
   a{
@@ -130,7 +130,7 @@
     <div class="row">
 
 
-
+    <% unless @tutorials.nil? %>
       <% @tutorials.each do |t| %>
         <div class="col-xl-2">
           <div class="single-price">
@@ -151,6 +151,7 @@
           </div>
         </div>
       <% end %>
+    <% end %>
 
 
 

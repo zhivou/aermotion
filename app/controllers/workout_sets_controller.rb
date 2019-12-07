@@ -9,9 +9,16 @@ class WorkoutSetsController < ApplicationController
   # GET /workout_sets.json
   def index
     if user_signed_in?
-      @workout_sets = WorkoutSet.includes(:type).page(params[:page]).per(12).where(type: Type.where(name:"Set").take.id).where.not(id: current_user.workout_sets.order(id: :desc).includes(:type).each {|i| i})
+      @workout_sets = WorkoutSet
+                          .includes(:type)
+                          .page(params[:page]).per(12)
+                          .get_by_type('Set').take.id
+                          .exclude_current_user(current_user)rescue nil
     else
-      @workout_sets = WorkoutSet.includes(:type).where(type: Type.where(name:"Set").take.id).order(id: :desc).page(params[:page]).per(12)
+      @workout_sets = WorkoutSet
+                          .includes(:type)
+                          .get_by_type('Set').take.id
+                          .order(id: :desc).page(params[:page]).per(12) rescue nil
     end
   end
 
@@ -76,7 +83,7 @@ class WorkoutSetsController < ApplicationController
   end
 
   def get_set
-    @type = Type.where(name:"Set").take.id
+    @type = Type.where(name:"Set").take.id rescue nil
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
