@@ -1,4 +1,4 @@
-<% @workouts = WorkoutSet.includes(:type).get_by_type('Set').take.id.order('RANDOM()').first(6) rescue nil %>
+<% @workouts = WorkoutSet.includes(:type).where(type: Type.where(name:"Set").take.id).order('RANDOM()').first(6) rescue nil %>
 
 <% unless @workouts.nil? %>
   <% unless @workouts[0].nil? %>
