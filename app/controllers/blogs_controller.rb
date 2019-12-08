@@ -44,9 +44,10 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
-    blog_params[:youtube_link] = pars_youtube_link(local_params[:youtube_link])
+    local_params = blog_params
+    local_params[:youtube_link] = pars_youtube_link(local_params[:youtube_link])
     respond_to do |format|
-      if @blog.update(blog_params)
+      if @blog.update(local_params)
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
         format.json { render :show, status: :ok, location: @blog }
       else
