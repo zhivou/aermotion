@@ -26,7 +26,9 @@ class FreeVideosController < ApplicationController
   # POST /free_videos
   # POST /free_videos.json
   def create
-    @free_video = FreeVideo.new(free_video_params)
+    video_params = free_video_params
+    video_params[:url] = pars_youtube_link(video_params[:url])
+    @free_video = FreeVideo.new(video_params)
 
     respond_to do |format|
       if @free_video.save
@@ -42,8 +44,10 @@ class FreeVideosController < ApplicationController
   # PATCH/PUT /free_videos/1
   # PATCH/PUT /free_videos/1.json
   def update
+    video_params = free_video_params
+    video_params[:url] = pars_youtube_link(video_params[:url])
     respond_to do |format|
-      if @free_video.update(free_video_params)
+      if @free_video.update(video_params)
         format.html { redirect_to @free_video, notice: 'Free video was successfully updated.' }
         format.json { render :show, status: :ok, location: @free_video }
       else
@@ -64,13 +68,18 @@ class FreeVideosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_free_video
-      @free_video = FreeVideo.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_free_video
+    @free_video = FreeVideo.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def free_video_params
-      params.require(:free_video).permit(:title, :url, :description)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def free_video_params
+    params.require(:free_video).permit(:title, :url, :description)
+  end
+
+  def pars_youtube_link(link)
+    return link.scan(/src="(.*?)"/)[0][0] unless link == ''
+    nil
+  end
 end
