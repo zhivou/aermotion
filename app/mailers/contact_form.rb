@@ -6,8 +6,8 @@ class ContactForm < MailForm::Base
 
   def headers
     {
-        :subject => "Your subject",
-        :to => ENV["MY_EMAIL"],
+        :subject => "AERMOTION WEB FORM:",
+        :to => ENV["MY_EMAIL"], #TODO Upadate ENV in heroku server!
         :from => %("#{name}" <#{email}>)
     }
   end
