@@ -33,4 +33,11 @@
     <%= link_to "Cancel", root_path, class: "btn btn-secondary btn-lg float-right m-1" %>
     <%= link_to "Checkout", @payment[:redirect], class: "btn btn-dark btn-lg float-right m-1" %>
   </div>
+
+  <div id="paypal-button-container" class="container text-center"></div>
 </section>
+
+<script>
+  paypal.Buttons().render('#paypal-button-container');
+  // This function displays Smart Payment Buttons on your web page.
+</script>

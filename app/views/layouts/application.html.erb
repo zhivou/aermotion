@@ -17,9 +17,14 @@
       }
     </style>
     <%= javascript_pack_tag 'application' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
   </head>
 
   <body data-turbolinks="false">
+  <script
+    src="https://www.paypal.com/sdk/js?client-id=<%= ENV['PAYPAL_CLIENT_ID'] %>"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+  </script>
     <%= render 'aplication/navbar' %>
     <% unless params[:controller] == 'home' %>
       <div class="spacer"></div>
