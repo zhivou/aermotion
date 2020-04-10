@@ -1,5 +1,4 @@
 <%= stylesheet_link_tag "home" %>
-<%= stylesheet_link_tag "hover_grid" %>
 
 <div class="d-flex picHolder text-center sliderWrapper parallax-window full-height" data-parallax="scroll" data-image-src="<%= asset_path "misha_cover2.jpg" %>">
   <div class="container align-self-center p-2 bd-highlight white slogan-wrapper">
@@ -9,114 +8,95 @@
   </div>
 </div>
 
-<div>
-  <%= render "aplication/show_free_videos" %>
+<div class="card text-center bg-darker text-light">
+  <div class="card-body">
+    <%= render "aplication/show_free_videos" %>
+  </div>
 </div>
 
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container align-self-center p-2 bd-highlight white">
     <h1 class="display-2 text-center slogan-text">Workouts</h1>
     <h1 class="text-center slogan-text">Add some text here to explain what tutorials are:</h1>
   </div>
 </div>
 
-<div class="latest-tutorials gray-bg white d-none d-md-none d-lg-block">
-  <div class="">
-    <!-- Top Navigation -->
-    <div>
-      <div class="grid">
-        <% unless @workout_sets.nil? %>
-          <% @workout_sets.each do |w| %>
-          <figure class="effect-ravi p-0 m-0">
-            <%= image_tag w.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
-            <figcaption>
-              <div>
-                <h2>Workout</h2>
-                <p><%= w.title %></p>
-              </div>
-              <a href="/workout_sets/<%= w.id %>">View more</a>
-            </figcaption>
-          </figure>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+<div class="container container-fluid">
+  <div class="row justify-content-center">
+    <% unless @workout_sets.nil? %>
+      <% @workout_sets.each do |t| %>
+        <div class="col-12 col-md-4 p-0 container container-fluid">
+          <a class="card shadow card-holder" style="max-height: 300px; overflow: hidden;" href="/workout_sets/<%= t.id %>">
+
+            <%= image_tag t.main_image.variant(resize: '600'), alt: "w.id", class: 'card-img-top'%>
+
+            <div class="exercise-card-overlay card-img-overlay-gradient">
+            </div>
+
+            <div class="card-img-overlay p-3 mb-0">
+              <h5 class="text-white mb-0"><%= t.title %></h5>
+              <small class="text-white">Includes <%= t.media.count %> videos</small>
+            </div>
+          </a>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <a class="btn btn-dark btn-lg shadow-lg px-5 my-3" href="/workout_sets">VIEW ALL WORKOUTS</a>
   </div>
 </div>
 
-<div class="latest-tutorials gray-bg white d-lg-none d-xl-none">
-  <div class="container">
-    <!-- Top Navigation -->
-    <div>
-      <div class="">
-        <% unless @workout_sets.nil? %>
-          <% @workout_sets.each do |w| %>
-            <a href="/workout_sets/<%= w.id %>" id="href">
-              <figure class="effect-ravi p-0 m-0">
-                <%= image_tag w.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
-                  <div>
-                    <h2>Workout</h2>
-                    <p><%= w.title %></p>
-                  </div>
-              </figure>
-            </a>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container align-self-center p-2 bd-highlight white">
     <h1 class="display-2 text-center slogan-text">Tutorials</h1>
     <h1 class="text-center slogan-text">Add some text here to explain what tutorials are:</h1>
   </div>
 </div>
 
-<div class="latest-tutorials gray-bg white d-none d-md-none d-lg-block">
-  <div class="">
+<div class="container container-fluid">
+  <div class="row justify-content-center">
+    <% unless @tutorials.nil? %>
+      <% @tutorials.each do |t| %>
+        <div class="col-12 col-md-4 p-0">
+          <a class="card shadow card-holder" style="max-height: 300px; border: 0; overflow: hidden;" href="/workout_sets/<%= t.id %>">
 
-    <div>
-      <div class="grid">
-        <% unless @tutorials.nil? %>
-          <% @tutorials.each do |t| %>
-            <figure class="effect-ravi p-0 m-0">
-              <%= image_tag t.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
-              <figcaption>
-                <div>
-                  <h2>Tutorial</h2>
-                  <p><%= t.title %></p>
-                </div>
-                <a href="/workout_sets/<%= t.id %>">View more</a>
-              </figcaption>
-            </figure>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+            <%= image_tag t.main_image.variant(resize: '600'), alt: "w.id", class: 'card-img-top'%>
+
+            <div class="exercise-card-overlay card-img-overlay-gradient">
+            </div>
+
+            <div class="card-img-overlay p-3 mb-0">
+              <h5 class="text-white mb-0"><%= t.title %></h5>
+              <small class="text-white">Includes <%= t.media.count %> videos</small>
+            </div>
+          </a>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <a class="btn btn-dark btn-lg shadow-lg px-5 my-3" href="/tutorials">VIEW ALL TUTORIALS</a>
   </div>
 </div>
 
-<div class="latest-tutorials gray-bg white d-lg-none d-xl-none">
-  <div class="">
+<div class="jumbotron jumbotron-fluid bg-dark">
+  <div class="container align-self-center p-2 bd-highlight white">
+    <h1 class="display-2 text-center slogan-text">Blogs</h1>
+    <br>
+    <h1 class="text-center slogan-text">My Latest blogs, update me</h1>
+  </div>
+</div>
 
-    <div>
-      <div class="container">
-        <% unless @tutorials.nil? %>
-          <% @tutorials.each do |t| %>
-            <a href="/workout_sets/<%= t.id %>" id="href">
-              <figure class="effect-ravi p-0 m-0">
-                <%= image_tag t.main_image.variant(combine_options: { resize: '^600', gravity: 'Center', crop: '600x600+0+0' }), alt: "w.id"%>
-                  <div>
-                    <h2>Tutorial</h2>
-                    <p><%= t.title %></p>
-                  </div>
-              </figure>
-            </a>
-          <% end %>
-        <% end %>
-      </div>
+<div class="container container-fluid">
+  <%= render 'aplication/show_blogs' %>
+</div>
+
+<div class="jumbotron jumbotron-fluid bg-dark">
+  <div class="container align-self-center p-2 bd-highlight white">
+    <h1 class="text-center slogan-text">Please if contact me. Update the title</h1>
+    <div class="text-left">
+      <a class="btn btn-dark btn-lg shadow-lg px-5 my-3" href="/contact_us">CONTACT ME</a>
     </div>
   </div>
 </div>
