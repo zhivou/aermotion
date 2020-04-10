@@ -16,6 +16,7 @@ class TransactionController < ApplicationController
         return_url: "https://aermotion.herokuapp.com/payment_execute",
         cancel_url: workout_sets_path
     )
+    gon.payPall = @payment
   end
 
   def payment_execute
