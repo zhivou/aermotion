@@ -8,9 +8,26 @@
   </div>
 </div>
 
-<div class="card text-center bg-darker text-light">
-  <div class="card-body">
+<div class="text-center bg-darker text-light">
+  <div class="col-12">
     <%= render "aplication/show_free_videos" %>
+  </div>
+</div>
+
+<% if !user_signed_in? %>
+  <a class="btn btn-dark btn-lg btn-block shadow-lg" href="/register">FREE REGISTRATION</a>
+<% end %>
+
+<div class="jumbotron jumbotron-fluid bg-dark">
+  <div class="container align-self-center p-2 bd-highlight white">
+    <h1 class="display-2 text-center slogan-text">Introduction Video</h1>
+    <h1 class="text-center slogan-text">Please watch my Introduction video</h1>
+  </div>
+</div>
+
+<div class="container p-0">
+  <div class="embed-responsive embed-responsive-16by9">
+    <div id="ytplayer"></div>
   </div>
 </div>
 
@@ -94,9 +111,34 @@
 
 <div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container align-self-center p-2 bd-highlight white">
-    <h1 class="text-center slogan-text">Please if contact me. Update the title</h1>
+    <h1 class="text-left slogan-text">Whether you have a question about personal training, tutorials, workouts, or anything else, I am ready to answer all your questions</h1>
     <div class="text-left">
       <a class="btn btn-dark btn-lg shadow-lg px-5 my-3" href="/contact_us">CONTACT ME</a>
     </div>
   </div>
 </div>
+
+<script>
+  // Load the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // Replace the 'ytplayer' element with an <iframe> and
+  // YouTube player after the API code downloads.
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('ytplayer', {
+      videoId: 'EdigyOt4m_g',
+      playerVars: {
+        'autoplay': 1 ,
+        'rel': 0 ,
+        'showinfo': 0,
+        'modestbranding': 1,
+        'fs': 0,
+        'loop': 1
+      },
+    });
+  }
+</script>
