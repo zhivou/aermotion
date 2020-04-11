@@ -139,6 +139,11 @@
         'fs': 0,
         'loop': 1
       },
+      events: {
+        onReady: function(e) {
+          e.target.mute();
+        }
+      }
     });
   }
 </script>
