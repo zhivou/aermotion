@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "home" %>
 <% @page_title = @site_defaults.where(key: 'home_page_html_title').first.value %>
-<% @page_title = @page_title + ', ' + @site_defaults.where(key: 'home_page_html_keys').first.value %>
+<% @seo_keywords = @seo_keywords + ', ' + @site_defaults.where(key: 'workouts_page_html_keys').first.value %>
 
 <div class="d-flex picHolder text-center sliderWrapper parallax-window full-height" data-parallax="scroll" data-image-src="<%= asset_path "misha_cover2.jpg" %>">
   <div class="container align-self-center p-2 bd-highlight white slogan-wrapper">
@@ -38,8 +38,8 @@
 
 <div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container align-self-center p-2 bd-highlight white">
-    <h1 class="display-2 text-left slogan-text text-break">Workouts</h1>
-    <h1 class="text-left slogan-text text-break">Add some text here to explain what tutorials are:</h1>
+    <h1 class="display-2 text-left slogan-text text-break"><%= @site_defaults.where(key: 'home_page_workouts_title').first.value %></h1>
+    <h1 class="text-left slogan-text text-break"><%= @site_defaults.where(key: 'home_page_workouts_sub_title').first.value %></h1>
   </div>
 </div>
 
@@ -71,8 +71,8 @@
 
 <div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container align-self-center p-2 bd-highlight white">
-    <h1 class="display-2 text-left slogan-text text-break">Tutorials</h1>
-    <h1 class="text-left slogan-text text-break">Add some text here to explain what tutorials are:</h1>
+    <h1 class="display-2 text-left slogan-text text-break"><%= @site_defaults.where(key: 'home_page_tutorials_title').first.value %></h1>
+    <h1 class="text-left slogan-text text-break"><%= @site_defaults.where(key: 'home_page_tutorials_sub_title').first.value %></h1>
   </div>
 </div>
 
@@ -104,9 +104,9 @@
 
 <div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container align-self-center p-2 bd-highlight white">
-    <h1 class="display-2 text-left slogan-text text-break">Blogs</h1>
+    <h1 class="display-2 text-left slogan-text text-break"><%= @site_defaults.where(key: 'home_page_blogs_title').first.value %></h1>
     <br>
-    <h1 class="text-left slogan-text text-break">My Latest blogs, update me</h1>
+    <h1 class="text-left slogan-text text-break"><%= @site_defaults.where(key: 'home_page_blogs_sub_title').first.value %></h1>
   </div>
 </div>
 
@@ -116,7 +116,7 @@
 
 <div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container align-self-center p-2 bd-highlight white">
-    <h1 class="text-left slogan-text text-break">Whether you have a question about personal training, tutorials, workouts, or anything else, I am ready to answer all your questions</h1>
+    <h1 class="text-left slogan-text text-break"><%= @site_defaults.where(key: 'home_page_contact_block').first.value %></h1>
     <div class="text-left">
       <a class="btn btn-dark btn-lg shadow-lg px-5 my-3" href="/contact_us">CONTACT ME</a>
     </div>

@@ -1,4 +1,6 @@
 <%= stylesheet_link_tag "workout_sets" %>
+<% @page_title = @site_defaults.where(key: 'workouts_page_html_title').first.value %>
+<% @seo_keywords = @seo_keywords + ', ' + @site_defaults.where(key: 'home_page_html_keys').first.value %>
 
 <div class="header-title">
   <h1>Workout Sets</h1>
