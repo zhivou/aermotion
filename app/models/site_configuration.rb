@@ -60,13 +60,6 @@ DEFAULTS = [
     ##
     # ABOUT PAGE
     #
-    { key: 'about_page_info_block',                     value: '  I’m very excited to share an aerobic gymnastics | calisthenics | fitness guide with all of you! This content was created by athletes and coaches for athletes and coaches, professionals and amateurs, for all gymnastics and calisthenics enthusiasts who want to find new ways towards skills and overall fitness wellbeing approach.
-                                                                The website will be updated frequently.
-                                                                Here you can find all kinds of effective drills to polish your progressions, learn to nail that skill you’ve always wanted, and also get quick access to conditioning training sets specifically designed to reach your optimum, balanced body condition level.
-                                                                I was always passionate about being an athlete and when I finished my gymnastics career and started to get more into coaching I never stopped pushing myself. Therefore I stayed in decent shape and started exploring new forms of movement and ways to achieve a certain skill.
-                                                                I have had incredible coaches throughout my life who have taught me a lot. But I was also an autodidact all my life. I simply love the feeling when you see progress, become stronger, get better and I am thrilled to be able to share my experience with you!
-                                                                I hope you’ll master all of these skills and progressions, will be able to learn and to teach the next generation of movers!' },
-
     { key: 'about_page_html_title',                     value: 'Aermotion | About'},
     { key: 'about_page_html_keys',                      value: 'About Me Key Words' },
 
