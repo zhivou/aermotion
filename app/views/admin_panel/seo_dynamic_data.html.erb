@@ -1,0 +1,35 @@
+<%= javascript_include_tag 'admin_panel' %>
+<%= stylesheet_link_tag "admin_panel" %>
+
+<section>
+  <div class="container mt-5 mb-5">
+
+    <h3>Static pages settings</h3>
+    <button class="btn btn-primary btn-block mt-3" type="button" data-toggle="collapse" data-target="#collapseHome" aria-expanded="false" aria-controls="collapseHome">
+      Home Page
+    </button>
+    <div class="collapse p-3" id="collapseHome">
+      <div class="card card-body">
+        <h3>Home Page</h3>
+        <form id="homePageForm">
+          <div class="form-group home_page mt-3">
+            <label for="nameInput">Header Name</label>
+            <input type="text" class="form-control" id="nameInput" aria-describedby="emailHelp" value="Name">
+
+            <label for="bioInput">Bio</label>
+            <textarea class="form-control" id="bioInput" rows="5">About</textarea>
+
+            <label for="seoKeywordInput">SEO Keywords</label>
+            <input type="text" class="form-control" id="seoKeywordInput" aria-describedby="emailHelp" value="Key word">
+
+            <label for="seoDescriptionInput">SEO Description</label>
+            <textarea class="form-control" id="seoDescriptionInput" rows="3">Description</textarea>
+
+            <input type="submit" class="btn btn-warning mt-3">
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'admin_paypal_transactions', to: "admin_panel#admin_paypal_transactions"
   get 'admin_show_users', to: "admin_panel#admin_show_users"
   get 'admin_blogs', to: "admin_panel#admin_blogs"
+  get 'seo_dynamic_data', to: "admin_panel#seo_dynamic_data"
   resources :free_videos
 
   resources :media

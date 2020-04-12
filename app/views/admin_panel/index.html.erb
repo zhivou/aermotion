@@ -11,22 +11,30 @@
       <h3 class="mt-3">Main Info:</h3>
       <li><%= link_to 'Users Mapping', admin_users_mapping_path %></li>
       <li><%= link_to 'Users', admin_show_users_path %></li>
+
       <h3 class="mt-3">Workout Sets:</h3>
       <li><%= link_to 'Add/Remove Videos to Workout Sets', admin_workouts_path %></li>
       <li><%= link_to "Add new Workout/Tutorial", new_workout_set_path %></li>
       <li><%= link_to 'Add/Remove Users to Workout Sets', admin_user_connection_path %></li>
+
       <h3 class="mt-3">Video Content:</h3>
       <li><%= link_to 'View/Remove/Update Videos', admin_add_videos_path %></li>
       <li><%= link_to "Upload New Video", new_medium_path %></li>
+
       <h3 class="mt-3">Payments Invoices:</h3>
       <li><%= link_to 'PayPal Transactions', admin_paypal_transactions_path %></li>
+
       <h3 class="mt-3">My Blog:</h3>
       <li><%= link_to 'Add New Blog', new_blog_path %></li>
       <li><%= link_to 'View/Edit/Delete Blogs', admin_blogs_path %></li>
       <li><%= link_to 'User View', blogs_path %></li>
+
       <h3 class="mt-3">YouTube Free Content:</h3>
       <li><%= link_to 'Add YouTube Video', new_free_video_path %></li>
       <li><%= link_to 'View/Remove/Update YouTube Videos', free_videos_path %></li>
+
+      <h3 class="mt-3">SEO and Site Data:</h3>
+      <li><%= link_to 'Update Your Web Site SEO and Dynamic data', seo_dynamic_data_path %></li>
     </ul>
   </div>
 </section>

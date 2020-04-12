@@ -118,6 +118,10 @@ class AdminPanelController < ApplicationController
     end
   end
 
+  def seo_dynamic_data
+    @site_config = SiteConfiguration.all
+  end
+
   private
   def link_set_params
     params.require(:link_sets).permit(
