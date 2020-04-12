@@ -10,7 +10,6 @@ module DefaultPageContent
   # forms
   #
   def set_page_defaults
-    puts ">>>>>>>>>>>>>>> RAN"
     @site_defaults = SiteConfiguration.all
   end
 end
