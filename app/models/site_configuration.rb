@@ -25,6 +25,50 @@ DEFAULTS = [
     { key: 'workouts_page_sub_title',                   value: 'This book is a treatise on the theory of ethics, very popular' },
     { key: 'workouts_page_video_url',                   value: 'https://www.youtube.com/embed/EdigyOt4m_g' },
     { key: 'workouts_page_info_block',                  value: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.' },
+    { key: 'workouts_page_html_title',                  value: 'Aermotion | Workouts'},
+    { key: 'workouts_page_html_keys',                   value: 'Workouts, Free videos, Purchase Videos, add more here' },
+
+    ##
+    # TUTORIALS PAGE
+    #
+    { key: 'tutorials_page_title',                      value: 'Tutorials' },
+    { key: 'tutorials_page_sub_title',                  value: 'You can purchase tutorials below:' },
+    { key: 'tutorials_page_video_url',                  value: 'https://www.youtube.com/embed/EdigyOt4m_g' },
+    { key: 'tutorials_page_info_block',                 value: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.' },
+    { key: 'tutorials_page_html_title',                 value: 'Aermotion | Tutorials'},
+    { key: 'tutorials_page_html_keys',                  value: 'Tutorials, Free videos, Purchase Videos, add more here' },
+
+    ##
+    # BLOGS PAGE
+    #
+    { key: 'blogs_page_html_title',                 value: 'Aermotion | Blogs'},
+    { key: 'blogs_page_html_keys',                  value: 'Blogs key words add more' },
+
+    ##
+    # CONTACT PAGE
+    #
+    { key: 'contact_page_html_title',                 value: 'Aermotion | Contact'},
+    { key: 'contact_page_html_keys',                  value: 'Contact key words' },
+
+    ##
+    # MY VIDEOS PAGE
+    #
+    { key: 'my_videos_page_html_title',                 value: 'Aermotion | My Videos'},
+    { key: 'my_videos_page_html_keys',                  value: 'Key words generated automatically but here you can add extra manually' },
+
+
+    ##
+    # ABOUT PAGE
+    #
+    { key: 'about_page_info_block',                     value: '  I’m very excited to share an aerobic gymnastics | calisthenics | fitness guide with all of you! This content was created by athletes and coaches for athletes and coaches, professionals and amateurs, for all gymnastics and calisthenics enthusiasts who want to find new ways towards skills and overall fitness wellbeing approach.
+                                                                  The website will be updated frequently.
+                                                                  Here you can find all kinds of effective drills to polish your progressions, learn to nail that skill you’ve always wanted, and also get quick access to conditioning training sets specifically designed to reach your optimum, balanced body condition level.
+                                                                  I was always passionate about being an athlete and when I finished my gymnastics career and started to get more into coaching I never stopped pushing myself. Therefore I stayed in decent shape and started exploring new forms of movement and ways to achieve a certain skill.
+                                                                  I have had incredible coaches throughout my life who have taught me a lot. But I was also an autodidact all my life. I simply love the feeling when you see progress, become stronger, get better and I am thrilled to be able to share my experience with you!
+                                                                  I hope you’ll master all of these skills and progressions, will be able to learn and to teach the next generation of movers!' },
+
+    { key: 'about_page_html_title',                     value: 'Aermotion | About'},
+    { key: 'about_page_html_keys',                      value: 'About Me Key Words' },
 
 ]
 
