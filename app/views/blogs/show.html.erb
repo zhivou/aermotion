@@ -1,4 +1,6 @@
 <%= stylesheet_link_tag "blogs" %>
+<% @page_title = "Aermotion | Blogs - #{@blog.title}" %>
+<% @seo_keywords = @seo_keywords + ', ' + @blog.title %>
 
 <div class="blog-wrapper">
   <div class="d-flex picHolder text-center sliderWrapper parallax-window" data-parallax="scroll" data-image-src="<%= url_for(@blog.main_image) %>">

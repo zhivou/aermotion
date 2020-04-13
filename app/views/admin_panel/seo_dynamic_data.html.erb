@@ -1,0 +1,105 @@
+<%= javascript_include_tag 'admin_panel' %>
+<%= stylesheet_link_tag "admin_panel" %>
+
+<section>
+  <div class="container mt-5 mb-5">
+
+    <h3>Static pages settings</h3>
+    <button class="btn btn-primary btn-block mt-3" type="button" data-toggle="collapse" data-target="#collapseHome" aria-expanded="false" aria-controls="collapseHome">
+      Home Page
+    </button>
+    <div class="collapse p-3" id="collapseHome">
+      <div class="card card-body">
+        <h3>Home Page</h3>
+        <%= form_tag("/seo_update_home", :method => "post", id: "homePageForm") do %>
+          <div class="form-group home_page mt-3">
+
+            <div class="field">
+              <%= label_tag :blue_part_of_title %>
+              <%= text_field_tag 'home_page[home_page_blue_part]', @site_defaults.where(key: 'home_page_blue_part').first.value %>
+
+              <%= label_tag :title %>
+              <%= text_field_tag 'home_page[home_page_title]', @site_defaults.where(key: 'home_page_title').first.value %>
+
+            </div>
+
+            <div class="field">
+              <%= label_tag :sub_title %>
+              <%= text_field_tag 'home_page[home_page_sub_title]', @site_defaults.where(key: 'home_page_sub_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :sub_title_2 %>
+              <%= text_field_tag 'home_page[home_page_sub_title_two]', @site_defaults.where(key: 'home_page_sub_title_two').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :video_introduction_title %>
+              <%= text_field_tag 'home_page[home_page_introduction_video_title]', @site_defaults.where(key: 'home_page_introduction_video_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :introduction_video_sub_title %>
+              <%= text_field_tag 'home_page[home_page_introduction_video_sub_title]', @site_defaults.where(key: 'home_page_introduction_video_sub_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :embed_video_url %>
+              <%= text_field_tag 'home_page[home_page_introduction_video_url]', @site_defaults.where(key: 'home_page_introduction_video_url').first.value, class: "form-control" %>
+              <small>Go to Youtube, right click on targeted video and select 'Copy embed code'. You will need to use only a part of the code - src="https://www.youtube.com/embed/cUSD-HFZvjc". In this example you will need to copy only the link itself and use it for the form.</small><br>
+            </div>
+
+            <div class="field">
+              <%= label_tag :workouts_title %>
+              <%= text_field_tag 'home_page[home_page_workouts_title]', @site_defaults.where(key: 'home_page_workouts_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :workouts_sub_title %>
+              <%= text_field_tag 'home_page[home_page_workouts_sub_title]', @site_defaults.where(key: 'home_page_workouts_sub_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :tutorials_title %>
+              <%= text_field_tag 'home_page[home_page_tutorials_title]', @site_defaults.where(key: 'home_page_tutorials_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :tutorials_sub_title %>
+              <%= text_field_tag 'home_page[home_page_tutorials_sub_title]', @site_defaults.where(key: 'home_page_tutorials_sub_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :blogs_title %>
+              <%= text_field_tag 'home_page[home_page_blogs_title]', @site_defaults.where(key: 'home_page_blogs_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :blogs_sub_title %>
+              <%= text_field_tag 'home_page[home_page_blogs_sub_title]', @site_defaults.where(key: 'home_page_blogs_sub_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :contact_block %>
+              <%= text_area_tag 'home_page[home_page_contact_block]', @site_defaults.where(key: 'home_page_contact_block').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :seo_title %>
+              <%= text_field_tag 'home_page[home_page_html_title]', @site_defaults.where(key: 'home_page_html_title').first.value, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :seo_keywords %>
+              <%= text_field_tag 'home_page[home_page_html_keys]', @site_defaults.where(key: 'home_page_html_keys').first.value, class: "form-control" %>
+            </div>
+
+            <%= submit_tag 'Save', class: "btn btn-warning mt-3"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%= link_to 'Back', admin_panel_path %>
+  </div>
+</section>

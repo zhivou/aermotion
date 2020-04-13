@@ -1,4 +1,7 @@
 <%= stylesheet_link_tag "blogs" %>
+<% @page_title = @site_defaults.where(key: 'blogs_page_html_title').first.value %>
+<% @seo_keywords = @seo_keywords + ', ' + @site_defaults.where(key: 'blogs_page_html_keys').first.value %>
+<% @seo_keywords = @seo_keywords + Blog.all.pluck(:title).join(', ') %>
 
 <section class="container-fluid publicaciones-blog-home pt-5 pb-0 mb-0">
   <div class="row">

@@ -1,4 +1,6 @@
 <%= stylesheet_link_tag "about" %>
+<% @page_title = @site_defaults.where(key: 'about_page_html_title').first.value %>
+<% @seo_keywords = @seo_keywords + ', ' + @site_defaults.where(key: 'about_page_html_keys').first.value %>
 
 <section>
   <div class="container mt-5 mb-5">

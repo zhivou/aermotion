@@ -1,3 +1,6 @@
+<% @page_title = @site_defaults.where(key: 'contact_page_html_title').first.value %>
+<% @seo_keywords = @seo_keywords + ', ' + @site_defaults.where(key: 'contact_page_html_keys').first.value %>
+
 <section class="mt-5 mb-5 pt-1 pr-5 pl-5 pb-5 bg-white" style="min-height: 100vh;">
   <div>
     <div class="header-title text-center">

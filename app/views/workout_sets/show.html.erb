@@ -1,4 +1,7 @@
 <%= stylesheet_link_tag "workout_sets" %>
+<% @page_title = "Aermotion | Workouts and Tutorials - #{@workout_set.title}" %>
+<% @seo_keywords = @seo_keywords + ', ' + @workout_set.title %>
+<% @seo_keywords = @seo_keywords + ', ' + @workout_set.media.pluck(:title).join(', ') %>
 
 <section>
   <div class="container pt-5 pb-4">
