@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'admin_create_user', to: "admin_panel#create_user"
   post 'admin_remove_user', to: "admin_panel#remove_user"
   post 'admin_add_admin_user', to: "admin_panel#create_admin_user"
+  post 'seo_update_home', to: "admin_panel#seo_update_home"
   get 'admin_add_user', to: "admin_panel#create_video"
   get 'admin_workouts', to: "admin_panel#admin_workouts"
   get 'admin_users_mapping', to: "admin_panel#admin_users_mapping"

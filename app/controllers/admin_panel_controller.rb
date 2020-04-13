@@ -122,6 +122,32 @@ class AdminPanelController < ApplicationController
     @site_config = SiteConfiguration.all
   end
 
+  def seo_update_home
+    success_flags = []
+    error_flags = []
+    settings = home_page_dynamic
+    settings.each do |key, value|
+      updating_key = SiteConfiguration.where(key: key).first
+      unless updating_key.value == value
+        if updating_key.update(value: value)
+          success_flags << "Key #{key} was successfully updated and set to Value: #{value}"
+        else
+          error_flags << "Could not update Key #{key}. Possibly missing key in the configuration defaults check SiteConfiguration table"
+        end
+      end
+    end
+
+    respond_to do |format|
+      if error_flags.length <= 0
+        format.html { redirect_to seo_dynamic_data_path, notice: "#{ success_flags.length < 1 ? 'There was nothing to update!' : 'Settings updated successfully: ' + success_flags.join("\n") }" }
+        format.json { render seo_dynamic_data_path, status: :created}
+      else
+        format.html { redirect_to seo_dynamic_data_path, notice: error_flags.inspect }
+        format.json { render json: seo_dynamic_data_path.inspect , status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
   def link_set_params
     params.require(:link_sets).permit(
@@ -156,5 +182,25 @@ class AdminPanelController < ApplicationController
 
   def is_admin?
     redirect_to root_path unless current_user.admin
+  end
+
+  def home_page_dynamic
+    params.require(:home_page).permit(
+        :home_page_title,
+        :home_page_blue_part,
+        :home_page_sub_title,
+        :home_page_sub_title_two,
+        :home_page_introduction_video_title,
+        :home_page_introduction_video_sub_title,
+        :home_page_introduction_video_url,
+        :home_page_workouts_title,
+        :home_page_workouts_sub_title,
+        :home_page_tutorials_title,
+        :home_page_tutorials_sub_title,
+        :home_page_blogs_title,
+        :home_page_blogs_sub_title,
+        :home_page_contact_block,
+        :home_page_html_title,
+        :home_page_html_keys)
   end
 end

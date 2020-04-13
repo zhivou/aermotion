@@ -3,8 +3,10 @@ DEFAULTS = [
     ##
     # HOME PAGE
     #
-    { key: 'home_page_title',                           value: 'AEROBIC CALISTHENICS FITNESS GUIDE' },
-    { key: 'home_page_sub_title',                       value: 'SKILLS PROGRESSIONS EFFECTIVE SPECIFIC MUSCLE CONDITIONING WORKOUT PROGRAMS' },
+    { key: 'home_page_title',                           value: 'Calisthenics Fitness Guide' },
+    { key: 'home_page_sub_title',                       value: 'Skills progressions' },
+    { key: 'home_page_sub_title_two',                   value: 'Effective specific muscle conditioning workout programs' },
+    { key: 'home_page_blue_part',                       value: 'AEROBIC' },
     { key: 'home_page_introduction_video_title',        value: 'INTRODUCTION VIDEO' },
     { key: 'home_page_introduction_video_sub_title',    value: 'PLEASE WATCH MY INTRODUCTION VIDEO' },
     { key: 'home_page_introduction_video_url',          value: 'https://www.youtube.com/embed/EdigyOt4m_g' },
