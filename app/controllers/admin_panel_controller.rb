@@ -201,6 +201,7 @@ class AdminPanelController < ApplicationController
         :home_page_blogs_sub_title,
         :home_page_contact_block,
         :home_page_html_title,
-        :home_page_html_keys)
+        :home_page_html_keys
+    )
   end
 end
