@@ -1,15 +1,15 @@
-test: &default
+#test: &default
 
-  # Credentials for REST APIs
-  client_id: <%= ENV['PAYPAL_CLIENT_ID'] %>
-  client_secret: <%= ENV['PAYPAL_CLIENT_SECRET'] %>
+#  # Credentials for REST APIs
+#  client_id: <%#= ENV['PAYPAL_CLIENT_ID'] %>
+#  client_secret: <%#= ENV['PAYPAL_CLIENT_SECRET'] %>
 
-  # Mode can be 'live' or 'sandbox'
-  mode: sandbox
+#  # Mode can be 'live' or 'sandbox'
+#  mode: sandbox
 
-development:
-  <<: *default
+#development:
+#  <<: *default
 
-production:
-  <<: *default
-  mode: default
+#production:
+#  <<: *default
+#  mode: default
