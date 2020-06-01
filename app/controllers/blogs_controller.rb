@@ -1,7 +1,9 @@
 class BlogsController < ApplicationController
 
+  before_action :is_admin?, only: [:new, :edit, :update, :create, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /blogs
   # GET /blogs.json

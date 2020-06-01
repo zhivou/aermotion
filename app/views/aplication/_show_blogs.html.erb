@@ -1,6 +1,6 @@
 <% @blogs = Blog.order(id: :desc).limit(6) %>
 
-<% if @blogs.exists? %>
+<% if @blogs.exists? && @blogs.count >= 5 %>
 
   <div class="pb-5 d-none d-md-none d-lg-block">
     <div class="row blog-bg">
