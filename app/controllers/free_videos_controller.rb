@@ -2,6 +2,7 @@ class FreeVideosController < ApplicationController
   before_action :authenticate_user!
   before_action :is_admin?
   before_action :set_free_video, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /free_videos
   # GET /free_videos.json

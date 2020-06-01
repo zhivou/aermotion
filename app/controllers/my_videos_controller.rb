@@ -2,6 +2,7 @@ class MyVideosController < ApplicationController
 
   before_action :authenticate_user!
   before_action :get_media_per_user_single, only: [:show]
+  skip_before_action :verify_authenticity_token
 
   def index
     @workouts = current_user.workout_sets
