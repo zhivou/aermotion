@@ -26,9 +26,9 @@ class AdminPanelController < ApplicationController
     @videos = Medium.order(:id).page(params[:page]).per(10)
   end
 
-  def admin_paypal_transactions
-    @transactions = PayPalTransaction.order("id DESC").page(params[:page]).per(10)
-  end
+  # def admin_paypal_transactions
+  #   @transactions = PayPalTransaction.order("id DESC").page(params[:page]).per(10)
+  # end
 
   def new_video
     @workouts = WorkoutSet.all

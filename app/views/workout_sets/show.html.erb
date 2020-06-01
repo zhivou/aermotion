@@ -18,9 +18,9 @@
       </div>
       <div class="col-4">
         <div class="p-3">
-          <%= image_tag 'paypal-logo.png', class: "img-fluid m-3" %>
-          <a href="/transactions/<%= @workout_set.id %>" class="btn btn-success btn-lg btn-block m-3">BUY</a>
-          <h1 class="text-center p-3">$<%= @workout_set.price %></h1>
+          <%#= image_tag 'paypal-logo.png', class: "img-fluid m-3" %>
+<!--          <a href="/transactions/<%#= @workout_set.id %>" class="btn btn-success btn-lg btn-block m-3">BUY</a>-->
+<!--          <h1 class="text-center p-3">$<%#= @workout_set.price %></h1>-->
           <div class="videos-count">
             <strong>Includes <%= @workout_set.media.count %> videos:</strong>
             <% @workout_set.media.each do |m| %>
