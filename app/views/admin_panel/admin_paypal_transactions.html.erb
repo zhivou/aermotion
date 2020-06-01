@@ -1,55 +1,55 @@
-<%= stylesheet_link_tag "admin_panel" %>
+<%#= stylesheet_link_tag "admin_panel" %>
 
-<section>
-  <div class="container mt-5 mb-5">
-    <%= paginate @transactions %>
-    <table>
-      <thead>
-      <tr class="admin-head">
-        <th class="text-center">Entry ID</th>
-        <th class="text-center">Transaction ID</th>
-        <th class="text-center">User ID Local</th>
-        <th class="text-center">User Email Local</th>
-        <th class="text-center">Payment Method</th>
-        <th class="text-center">Payer ID PayPal</th>
-        <th class="text-center">Item</th>
-        <th class="text-center">Price</th>
-        <th class="text-center">Currency</th>
-        <th class="text-center">Quantity</th>
-        <th class="text-center">Tax</th>
-        <th class="text-center">Total</th>
-        <th class="text-center">Time Created PayPal</th>
-        <th class="text-center">Status</th>
-        <th class="text-center">Error</th>
-        <th class="text-center">Created At</th>
-        <th class="text-center">Updated At</th>
-        <th colspan="3"></th>
-      </tr>
-      </thead>
+<!--<section>-->
+<!--  <div class="container mt-5 mb-5">-->
+    <%#= paginate @transactions %>
+<!--    <table>-->
+<!--      <thead>-->
+<!--      <tr class="admin-head">-->
+<!--        <th class="text-center">Entry ID</th>-->
+<!--        <th class="text-center">Transaction ID</th>-->
+<!--        <th class="text-center">User ID Local</th>-->
+<!--        <th class="text-center">User Email Local</th>-->
+<!--        <th class="text-center">Payment Method</th>-->
+<!--        <th class="text-center">Payer ID PayPal</th>-->
+<!--        <th class="text-center">Item</th>-->
+<!--        <th class="text-center">Price</th>-->
+<!--        <th class="text-center">Currency</th>-->
+<!--        <th class="text-center">Quantity</th>-->
+<!--        <th class="text-center">Tax</th>-->
+<!--        <th class="text-center">Total</th>-->
+<!--        <th class="text-center">Time Created PayPal</th>-->
+<!--        <th class="text-center">Status</th>-->
+<!--        <th class="text-center">Error</th>-->
+<!--        <th class="text-center">Created At</th>-->
+<!--        <th class="text-center">Updated At</th>-->
+<!--        <th colspan="3"></th>-->
+<!--      </tr>-->
+<!--      </thead>-->
 
-      <% @transactions.each do |t| %>
-        <tr class="admin-row">
-          <td><%= t.id %></td>
-          <td><%= t.transaction_id %></td>
-          <td><%= t.local_user_id %></td>
-          <td><%= t.local_user_email %></td>
-          <td><%= t.method %></td>
-          <td><%= t.payer_id %></td>
-          <td><%= t.item %></td>
-          <td><%= t.price %></td>
-          <td><%= t.currency %></td>
-          <td><%= t.quantity %></td>
-          <td><%= t.tax %></td>
-          <td><%= t.total %></td>
-          <td><%= t.paypal_created_time %></td>
-          <td><%= t.status %></td>
-          <td><%= t.error %></td>
-          <td><%= t.created_at %></td>
-          <td><%= t.updated_at %></td>
-        </tr>
-      <% end %>
-    </table>
-    <%= paginate @transactions %>
-    <%= link_to "Back", admin_panel_path %>
-  </div>
-</section>
+      <%# @transactions.each do |t| %>
+<!--        <tr class="admin-row">-->
+<!--          <td><%#= t.id %></td>-->
+<!--          <td><%#= t.transaction_id %></td>-->
+<!--          <td><%#= t.local_user_id %></td>-->
+<!--          <td><%#= t.local_user_email %></td>-->
+<!--          <td><%#= t.method %></td>-->
+<!--          <td><%#= t.payer_id %></td>-->
+<!--          <td><%#= t.item %></td>-->
+<!--          <td><%#= t.price %></td>-->
+<!--          <td><%#= t.currency %></td>-->
+<!--          <td><%#= t.quantity %></td>-->
+<!--          <td><%#= t.tax %></td>-->
+<!--          <td><%#= t.total %></td>-->
+<!--          <td><%#= t.paypal_created_time %></td>-->
+<!--          <td><%#= t.status %></td>-->
+<!--          <td><%#= t.error %></td>-->
+<!--          <td><%#= t.created_at %></td>-->
+<!--          <td><%#= t.updated_at %></td>-->
+<!--        </tr>-->
+      <%# end %>
+<!--    </table>-->
+    <%#= paginate @transactions %>
+    <%#= link_to "Back", admin_panel_path %>
+<!--  </div>-->
+<!--</section>-->

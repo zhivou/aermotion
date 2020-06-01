@@ -19,6 +19,12 @@
   <div class="field">
     <%= form.label :url %>
     <%= form.text_field :url, id: :free_video_url %>
+    <small>This link needs to be an embed code from youtube. And should look like this:</small>
+    <br>
+    <small>&lt;iframe width=&quot;1228&quot; height=&quot;691&quot; src=&quot;https://www.youtube.com/embed/Oba-keArOSI&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</small>
+    <br>
+    <small><b>Note:</b> When the page is saved it will show parsed short link without iframe, this is how it should be. Use iframe only for updating the form!</small>
+    <br>
   </div>
 
   <div class="field">
