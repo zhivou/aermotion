@@ -126,6 +126,8 @@ class AdminPanelController < ApplicationController
     success_flags = []
     error_flags = []
     settings = home_page_dynamic
+    error_flags << 'Wrong youtube code!' unless home_page_dynamic[:home_page_introduction_video_url].include?('iframe')
+    settings[:home_page_introduction_video_url] = pars_youtube_link(home_page_dynamic[:home_page_introduction_video_url])
     settings.each do |key, value|
       updating_key = SiteConfiguration.where(key: key).first
       unless updating_key.value == value
@@ -203,5 +205,10 @@ class AdminPanelController < ApplicationController
         :home_page_html_title,
         :home_page_html_keys
     )
+  end
+
+  def pars_youtube_link(link)
+    return link.scan(/src="(.*?)"/)[0][0] unless link == ''
+    nil
   end
 end

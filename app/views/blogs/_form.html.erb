@@ -28,8 +28,11 @@
   <div class="field">
     <%= form.label"Embed youtube video" %>
     <%= form.text_field :youtube_link, class: "m-4" %>
-    <small>Just copy and past the link from youtube in order to add it to the top of the blog page.</small>
+    <small>This link needs to be an embed code from youtube. And should look like this:</small>
+    <br>
+    <small>&lt;iframe width=&quot;1228&quot; height=&quot;691&quot; src=&quot;https://www.youtube.com/embed/Oba-keArOSI&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</small>
   </div>
+  <br>
 
   <div class="actions">
     <%= form.submit %>
