@@ -2,7 +2,7 @@
 <% @page_title = @site_defaults.where(key: 'home_page_html_title').first.value %>
 <% @seo_keywords = @seo_keywords + ', ' + @site_defaults.where(key: 'workouts_page_html_keys').first.value %>
 
-<div class="d-flex picHolder text-center sliderWrapper parallax-window full-height" data-parallax="scroll" data-image-src="<%= asset_path "misha_cover2.jpg" %>">
+<div class="d-flex picHolder text-center sliderWrapper parallax-window full-height" data-parallax="scroll" data-image-src="<%= polymorphic_url(@site_defaults.where(key: 'home_page_image').first.main_image) if @site_defaults.where(key: 'home_page_image').first.main_image.attached? %>">
   <div class="container align-self-center p-2 bd-highlight white slogan-wrapper">
     <h1 class="display-2 text-center slogan-text text-break"><b><%= @site_defaults.where(key: 'home_page_blue_part').first.value %></b> <%= @site_defaults.where(key: 'home_page_title').first.value %></h1>
     <h1 class="text-center slogan-text text-break"><%= @site_defaults.where(key: 'home_page_sub_title').first.value %></h1>

@@ -19,6 +19,7 @@ DEFAULTS = [
     { key: 'home_page_contact_block',                   value: 'WHETHER YOU HAVE A QUESTION ABOUT PERSONAL TRAINING, TUTORIALS, WORKOUTS, OR ANYTHING ELSE, I AM READY TO ANSWER ALL YOUR QUESTIONS' },
     { key: 'home_page_html_title',                      value: 'Aermotion Home Page'},
     { key: 'home_page_html_keys',                       value: 'Aermotion, Tutorials, Personal Training, Couching' },
+    { key: 'home_page_image',                           value: ''},
 
     ##
     # WORKOUTS PAGE
@@ -68,6 +69,9 @@ DEFAULTS = [
 ]
 
 class SiteConfiguration < ApplicationRecord
+
+  has_one_attached :main_image
+
   def self.ensure_created
     DEFAULTS.each do |setting|
       self.record_default(setting) if self.where(key: setting[:key]).empty?

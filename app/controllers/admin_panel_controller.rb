@@ -126,8 +126,12 @@ class AdminPanelController < ApplicationController
     success_flags = []
     error_flags = []
     settings = home_page_dynamic
-    error_flags << 'Wrong youtube code!' unless home_page_dynamic[:home_page_introduction_video_url].include?('iframe')
-    settings[:home_page_introduction_video_url] = pars_youtube_link(home_page_dynamic[:home_page_introduction_video_url])
+
+    if home_page_dynamic[:home_page_introduction_video_url].include?('iframe')
+      settings[:home_page_introduction_video_url] = pars_youtube_link(home_page_dynamic[:home_page_introduction_video_url])
+    end
+
+
     settings.each do |key, value|
       updating_key = SiteConfiguration.where(key: key).first
       unless updating_key.value == value
@@ -138,6 +142,8 @@ class AdminPanelController < ApplicationController
         end
       end
     end
+
+    SiteConfiguration.where(key: 'home_page_image').first.main_image.attach(settings[:home_page_image])
 
     respond_to do |format|
       if error_flags.length <= 0
@@ -203,7 +209,8 @@ class AdminPanelController < ApplicationController
         :home_page_blogs_sub_title,
         :home_page_contact_block,
         :home_page_html_title,
-        :home_page_html_keys
+        :home_page_html_keys,
+        :home_page_image
     )
   end
 

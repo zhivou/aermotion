@@ -11,7 +11,7 @@
     <div class="collapse p-3" id="collapseHome">
       <div class="card card-body">
         <h3>Home Page</h3>
-        <%= form_tag("/seo_update_home", :method => "post", id: "homePageForm") do %>
+        <%= form_tag("/seo_update_home", :method => "post", id: "homePageForm", multipart: true) do %>
           <div class="form-group home_page mt-3">
 
             <div class="field">
@@ -20,7 +20,11 @@
 
               <%= label_tag :title %>
               <%= text_field_tag 'home_page[home_page_title]', @site_defaults.where(key: 'home_page_title').first.value %>
+            </div>
 
+            <div class="field">
+              <%= label_tag :home_page_image %>
+              <%= file_field_tag 'home_page[home_page_image]' %>
             </div>
 
             <div class="field">
